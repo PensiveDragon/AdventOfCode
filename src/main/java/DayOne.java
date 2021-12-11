@@ -1,3 +1,7 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.nio.Buffer;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Arrays;
@@ -10,12 +14,38 @@ public class DayOne {
     public static void main(String[] args) {
 
         String testInput = "199\n200\n208\n210\n200\n207\n240\n269\n260\n263";
-        String inputTwo;
+        String inputTwo = "";
         int depthLevel = Integer.MAX_VALUE;
         int incrementCounter = 0;
 
         String[] depthStrings = testInput.split("\n");
 
+        /*
+        BufferedReader reader;
+        try {
+            reader = new BufferedReader(new FileReader(
+                    "src/main/resources/day1_input.txt"));
+            inputTwo = reader.readLine();
+            while (inputTwo != null) {
+                System.out.println(inputTwo);
+                inputTwo = reader.readLine();
+            }
+            reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println("InputTwo = " + inputTwo);
+*/
+
+        try {
+            List<String> allLines = Files.readAllLines(Paths.get("src/main/resources/day1_input.txt"));
+            for (String line : allLines) {
+                System.out.println(line);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         List<Integer> depths = Arrays.stream(depthStrings)
                 .map(s -> Integer.parseInt(s))
