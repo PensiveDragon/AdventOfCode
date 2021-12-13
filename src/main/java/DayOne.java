@@ -15,7 +15,8 @@ public class DayOne {
 
 
         String inputTwo = "";
-        int depthLevel = Integer.MAX_VALUE;
+        int depthOneBack = 0, depthTwoBack = 0, depthThreeBack = 0;
+
         int incrementCounter = 0;
         List<Integer> depths;
         String testInput = "199\n200\n208\n210\n200\n207\n240\n269\n260\n263";
@@ -37,15 +38,23 @@ public class DayOne {
                 .collect(Collectors.toList());
 
         for (int depth : depths) {
-            System.out.println("Scanning depth: " + depth + " vs previous " + depthLevel);
-            if (depth > depthLevel) {
-                incrementCounter++;
-                System.out.println(depth + " > " + depthLevel + " Increased! Increment counter: " + incrementCounter);
+            System.out.println("Scanning depth: " + depth + " vs previous " + depthThreeBack);
 
+            if (depthThreeBack == 0) {
+                System.out.println("Still filling first few depths in...");
             } else {
-                System.out.println(depth + " !> " + depthLevel);
+                if (depth > depthThreeBack) {
+                    incrementCounter++;
+                    System.out.println(depth + " > " + depthThreeBack + " Increased! Increment counter: " + incrementCounter);
+
+                } else {
+                    System.out.println(depth + " !> " + depthThreeBack);
+                }
             }
-            depthLevel = depth;
+
+            depthThreeBack = depthTwoBack;
+            depthTwoBack = depthOneBack;
+            depthOneBack = depth;
         }
         System.out.println("Increments total: " + incrementCounter);
 
