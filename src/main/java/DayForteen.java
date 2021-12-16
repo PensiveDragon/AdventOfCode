@@ -1,7 +1,9 @@
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 public class DayForteen {
 
@@ -33,7 +35,11 @@ public class DayForteen {
 
         System.out.println(existingString);
 
-
+        LinkedHashMap<String, String> linkedHashMap = new LinkedHashMap<>();
+        linkedHashMap.put("CH", "B");
+        for (Map.Entry m:linkedHashMap.entrySet()){
+            System.out.println(m.getKey() + " " + m.getValue());
+        };
 
         /*
         CH -> B
