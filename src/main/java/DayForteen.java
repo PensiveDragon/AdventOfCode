@@ -24,19 +24,25 @@ public class DayForteen {
 
         String existingString = "";
 
+        LinkedHashMap<String, String> linkedHashMap = new LinkedHashMap<>();
+
         for (String line : allInput) {
+            //System.out.println(line);
             if (line.length() > 10) {
                 existingString = line;
-            }
-            else if (!line.isEmpty()) {
+            } else if (!line.isEmpty()) {
                 // create a map to store polymer conversion
+                String key = "";
+                String result = "";
+                key = String.valueOf(line.charAt(0));
+                key += String.valueOf(line.charAt(1));
+                result = String.valueOf(line.charAt(6));
+                linkedHashMap.put(key, result);
             }
         }
 
         System.out.println(existingString);
 
-        LinkedHashMap<String, String> linkedHashMap = new LinkedHashMap<>();
-        linkedHashMap.put("CH", "B");
         for (Map.Entry m:linkedHashMap.entrySet()){
             System.out.println(m.getKey() + " " + m.getValue());
         };
@@ -68,7 +74,7 @@ public class DayForteen {
         try {
             List<String> allLines = Files.readAllLines(Paths.get("src/main/resources/day14_input.txt"));
             allInput = allLines.toArray(new String[0]);
-            System.out.println(allInput.length);
+            //System.out.println(allInput.length);
 
             return allInput;
 
