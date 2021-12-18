@@ -44,8 +44,15 @@ public class DayForteen {
         System.out.println(existingString);
 
         for (Map.Entry m:linkedHashMap.entrySet()){
-            System.out.println(m.getKey() + " " + m.getValue());
-        };
+            //System.out.println(m.getKey() + " " + m.getValue());
+        }
+
+        for (int i = 0; i < existingString.length()-1; i++) {
+            System.out.println(existingString.charAt(i));
+            String pairToCheck = "";
+            pairToCheck += existingString.subSequence(i, i+2);
+            System.out.println("Pair to check = " + pairToCheck);
+        }
 
         /*
         CH -> B
