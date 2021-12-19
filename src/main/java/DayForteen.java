@@ -48,10 +48,18 @@ public class DayForteen {
         }
 
         for (int i = 0; i < existingString.length()-1; i++) {
-            System.out.println(existingString.charAt(i));
+            //System.out.println(existingString.charAt(i));
             String pairToCheck = "";
             pairToCheck += existingString.subSequence(i, i+2);
             System.out.println("Pair to check = " + pairToCheck);
+
+            for (Map.Entry m:linkedHashMap.entrySet()){
+                if (pairToCheck.equals(m.getKey())) {
+                    System.out.println(pairToCheck + " matches " + m.getKey() + "! We got one!");
+                }
+                //System.out.println(m.getKey() + " " + m.getValue());
+            }
+
         }
 
         /*
