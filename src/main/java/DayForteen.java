@@ -23,6 +23,7 @@ public class DayForteen {
         String[] allInput = parseInput();
 
         String existingString = "";
+        String newString = "";
 
         LinkedHashMap<String, String> linkedHashMap = new LinkedHashMap<>();
 
@@ -53,14 +54,20 @@ public class DayForteen {
             pairToCheck += existingString.subSequence(i, i+2);
             System.out.println("Pair to check = " + pairToCheck);
 
+            newString += existingString.subSequence(i,i+1);
+
             for (Map.Entry m:linkedHashMap.entrySet()){
                 if (pairToCheck.equals(m.getKey())) {
                     System.out.println(pairToCheck + " matches " + m.getKey() + "! We got one!");
+                    newString += m.getValue();
                 }
                 //System.out.println(m.getKey() + " " + m.getValue());
             }
 
         }
+
+        System.out.println(existingString);
+        System.out.println(newString);
 
         /*
         CH -> B
