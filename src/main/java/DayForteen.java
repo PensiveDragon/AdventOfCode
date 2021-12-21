@@ -42,29 +42,36 @@ public class DayForteen {
             }
         }
 
-        System.out.println(existingString);
+        //System.out.println(existingString);
 
-        for (int i = 0; i < existingString.length()-1; i++) {
-            //System.out.println(existingString.charAt(i));
-            String pairToCheck = "";
-            pairToCheck += existingString.subSequence(i, i+2);
-            System.out.println("Pair to check = " + pairToCheck);
+        for (int j = 0; j < 10; j++) {
 
-            newString += existingString.subSequence(i,i+1);
+            for (int i = 0; i < existingString.length() - 1; i++) {
+                //System.out.println(existingString.charAt(i));
+                String pairToCheck = "";
+                pairToCheck += existingString.subSequence(i, i + 2);
+                //System.out.println("Pair to check = " + pairToCheck);
 
-            for (Map.Entry m:linkedHashMap.entrySet()){
-                if (pairToCheck.equals(m.getKey())) {
-                    System.out.println(pairToCheck + " matches " + m.getKey() + "! We got one!");
-                    newString += m.getValue();
+                newString += existingString.subSequence(i, i + 1);
+
+                for (Map.Entry m : linkedHashMap.entrySet()) {
+                    if (pairToCheck.equals(m.getKey())) {
+                        //System.out.println(pairToCheck + " matches " + m.getKey() + "! We got one!");
+                        newString += m.getValue();
+                    }
+                    //System.out.println(m.getKey() + " " + m.getValue());
                 }
-                //System.out.println(m.getKey() + " " + m.getValue());
+
             }
+            newString += existingString.subSequence(existingString.length() - 1, existingString.length());
+
+            System.out.println(existingString);
+            System.out.println(newString);
+
+            existingString = newString;
+            newString = "";
 
         }
-        newString += existingString.subSequence(existingString.length()-1, existingString.length());
-
-        System.out.println(existingString);
-        System.out.println(newString);
 
         /*
         CH -> B
