@@ -44,10 +44,6 @@ public class DayForteen {
 
         System.out.println(existingString);
 
-        for (Map.Entry m:linkedHashMap.entrySet()){
-            //System.out.println(m.getKey() + " " + m.getValue());
-        }
-
         for (int i = 0; i < existingString.length()-1; i++) {
             //System.out.println(existingString.charAt(i));
             String pairToCheck = "";
@@ -65,6 +61,7 @@ public class DayForteen {
             }
 
         }
+        newString += existingString.subSequence(existingString.length()-1, existingString.length());
 
         System.out.println(existingString);
         System.out.println(newString);
