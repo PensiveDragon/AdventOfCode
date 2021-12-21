@@ -1,9 +1,7 @@
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class DayForteen {
 
@@ -28,6 +26,22 @@ public class DayForteen {
         LinkedHashMap<String, String> linkedHashMap = new LinkedHashMap<>();
 
         for (String line : allInput) {
+            if (!line.isEmpty()) {
+                if (line.contains("->")) {
+                    // create a map to store polymer conversion
+                    String key = "";
+                    String result = "";
+                    key = String.valueOf(line.charAt(0));
+                    key += String.valueOf(line.charAt(1));
+                    result = String.valueOf(line.charAt(6));
+                    linkedHashMap.put(key, result);
+                } else {
+                    existingString = line;
+                }
+            }
+        }
+        /*
+        for (String line : allInput) {
             //System.out.println(line);
             if (line.length() > 10) {
                 existingString = line;
@@ -41,7 +55,7 @@ public class DayForteen {
                 linkedHashMap.put(key, result);
             }
         }
-
+*/
         //System.out.println(existingString);
 
         for (int j = 0; j < 10; j++) {
@@ -65,13 +79,32 @@ public class DayForteen {
             }
             newString += existingString.subSequence(existingString.length() - 1, existingString.length());
 
-            System.out.println(existingString);
+            //System.out.println(existingString);
             System.out.println(newString);
 
             existingString = newString;
             newString = "";
 
         }
+
+        Map<Character, Integer> characterFrequencies = countAllCharacters(existingString);
+
+        int largestNo = 0;
+        int smallestNo = Integer.MAX_VALUE;
+
+        for (Map.Entry<Character, Integer> character: characterFrequencies.entrySet()) {
+            System.out.println(character);
+
+            if (character.getValue() > largestNo) {
+                largestNo = character.getValue();
+            }
+
+            if (character.getValue() < smallestNo) {
+                smallestNo = character.getValue();
+            }
+        }
+        int answer = largestNo - smallestNo;
+        System.out.println(answer);
 
         /*
         CH -> B
@@ -91,6 +124,14 @@ public class DayForteen {
         CC -> N
         CN -> C
         */
+    }
+
+    public static Map<Character, Integer> countAllCharacters(String input) {
+        Map<Character,Integer> frequencies = new TreeMap<>();
+        for (char ch : input.toCharArray())
+            frequencies.put(ch, frequencies.getOrDefault(ch, 0) + 1);
+
+        return frequencies;
     }
 
     public static String[] parseInput() {
