@@ -18,6 +18,12 @@ public class DayForteen {
         // Count the number of each letter in the final String
         // Subtract the lowest number from the  highest number.
 
+
+        // Part 2
+        // Replace strings with hashmaps
+        // change parser to parse input string into sets of pairs that populate the hashmap
+        //
+
         String[] allInput = parseInput();
 
         String existingString = "";
@@ -57,6 +63,14 @@ public class DayForteen {
         }
 */
         //System.out.println(existingString);
+
+        Map<String, Integer> testParse = parseIntoPairMap(existingString);
+
+        for (Map.Entry<String, Integer> pair: testParse.entrySet()) {
+            System.out.println(pair);
+        }
+
+
 
         for (int j = 0; j < 10; j++) {
 
@@ -130,6 +144,18 @@ public class DayForteen {
         Map<Character,Integer> frequencies = new TreeMap<>();
         for (char ch : input.toCharArray())
             frequencies.put(ch, frequencies.getOrDefault(ch, 0) + 1);
+
+        return frequencies;
+    }
+
+    public static Map<String, Integer> parseIntoPairMap(String input) {
+        Map<String, Integer> frequencies = new HashMap<>();
+        for (int i = 0; i < input.length() - 1; i++) {
+            //System.out.println(existingString.charAt(i));
+            String pairToStore = "";
+            pairToStore += input.subSequence(i, i + 2);
+            frequencies.put(pairToStore, frequencies.getOrDefault(pairToStore,0)+1);
+        }
 
         return frequencies;
     }
