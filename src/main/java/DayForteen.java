@@ -46,32 +46,18 @@ public class DayForteen {
                 }
             }
         }
-        /*
-        for (String line : allInput) {
-            //System.out.println(line);
-            if (line.length() > 10) {
-                existingString = line;
-            } else if (!line.isEmpty()) {
-                // create a map to store polymer conversion
-                String key = "";
-                String result = "";
-                key = String.valueOf(line.charAt(0));
-                key += String.valueOf(line.charAt(1));
-                result = String.valueOf(line.charAt(6));
-                linkedHashMap.put(key, result);
-            }
-        }
-*/
-        //System.out.println(existingString);
 
         Map<String, Integer> testParse = parseIntoPairMap(existingString);
-
+/*
+        // Display new Pair Map
         for (Map.Entry<String, Integer> pair: testParse.entrySet()) {
             System.out.println(pair);
         }
+*/
+        pairMapIntoPairMap(testParse);
 
 
-
+/*
         for (int j = 0; j < 10; j++) {
 
             for (int i = 0; i < existingString.length() - 1; i++) {
@@ -100,7 +86,8 @@ public class DayForteen {
             newString = "";
 
         }
-
+*/
+/*
         Map<Character, Integer> characterFrequencies = countAllCharacters(existingString);
 
         int largestNo = 0;
@@ -119,7 +106,7 @@ public class DayForteen {
         }
         int answer = largestNo - smallestNo;
         System.out.println(answer);
-
+*/
         /*
         CH -> B
         HH -> N
@@ -158,6 +145,16 @@ public class DayForteen {
         }
 
         return frequencies;
+    }
+
+    public static Map<String, Integer> pairMapIntoPairMap(Map<String, Integer> input) {
+        Map<String, Integer> result = new HashMap<>();
+
+        for (Map.Entry<String, Integer> pair: input.entrySet()) {
+            System.out.println(pair);
+        }
+
+        return result;
     }
 
     public static String[] parseInput() {
