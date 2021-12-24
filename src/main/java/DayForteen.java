@@ -54,7 +54,7 @@ public class DayForteen {
             System.out.println(pair);
         }
 */
-        pairMapIntoPairMap(testParse);
+        pairMapIntoPairMap(testParse, linkedHashMap);
 
 
 /*
@@ -147,13 +147,29 @@ public class DayForteen {
         return frequencies;
     }
 
-    public static Map<String, Integer> pairMapIntoPairMap(Map<String, Integer> input) {
+    public static Map<String, Integer> pairMapIntoPairMap(Map<String, Integer> input, LinkedHashMap<String, String> lookUpMap) {
         Map<String, Integer> result = new HashMap<>();
 
         for (Map.Entry<String, Integer> pair: input.entrySet()) {
-            System.out.println(pair);
+            System.out.println(pair.getKey() + " creates " + matchPairToProduct(pair.getKey(), lookUpMap));
+
         }
 
+        return result;
+    }
+
+    public static String matchPairToProduct (String pairToCheck, LinkedHashMap<String, String> lookUpMap) {
+
+        LinkedHashMap<String, String> linkedHashMap = lookUpMap;
+        String result = "";
+
+        for (Map.Entry m : linkedHashMap.entrySet()) {
+            if (pairToCheck.equals(m.getKey())) {
+                //System.out.println(pairToCheck + " matches " + m.getKey() + "! We got one!");
+                result += m.getValue();
+            }
+            //System.out.println(m.getKey() + " " + m.getValue());
+        }
         return result;
     }
 
