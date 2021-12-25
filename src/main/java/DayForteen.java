@@ -152,7 +152,10 @@ public class DayForteen {
 
         for (Map.Entry<String, Integer> pair: input.entrySet()) {
             System.out.println(pair.getKey() + " creates " + matchPairToProduct(pair.getKey(), lookUpMap));
-
+            String newPairOne, newPairTwo = "";
+            newPairOne = pair.getKey().substring(0,1) + matchPairToProduct(pair.getKey(), lookUpMap);
+            newPairTwo = matchPairToProduct(pair.getKey(), lookUpMap) + pair.getKey().substring(1,2);
+            System.out.println("New Pairs: " + newPairOne + " | " + newPairTwo);
         }
 
         return result;
