@@ -47,15 +47,20 @@ public class DayForteen {
             }
         }
 
-        Map<String, Integer> testParse = parseIntoPairMap(existingString);
-/*
-        // Display new Pair Map
-        for (Map.Entry<String, Integer> pair: testParse.entrySet()) {
-            System.out.println(pair);
-        }
-*/
-        pairMapIntoPairMap(testParse, linkedHashMap);
+        Map<String, Integer> firstMap = parseIntoPairMap(existingString);
 
+        // Display new Pair Map
+        for (Map.Entry<String, Integer> pair: firstMap.entrySet()) {
+            //System.out.println(pair);
+        }
+
+        for (int j = 0; j < 39; j++) {
+            Map<String, Integer> secondMap = pairMapIntoPairMap(firstMap, linkedHashMap);
+            firstMap = secondMap;
+            System.out.println(sumMapValues(firstMap));
+        }
+
+        calculateSolution(firstMap);
 
 /*
         for (int j = 0; j < 10; j++) {
@@ -151,13 +156,17 @@ public class DayForteen {
         Map<String, Integer> result = new HashMap<>();
 
         for (Map.Entry<String, Integer> pair: input.entrySet()) {
-            System.out.println(pair.getKey() + " creates " + matchPairToProduct(pair.getKey(), lookUpMap));
+            //System.out.println(pair.getKey() + " creates " + matchPairToProduct(pair.getKey(), lookUpMap));
             String newPairOne, newPairTwo = "";
             newPairOne = pair.getKey().substring(0,1) + matchPairToProduct(pair.getKey(), lookUpMap);
             newPairTwo = matchPairToProduct(pair.getKey(), lookUpMap) + pair.getKey().substring(1,2);
-            System.out.println("New Pairs: " + newPairOne + " | " + newPairTwo);
+            //System.out.println("New Pairs: " + newPairOne + " | " + newPairTwo);
+            result.put(newPairOne, result.getOrDefault(newPairOne,0)+1);
+            result.put(newPairTwo, result.getOrDefault(newPairTwo,0)+1);
         }
-
+        for (Map.Entry<String, Integer> pair: result.entrySet()) {
+            System.out.println(pair);
+        }
         return result;
     }
 
@@ -192,5 +201,36 @@ public class DayForteen {
         }
 
         return null;
+    }
+
+    private static Integer sumMapValues(Map<String, Integer> inputMap) {
+        int sum = 0;
+        for (Map.Entry<String, Integer> item: inputMap.entrySet()) {
+            sum += item.getValue();
+        }
+
+        return sum;
+    }
+
+    private static void calculateSolution(Map<String, Integer> inputMap) {
+
+        // Map<String, Integer> characterFrequencies = countAllCharacters(existingString);
+
+        int largestNo = 0;
+        int smallestNo = Integer.MAX_VALUE;
+
+        for (Map.Entry<String, Integer> item: inputMap.entrySet()) {
+            System.out.println(item);
+
+            if (item.getValue() > largestNo) {
+                largestNo = item.getValue();
+            }
+
+            if (item.getValue() < smallestNo) {
+                smallestNo = item.getValue();
+            }
+        }
+        int answer = largestNo - smallestNo;
+        System.out.println(answer);
     }
 }
