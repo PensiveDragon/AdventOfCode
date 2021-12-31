@@ -7,6 +7,7 @@ public class DayTwo {
 
     static int distance = 0;
     static int depth = 0;
+    static int aim = 0;
 
     public static void main (String[] args) {
         System.out.println("moo");
@@ -15,11 +16,10 @@ public class DayTwo {
 
         //String[] testInput = {"forward 5", "down 5", "forward 8", "up 3", "down 8", "forward 2"};
 
-        readInput(input);
+        //readInput(input);
+        advancedReadInput(input);
 
         System.out.println("The answer is: " + solvePuzzle(depth, distance));
-
-
 
         // Write method to parse through file
         // Two ints: distance and depth
@@ -28,8 +28,7 @@ public class DayTwo {
     }
 
     public static int solvePuzzle(int depth, int distance) {
-        int result = depth * distance;
-        return result;
+        return depth * distance;
     }
 
     public static void readInput(String[] input) {
@@ -44,6 +43,24 @@ public class DayTwo {
             } else if (line.contains("forward")) {
                 distance += Integer.parseInt(String.valueOf(line.charAt(line.length()-1)));
                 System.out.println("Current distance = " + distance);
+            }
+        }
+    }
+
+    public static void advancedReadInput(String[] input) {
+
+        for (String line : input){
+            if (line.contains("up")) {
+                aim -= Integer.parseInt(String.valueOf(line.charAt(line.length()-1)));
+                System.out.println("Current depth = " + depth + " | Current Aim = " + aim);
+            } else if (line.contains("down")) {
+                aim += Integer.parseInt(String.valueOf(line.charAt(line.length()-1)));
+                System.out.println("Current depth = " + depth + " | Current Aim = " + aim);
+            } else if (line.contains("forward")) {
+                distance += Integer.parseInt(String.valueOf(line.charAt(line.length()-1)));
+                depth += (aim * Integer.parseInt(String.valueOf(line.charAt(line.length()-1))));
+                System.out.println("Current distance = " + distance + " | Current Depth = " + depth);
+
             }
         }
     }
