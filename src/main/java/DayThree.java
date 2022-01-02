@@ -5,6 +5,8 @@ import java.util.List;
 
 public class DayThree {
 
+    static String[] input;
+
     public static void main (String args[]) {
         System.out.println("moo");
 
@@ -14,7 +16,14 @@ public class DayThree {
         // Create two values from number and inverse number.
         // Multiply together for answer.
 
-        String[] input = parseInput();
+        input = parseInput();
+        System.out.println(findBitLength(input));
+
+    }
+
+
+    public static int findBitLength (String[] input) {
+        return input[0].length();
     }
 
     public static String[] parseInput() {
