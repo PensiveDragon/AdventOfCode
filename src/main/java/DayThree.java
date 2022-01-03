@@ -7,6 +7,7 @@ public class DayThree {
 
     static String[] input;
 
+
     public static void main (String args[]) {
         System.out.println("moo");
 
@@ -19,8 +20,35 @@ public class DayThree {
         input = parseInput();
         System.out.println(findBitLength(input));
 
+        sortInput(input);
+
     }
 
+/*    public static void createBitArrays (int arrayCount) {
+        arrayCount = findBitLength(input);
+        for (int i = 0; i < arrayCount; i++) {
+            String[] ("array"+arrayCount) = new String[];
+        }
+    }*/
+
+
+
+    public static void sortInput(String[] input) {
+
+        int[] bitArray = new int[findBitLength(input)];
+
+        for (String line : input) {
+            //System.out.println("Checking line: " + line);
+            for (int i = 0; i < line.length(); i++) {
+                char num = line.charAt(i);
+                //System.out.println("Checking num: " + num);
+                if (Character.getNumericValue(num) == 1) {
+                    bitArray[i] += num;
+                    System.out.println("bitArray[" + i + "] = " + bitArray[i]);
+                }
+            }
+        }
+    }
 
     public static int findBitLength (String[] input) {
         return input[0].length();
