@@ -40,13 +40,22 @@ public class DayThree {
         for (String line : input) {
             //System.out.println("Checking line: " + line);
             for (int i = 0; i < line.length(); i++) {
-                char num = line.charAt(i);
+                char cNum = line.charAt(i);
+                int iNum = Integer.parseInt(String.valueOf(cNum));
                 //System.out.println("Checking num: " + num);
-                if (Character.getNumericValue(num) == 1) {
-                    bitArray[i] += num;
+                if (iNum == 1) {
+                    bitArray[i] += iNum;
                     System.out.println("bitArray[" + i + "] = " + bitArray[i]);
                 }
             }
+        }
+        bitArrayTotals(bitArray);
+    }
+
+    public static void bitArrayTotals(int[] bitArray){
+        System.out.println();
+        for (int i = 0; i < bitArray.length; i++) {
+            System.out.println("bitArray[" + i + "] = " + bitArray[i]);
         }
     }
 
