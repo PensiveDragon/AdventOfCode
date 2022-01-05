@@ -1,6 +1,7 @@
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Arrays;
 import java.util.List;
 
 public class DayThree {
@@ -31,8 +32,6 @@ public class DayThree {
         }
     }*/
 
-
-
     public static void sortInput(String[] input) {
 
         int[] bitArray = new int[findBitLength(input)];
@@ -52,11 +51,26 @@ public class DayThree {
         bitArrayTotals(bitArray);
     }
 
-    public static void bitArrayTotals(int[] bitArray){
+
+
+    public static int[] bitArrayTotals(int[] bitArray){
         System.out.println();
+        int[] results = new int[bitArray.length+1];
+        String result = "";
         for (int i = 0; i < bitArray.length; i++) {
             System.out.println("bitArray[" + i + "] = " + bitArray[i]);
+            if (bitArray[i] <= 500) {
+                results[i] = 0;
+                result += 0;
+            } else {
+                results[i] = 1;
+                result += 1;
+            }
         }
+
+        System.out.println(result);
+
+        return results;
     }
 
     public static int findBitLength (String[] input) {
