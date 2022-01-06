@@ -48,14 +48,32 @@ public class DayThree {
                 }
             }
         }
-        bitArrayTotals(bitArray);
+        invertBinary(bitArrayTotals(bitArray));
     }
 
 
 
+    public static int[] invertBinary(int[] binaryInput) {
+        int[] invertedBinary = new int[binaryInput.length];
+        String result = "";
+        for (int i = 0; i < binaryInput.length; i++) {
+            if (binaryInput[i] == 1) {
+                invertedBinary[i] = 0;
+                result += 0;
+            } else {
+                invertedBinary[i] = 1;
+                result += 1;
+            }
+        }
+
+        System.out.println(result);
+
+        return invertedBinary;
+    }
+
     public static int[] bitArrayTotals(int[] bitArray){
         System.out.println();
-        int[] results = new int[bitArray.length+1];
+        int[] results = new int[bitArray.length];
         String result = "";
         for (int i = 0; i < bitArray.length; i++) {
             System.out.println("bitArray[" + i + "] = " + bitArray[i]);
