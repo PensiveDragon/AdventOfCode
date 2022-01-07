@@ -7,6 +7,8 @@ import java.util.List;
 public class DayThree {
 
     static String[] input;
+    static int gammaRate = 0;
+    static int epsilonRate = 0;
 
 
     public static void main (String args[]) {
@@ -48,10 +50,26 @@ public class DayThree {
                 }
             }
         }
-        invertBinary(bitArrayTotals(bitArray));
+        gammaRate = translateBinary(bitArrayTotals(bitArray));
+
+        epsilonRate = translateBinary(invertBinary(bitArrayTotals(bitArray)));
+
+        System.out.println("Answer = " + (gammaRate * epsilonRate));
     }
 
+    public static int translateBinary(int[] binaryInput) {
+        int result = 0;
 
+        for (int i = binaryInput.length-1, j = 0; i >= 0; i--, j++) {
+            if (binaryInput[i] == 1) {
+                result += (int) Math.pow(2,j);
+                System.out.println("Result = " + result);
+            }
+            System.out.println((int) Math.pow(2,(i)));
+        }
+
+        return result;
+    }
 
     public static int[] invertBinary(int[] binaryInput) {
         int[] invertedBinary = new int[binaryInput.length];
