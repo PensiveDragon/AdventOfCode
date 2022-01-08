@@ -9,6 +9,9 @@ public class DayThree {
     static String[] input;
     static int gammaRate = 0;
     static int epsilonRate = 0;
+    static int oxygenRating = 0;
+    static int co2Rating = 0;
+    static int lifeSupportRating = 0;
 
 
     public static void main (String args[]) {
@@ -33,6 +36,10 @@ public class DayThree {
             String[] ("array"+arrayCount) = new String[];
         }
     }*/
+
+    public static int[] sortByBitCriteria(int[] input) {
+        return null;
+    }
 
     public static void sortInput(String[] input) {
 
