@@ -37,7 +37,15 @@ public class DayThree {
         }
     }*/
 
-    public static int[] sortByBitCriteria(int[] input) {
+    public static int[] sortByBitCriteria(int[] input, String mode) {
+        if (mode.equals("oxygen")) {
+
+        } else if (mode.equals("co2Rating")) {
+
+        } else {
+
+        }
+
         return null;
     }
 
