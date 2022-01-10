@@ -17,6 +17,7 @@ public class DayThree {
     public static void main (String args[]) {
         System.out.println("moo");
 
+        // Part 1
         // Parse file into string[].
         // Go through string[] line by line, char by char adding chars to a corresponding bit sum array.
         // Sum of each bit array tells you how many 1s were present, if >500, it is a 1, <500 it is a 0.
@@ -24,9 +25,22 @@ public class DayThree {
         // Multiply together for answer.
 
         input = parseInput();
-        System.out.println(findBitLength(input));
+        //System.out.println(findBitLength(input));
 
-        sortInput(input);
+        //sortInput(input);
+
+        // Part 2:
+        // We are finding numbers only with the most common number from each bit, starting from the left.
+        // Take String[] input.
+        // Select first bit.
+        // Find most common value (equal values return 1 for oxygen, 0 for co2).
+        // Keep numbers matching most common value.
+        // Select next bit.
+        // Repeat untill all 12 bits are found.
+        // Repeat whole process again for co2.
+        // Convert o2 and co2 binaries into numbers.
+        // Multiply numbers together for life support rating.
+
 
     }
 
@@ -38,6 +52,15 @@ public class DayThree {
     }*/
 
     public static int[] sortByBitCriteria(int[] input, String mode) {
+
+        for (int line : input) {
+            int position = 0;
+            for (int i = 0; i < String.valueOf(line).length(); i++) {
+                String.valueOf(line).charAt(position)
+            }
+        }
+
+
         if (mode.equals("oxygen")) {
 
         } else if (mode.equals("co2Rating")) {
