@@ -27,6 +27,8 @@ public class DayThree {
         input = parseInput();
         //System.out.println(findBitLength(input));
 
+        findMostCommonValue(input, 1);
+
         //sortInput(input);
 
         // Part 2:
@@ -44,19 +46,31 @@ public class DayThree {
 
     }
 
-/*    public static void createBitArrays (int arrayCount) {
-        arrayCount = findBitLength(input);
-        for (int i = 0; i < arrayCount; i++) {
-            String[] ("array"+arrayCount) = new String[];
-        }
-    }*/
+    public static int findMostCommonValue(String[] input, int position) {
+        int result = 0;
+            for (String line : input) {
+                if (Character.getNumericValue(line.charAt(position)) == 0) {
+                    result -= 1;
+                } else if (Character.getNumericValue(line.charAt(position)) == 1){
+                    result += 1;
+                }
+            }
+        System.out.println("Most Common Value result = " + result);
+        if (result < 0) {
+            System.out.println("Most Common Value = 0");
+        } else if (result > 0) {
+            System.out.println("Most Common Value = 1");
+        } else
+            System.out.println("Most Common Value = Tied!");
+        return result;
+    }
 
     public static int[] sortByBitCriteria(int[] input, String mode) {
 
         for (int line : input) {
             int position = 0;
             for (int i = 0; i < String.valueOf(line).length(); i++) {
-                String.valueOf(line).charAt(position)
+                String.valueOf(line).charAt(position);
             }
         }
 
