@@ -46,6 +46,10 @@ public class DayThree {
 
     }
 
+    public static String[] removeNonMatches(String[] input, int correctValue) {
+        return null;
+    }
+
     public static int findMostCommonValue(String[] input, int position) {
         int result = 0;
             for (String line : input) {
