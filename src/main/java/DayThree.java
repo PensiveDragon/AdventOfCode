@@ -1,6 +1,7 @@
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -46,10 +47,6 @@ public class DayThree {
 
     }
 
-    public static String[] removeNonMatches(String[] input, int correctValue) {
-        return null;
-    }
-
     public static int findMostCommonValue(String[] input, int position) {
         int result = 0;
             for (String line : input) {
@@ -66,6 +63,22 @@ public class DayThree {
             System.out.println("Most Common Value = 1");
         } else
             System.out.println("Most Common Value = Tied!");
+        return result;
+    }
+
+    public static String[] removeNonMatches(String[] input, int correctValue, int bitNumber) {
+
+        String[] result = new String[9];
+        ArrayList<String> = new String();
+
+        for (String line : input) {
+            if (line.charAt(bitNumber) == correctValue) {
+
+            }
+        }
+
+
+
         return result;
     }
 
