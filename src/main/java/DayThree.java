@@ -47,6 +47,13 @@ public class DayThree {
 
     }
 
+    public static void partTwoSearch(String[] input) {
+        for (int i = 0; i < input.length; i++) {
+            int correctValue = findMostCommonValue(input, i);
+            removeNonMatches(Arrays.asList(input), correctValue, i);
+        }
+    }
+
     public static int findMostCommonValue(String[] input, int position) {
         int result = 0;
             for (String line : input) {
@@ -59,20 +66,21 @@ public class DayThree {
         System.out.println("Most Common Value result = " + result);
         if (result < 0) {
             System.out.println("Most Common Value = 0");
+            return -1;
         } else if (result > 0) {
             System.out.println("Most Common Value = 1");
+            return 1;
         } else
             System.out.println("Most Common Value = Tied!");
-        return result;
+        return 0;
     }
 
-    public static String[] removeNonMatches(String[] input, int correctValue, int bitNumber) {
+    public static ArrayList<String> removeNonMatches(ArrayList<String> input, int correctValue, int bitIndex) {
 
-        String[] result = new String[9];
-        ArrayList<String> = new String();
+        ArrayList<String> result = new ArrayList<String>();
 
         for (String line : input) {
-            if (line.charAt(bitNumber) == correctValue) {
+            if (line.charAt(bitIndex) == correctValue) {
 
             }
         }
