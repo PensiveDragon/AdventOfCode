@@ -3,6 +3,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class DayThree {
@@ -28,7 +29,7 @@ public class DayThree {
         input = parseInput();
         //System.out.println(findBitLength(input));
 
-        findMostCommonValue(input, 1);
+        partTwoSearch(input);
 
         //sortInput(input);
 
@@ -48,15 +49,18 @@ public class DayThree {
     }
 
     public static void partTwoSearch(String[] input) {
-        for (int i = 0; i < input.length; i++) {
+        System.out.println("Input length = " + input[0].length());
+        for (int i = 0; i < (input[0].length()); i++) {
             int correctValue = findMostCommonValue(input, i);
-            removeNonMatches(Arrays.asList(input), correctValue, i);
+            ArrayList<String> al = new ArrayList<>(Arrays.asList(input));
+            removeNonMatches(al, correctValue, i);
         }
     }
 
     public static int findMostCommonValue(String[] input, int position) {
         int result = 0;
             for (String line : input) {
+                System.out.println("line: " + line + " | position: " + position);
                 if (Character.getNumericValue(line.charAt(position)) == 0) {
                     result -= 1;
                 } else if (Character.getNumericValue(line.charAt(position)) == 1){
