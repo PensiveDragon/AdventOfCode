@@ -60,7 +60,7 @@ public class DayThree {
     public static int findMostCommonValue(String[] input, int position) {
         int result = 0;
             for (String line : input) {
-                System.out.println("line: " + line + " | position: " + position);
+                //System.out.println("line: " + line + " | position: " + position);
                 if (Character.getNumericValue(line.charAt(position)) == 0) {
                     result -= 1;
                 } else if (Character.getNumericValue(line.charAt(position)) == 1){
@@ -85,7 +85,8 @@ public class DayThree {
 
         for (String line : input) {
             if (line.charAt(bitIndex) == correctValue) {
-
+                result.add(line);
+                System.out.println("Added: " + line);
             }
         }
 
