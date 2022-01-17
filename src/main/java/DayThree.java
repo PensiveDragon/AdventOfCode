@@ -49,11 +49,13 @@ public class DayThree {
     }
 
     public static void partTwoSearch(String[] input) {
-        System.out.println("Input length = " + input[0].length());
+        //System.out.println("Input length = " + input[0].length());
+        ArrayList<String> al = new ArrayList<>(Arrays.asList(input));
+        System.out.println("Starting Array Size: " + al.size());
         for (int i = 0; i < (input[0].length()); i++) {
             int correctValue = findMostCommonValue(input, i);
-            ArrayList<String> al = new ArrayList<>(Arrays.asList(input));
-            removeNonMatches(al, correctValue, i);
+            al = removeNonMatches(al, correctValue, i);
+
         }
     }
 
@@ -67,26 +69,28 @@ public class DayThree {
                     result += 1;
                 }
             }
-        System.out.println("Most Common Value result = " + result);
+        //System.out.println("Most Common Value result = " + result);
         if (result < 0) {
             System.out.println("Most Common Value = 0");
-            return -1;
+            return 0;
         } else if (result > 0) {
             System.out.println("Most Common Value = 1");
             return 1;
         } else
             System.out.println("Most Common Value = Tied!");
-        return 0;
+        return -1;
     }
 
     public static ArrayList<String> removeNonMatches(ArrayList<String> input, int correctValue, int bitIndex) {
 
+        System.out.println("Removing Non Matches...");
+        System.out.println("DEBUG: correctValue=" + correctValue + " bitIndex=" + bitIndex + " inputSize=" + input.size() + " input=" + input);
         ArrayList<String> result = new ArrayList<String>();
 
         for (String line : input) {
-            if (line.charAt(bitIndex) == correctValue) {
+            if (Character.getNumericValue(line.charAt(bitIndex)) == correctValue) {
                 result.add(line);
-                System.out.println("Added: " + line);
+                //System.out.println("Added: " + line);
             }
         }
 
