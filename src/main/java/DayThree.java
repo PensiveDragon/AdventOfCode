@@ -53,13 +53,13 @@ public class DayThree {
         ArrayList<String> al = new ArrayList<>(Arrays.asList(input));
         System.out.println("Starting Array Size: " + al.size());
         for (int i = 0; i < (input[0].length()); i++) {
-            int correctValue = findMostCommonValue(input, i);
+            int correctValue = findMostCommonValue(input, i, "oxygen");
             al = removeNonMatches(al, correctValue, i);
 
         }
     }
 
-    public static int findMostCommonValue(String[] input, int position) {
+    public static int findMostCommonValue(String[] input, int position, String mode) {
         int result = 0;
             for (String line : input) {
                 //System.out.println("line: " + line + " | position: " + position);
@@ -67,6 +67,14 @@ public class DayThree {
                     result -= 1;
                 } else if (Character.getNumericValue(line.charAt(position)) == 1){
                     result += 1;
+                } else if (Character.getNumericValue(line.charAt(position)) == -1) {
+                    if (mode.equals("oxygen")) {
+                        result += 1;
+                    } else if (mode.equals("co2")) {
+                        result -= 1;
+                    }
+                } else {
+                    System.out.println("Something went wrong!");
                 }
             }
         //System.out.println("Most Common Value result = " + result);
