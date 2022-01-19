@@ -50,13 +50,31 @@ public class DayThree {
 
     public static void partTwoSearch(String[] input) {
         //System.out.println("Input length = " + input[0].length());
-        ArrayList<String> al = new ArrayList<>(Arrays.asList(input));
-        System.out.println("Starting Array Size: " + al.size());
+        ArrayList<String> oxygenArrayList = new ArrayList<>(Arrays.asList(input));
+        ArrayList<String> co2ArrayList = new ArrayList<>(Arrays.asList(input));
+        System.out.println("Starting Array Size: " + oxygenArrayList.size());
         for (int i = 0; i < (input[0].length()); i++) {
-            int correctValue = findMostCommonValue(input, i, "oxygen");
-            al = removeNonMatches(al, correctValue, i);
+            int oxygenCorrectValue = findMostCommonValue(input, i, "oxygen");
+            oxygenArrayList = removeNonMatches(oxygenArrayList, oxygenCorrectValue, i);
+
+            int co2CorrectValue = findMostCommonValue(input, i, "co2");
+            co2ArrayList = removeNonMatches(co2ArrayList, co2CorrectValue, i);
+
+            System.out.println("Oxygen final binary: " + oxygenArrayList.get(0));
+
+            System.out.println("co2 final binary: " + invertBinary(convertStringToIntArray(co2ArrayList.get(0))).toString());
+
 
         }
+    }
+
+    public static int[] convertStringToIntArray(String input){
+        int[] result = new int[input.length()];
+        for (int i = 0; i < input.length(); i++) {
+            result[i] = input.charAt(i);
+        }
+        System.out.println(result);
+        return result;
     }
 
     public static int findMostCommonValue(String[] input, int position, String mode) {
