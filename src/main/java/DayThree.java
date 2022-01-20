@@ -60,20 +60,25 @@ public class DayThree {
             int co2CorrectValue = findMostCommonValue(input, i, "co2");
             co2ArrayList = removeNonMatches(co2ArrayList, co2CorrectValue, i);
 
-            System.out.println("Oxygen final binary: " + oxygenArrayList.get(0));
+            //System.out.println("Oxygen final binary: " + oxygenArrayList.get(0));
+            oxygenRating = translateBinary(convertStringToIntArray(oxygenArrayList.get(0)));
+            //System.out.println("co2 final binary: " + invertBinary(convertStringToIntArray(co2ArrayList.get(0))));
+            co2Rating = translateBinary(invertBinary(convertStringToIntArray(co2ArrayList.get(0))));
 
-            System.out.println("co2 final binary: " + invertBinary(convertStringToIntArray(co2ArrayList.get(0))).toString());
-
-
+            System.out.println("Oxygen Rating: " + translateBinary(convertStringToIntArray(oxygenArrayList.get(0))));
+            System.out.println("co2 Rating: " + translateBinary(invertBinary(convertStringToIntArray(co2ArrayList.get(0)))));
+            lifeSupportRating = oxygenRating * co2Rating;
+            System.out.println("Life Support Rating: " + lifeSupportRating);
         }
     }
 
     public static int[] convertStringToIntArray(String input){
         int[] result = new int[input.length()];
+        System.out.println(input.length());
         for (int i = 0; i < input.length(); i++) {
-            result[i] = input.charAt(i);
+            result[i] = Integer.parseInt(String.valueOf(input.charAt(i)));
         }
-        System.out.println(result);
+        //System.out.println(result);
         return result;
     }
 
@@ -175,9 +180,9 @@ public class DayThree {
         for (int i = binaryInput.length-1, j = 0; i >= 0; i--, j++) {
             if (binaryInput[i] == 1) {
                 result += (int) Math.pow(2,j);
-                System.out.println("Result = " + result);
+                //System.out.println("Result = " + result);
             }
-            System.out.println((int) Math.pow(2,(i)));
+            //System.out.println((int) Math.pow(2,(i)));
         }
 
         return result;
