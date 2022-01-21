@@ -51,25 +51,37 @@ public class DayThree {
     public static void partTwoSearch(String[] input) {
         //System.out.println("Input length = " + input[0].length());
         ArrayList<String> oxygenArrayList = new ArrayList<>(Arrays.asList(input));
-        ArrayList<String> co2ArrayList = new ArrayList<>(Arrays.asList(input));
+        //ArrayList<String> co2ArrayList = new ArrayList<>(Arrays.asList(input));
         System.out.println("Starting Array Size: " + oxygenArrayList.size());
+        String[] remainingList = input;
         for (int i = 0; i < (input[0].length()); i++) {
-            int oxygenCorrectValue = findMostCommonValue(input, i, "oxygen");
+
+            int oxygenCorrectValue = findMostCommonValue(oxygenArrayList, i, "oxygen");
             oxygenArrayList = removeNonMatches(oxygenArrayList, oxygenCorrectValue, i);
-
-            int co2CorrectValue = findMostCommonValue(input, i, "co2");
-            co2ArrayList = removeNonMatches(co2ArrayList, co2CorrectValue, i);
-
-            //System.out.println("Oxygen final binary: " + oxygenArrayList.get(0));
-            oxygenRating = translateBinary(convertStringToIntArray(oxygenArrayList.get(0)));
-            //System.out.println("co2 final binary: " + invertBinary(convertStringToIntArray(co2ArrayList.get(0))));
-            co2Rating = translateBinary(invertBinary(convertStringToIntArray(co2ArrayList.get(0))));
-
-            System.out.println("Oxygen Rating: " + translateBinary(convertStringToIntArray(oxygenArrayList.get(0))));
-            System.out.println("co2 Rating: " + translateBinary(invertBinary(convertStringToIntArray(co2ArrayList.get(0)))));
-            lifeSupportRating = oxygenRating * co2Rating;
-            System.out.println("Life Support Rating: " + lifeSupportRating);
         }
+        //int co2CorrectValue = findMostCommonValue(input, i, "co2");
+        //co2ArrayList = removeNonMatches(co2ArrayList, co2CorrectValue, i);
+
+        System.out.println("Oxygen final binary: " + oxygenArrayList.get(0));
+
+        //System.out.println("co2 final binary: " + invertBinary(convertStringToIntArray(co2ArrayList.get(0))));
+
+        //oxygenRating = translateBinary(convertStringToIntArray(oxygenArrayList.get(0)));
+        //co2Rating = translateBinary(invertBinary(convertStringToIntArray(co2ArrayList.get(0))));
+
+        //System.out.println("Oxygen Rating: " + translateBinary(convertStringToIntArray(oxygenArrayList.get(0))));
+        //System.out.println("co2 Rating: " + translateBinary(invertBinary(convertStringToIntArray(co2ArrayList.get(0)))));
+        //lifeSupportRating = oxygenRating * co2Rating;
+        //System.out.println("Life Support Rating: " + lifeSupportRating);
+
+    }
+
+    public static void displayBinaryIntArrayInString(int[] binaryArrayInput) {
+        String result = "";
+        for (int value : binaryArrayInput) {
+            result += value;
+        }
+        System.out.println("Binary String result is: " + result);
     }
 
     public static int[] convertStringToIntArray(String input){
@@ -100,6 +112,36 @@ public class DayThree {
                     System.out.println("Something went wrong!");
                 }
             }
+        //System.out.println("Most Common Value result = " + result);
+        if (result < 0) {
+            System.out.println("Most Common Value = 0");
+            return 0;
+        } else if (result > 0) {
+            System.out.println("Most Common Value = 1");
+            return 1;
+        } else
+            System.out.println("Most Common Value = Tied!");
+        return -1;
+    }
+
+    public static int findMostCommonValue(ArrayList<String> input, int position, String mode) {
+        int result = 0;
+        for (String line : input) {
+            //System.out.println("line: " + line + " | position: " + position);
+            if (Character.getNumericValue(line.charAt(position)) == 0) {
+                result -= 1;
+            } else if (Character.getNumericValue(line.charAt(position)) == 1){
+                result += 1;
+            } else if (Character.getNumericValue(line.charAt(position)) == -1) {
+                if (mode.equals("oxygen")) {
+                    result += 1;
+                } else if (mode.equals("co2")) {
+                    result -= 1;
+                }
+            } else {
+                System.out.println("Something went wrong!");
+            }
+        }
         //System.out.println("Most Common Value result = " + result);
         if (result < 0) {
             System.out.println("Most Common Value = 0");
