@@ -151,7 +151,11 @@ public class DayThree {
             return 1;
         } else
             System.out.println("Most Common Value = Tied!");
-        return -1;
+        if (mode.equals("oxygen")) {
+            result = 1;
+        } else if (mode.equals("co2")) {
+            result = 1;
+        }
     }
 
     public static ArrayList<String> removeNonMatches(ArrayList<String> input, int correctValue, int bitIndex) {
