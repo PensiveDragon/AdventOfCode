@@ -51,37 +51,47 @@ public class DayThree {
     public static void partTwoSearch(String[] input) {
         //System.out.println("Input length = " + input[0].length());
         ArrayList<String> oxygenArrayList = new ArrayList<>(Arrays.asList(input));
-        //ArrayList<String> co2ArrayList = new ArrayList<>(Arrays.asList(input));
+        ArrayList<String> co2ArrayList = new ArrayList<>(Arrays.asList(input));
         System.out.println("Starting Array Size: " + oxygenArrayList.size());
         String[] remainingList = input;
         for (int i = 0; i < (input[0].length()); i++) {
 
             int oxygenCorrectValue = findMostCommonValue(oxygenArrayList, i, "oxygen");
             oxygenArrayList = removeNonMatches(oxygenArrayList, oxygenCorrectValue, i);
+
         }
-        //int co2CorrectValue = findMostCommonValue(input, i, "co2");
-        //co2ArrayList = removeNonMatches(co2ArrayList, co2CorrectValue, i);
 
         System.out.println("Oxygen final binary: " + oxygenArrayList.get(0));
 
-        //System.out.println("co2 final binary: " + invertBinary(convertStringToIntArray(co2ArrayList.get(0))));
+        for (int i = 0; i < (input[0].length()); i++) {
 
-        //oxygenRating = translateBinary(convertStringToIntArray(oxygenArrayList.get(0)));
-        //co2Rating = translateBinary(invertBinary(convertStringToIntArray(co2ArrayList.get(0))));
+            int co2CorrectValue = findMostCommonValue(co2ArrayList, i, "co2");
+            co2ArrayList = removeNonMatches(co2ArrayList, co2CorrectValue, i);
+            if (co2ArrayList.size() == 1) {
+                i = 12;
+            }
+        }
 
-        //System.out.println("Oxygen Rating: " + translateBinary(convertStringToIntArray(oxygenArrayList.get(0))));
-        //System.out.println("co2 Rating: " + translateBinary(invertBinary(convertStringToIntArray(co2ArrayList.get(0)))));
-        //lifeSupportRating = oxygenRating * co2Rating;
-        //System.out.println("Life Support Rating: " + lifeSupportRating);
+        System.out.println("CO2 final binary: " + co2ArrayList.get(0));
+
+        oxygenRating = translateBinary(convertStringToIntArray(oxygenArrayList.get(0)));
+        co2Rating = translateBinary(convertStringToIntArray(co2ArrayList.get(0)));
+
+        System.out.println("Oxygen binary: " + oxygenArrayList.get(0) + " = " + oxygenRating);
+        System.out.println("CO2 binary: " + co2ArrayList.get(0) + " = " + co2Rating);
+
+        lifeSupportRating = oxygenRating * co2Rating;
+        System.out.println("Life Support Rating: " + lifeSupportRating);
 
     }
 
-    public static void displayBinaryIntArrayInString(int[] binaryArrayInput) {
+    public static String displayBinaryIntArrayInString(int[] binaryArrayInput) {
         String result = "";
         for (int value : binaryArrayInput) {
             result += value;
         }
         System.out.println("Binary String result is: " + result);
+        return result;
     }
 
     public static int[] convertStringToIntArray(String input){
@@ -145,22 +155,33 @@ public class DayThree {
         //System.out.println("Most Common Value result = " + result);
         if (result < 0) {
             System.out.println("Most Common Value = 0");
-            return 0;
+            if (mode.equals("oxygen")) {
+                return 0;
+            } else if (mode.equals("co2")) {
+                return 1;
+            }
         } else if (result > 0) {
             System.out.println("Most Common Value = 1");
-            return 1;
+            if (mode.equals("oxygen")) {
+                return 1;
+            } else if (mode.equals("co2")) {
+                return 0;
+            }
         } else
-            System.out.println("Most Common Value = Tied!");
+            //System.out.println("Most Common Value = Tied!");
         if (mode.equals("oxygen")) {
+            System.out.println("Most Common Value = Tied! (Oxygen Picking 1)");
             result = 1;
         } else if (mode.equals("co2")) {
-            result = 1;
+            System.out.println("Most Common Value = Tied! (CO2 Picking 0)");
+            result = 0;
         }
+        return result;
     }
 
     public static ArrayList<String> removeNonMatches(ArrayList<String> input, int correctValue, int bitIndex) {
 
-        System.out.println("Removing Non Matches...");
+        //System.out.println("Removing Non Matches...");
         System.out.println("DEBUG: correctValue=" + correctValue + " bitIndex=" + bitIndex + " inputSize=" + input.size() + " input=" + input);
         ArrayList<String> result = new ArrayList<String>();
 
