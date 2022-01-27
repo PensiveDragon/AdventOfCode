@@ -1,6 +1,8 @@
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class DayFour {
@@ -17,10 +19,30 @@ public class DayFour {
     public static void main (String args[]) {
         System.out.println("moo");
 
-        String[] input = parseInput();
+        String[] input = readInTextFile();
+        ArrayList<String> drawnNumbers = processInputToDrawnNumbers(input);
+
+        drawnNumbers.forEach(System.out::println);
+
     }
 
-    public static String[] parseInput() {
+    public static ArrayList<String> processInputToDrawnNumbers(String[] input) {
+
+        String drawnNumbersString = "";
+        String[] drawnNumbersStringArray;
+        ArrayList<String> drawnNumbersList = new ArrayList<>();
+
+        for (String line : input) {
+            if (line.length() > 20) {
+               drawnNumbersString = line;
+               drawnNumbersList = new ArrayList<>(Arrays.asList(drawnNumbersString.split(",")));
+            }
+        }
+
+        return drawnNumbersList;
+    }
+
+    public static String[] readInTextFile() {
 
         String[] allInput;
 
