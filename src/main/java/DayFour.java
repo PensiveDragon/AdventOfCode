@@ -21,15 +21,34 @@ public class DayFour {
 
         String[] input = readInTextFile();
         ArrayList<String> drawnNumbers = processInputToDrawnNumbers(input);
+        int[][][] bingoBoardArray = processInputToBingoBoardArray(input);
 
-        drawnNumbers.forEach(System.out::println);
+        //drawnNumbers.forEach(System.out::println);
 
+    }
+
+    public static int[][][] processInputToBingoBoardArray(String[] input) {
+
+        int[][][] result = new int[input.length/6][5][5];
+        System.out.println("Bingo Board Array dimensions: " + result.length + "|" + result[0].length + "|" + result[0][0].length);
+
+        int board, row, column = 0;
+
+        for (String line : input) {
+
+            if (line.length() == 0) {
+                row = column = 0;
+            } else if (line.length() < 20) {
+
+            }
+        }
+
+        return result;
     }
 
     public static ArrayList<String> processInputToDrawnNumbers(String[] input) {
 
         String drawnNumbersString = "";
-        String[] drawnNumbersStringArray;
         ArrayList<String> drawnNumbersList = new ArrayList<>();
 
         for (String line : input) {
@@ -49,7 +68,7 @@ public class DayFour {
         try {
             List<String> allLines = Files.readAllLines(Paths.get("src/main/resources/day4_input.txt"));
             allInput = allLines.toArray(new String[0]);
-            System.out.println(allInput.length);
+            //System.out.println(allInput.length);
 
             return allInput;
 
