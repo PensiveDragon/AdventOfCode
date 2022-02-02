@@ -32,14 +32,27 @@ public class DayFour {
         int[][][] result = new int[input.length/6][5][5];
         System.out.println("Bingo Board Array dimensions: " + result.length + "|" + result[0].length + "|" + result[0][0].length);
 
-        int board = 0, row = 0, column = 0;
+        int board = -1, row = 0, column = 0;
 
         for (String line : input) {
 
             if (line.length() == 0) {
-                row = column = 0;
+                System.out.println("New Board");
+                board++;
+                row = 0;
 
             } else if (line.length() < 20) {
+
+                line = line.trim();
+                line = line.replace("  ", " ");
+                String[] splitString = line.split(" ");
+                for (column = 0; column < 5; column++) {
+                    //System.out.println("Inspecting: '" + splitString[column] + "'");
+                    result[board][row][column] = Integer.parseInt(splitString[column]);
+                    //System.out.println("Board " + board + " Row " + row + " Column " + column);
+                }
+                row++;
+                /*
                 for (int r = 0; r < 5; r++) {
                     for (int c = 0; c < 5; c++) {
                         row = r+1;
@@ -47,8 +60,7 @@ public class DayFour {
                         System.out.println("Board " + board + " Row " + row + " Column " + column);
                         //result[board][row][column] = 0;
                     }
-                }
-                board++;
+                }*/
             }
         }
 
