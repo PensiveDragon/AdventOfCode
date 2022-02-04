@@ -27,6 +27,22 @@ public class DayFour {
 
     }
 
+    public static void displaySingleBingoBoard(int[][] input) {
+        //System.out.println("Meow");
+        for (int column = 0; column < 5; column++) {
+            String line = "";
+            for (int row = 0; row < 5; row++) {
+                //System.out.println(input[column][row]);
+                if (input[column][row] < 10) {
+                    line += " ";
+                }
+                line += input[column][row];
+                line += " ";
+            }
+            System.out.println(line);
+        }
+    }
+
     public static int[][][] processInputToBingoBoardArray(String[] input) {
 
         int[][][] result = new int[input.length/6][5][5];
@@ -61,6 +77,9 @@ public class DayFour {
                         //result[board][row][column] = 0;
                     }
                 }*/
+
+
+                displaySingleBingoBoard(result[board]);
             }
         }
 
