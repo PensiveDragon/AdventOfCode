@@ -1,3 +1,5 @@
+import com.sun.xml.internal.ws.api.model.wsdl.WSDLOutput;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -22,6 +24,8 @@ public class DayFour {
         String[] input = readInTextFile();
         ArrayList<String> drawnNumbers = processInputToDrawnNumbers(input);
         int[][][] bingoBoardArray = processInputToBingoBoardArray(input);
+
+
 
         //drawnNumbers.forEach(System.out::println);
 
@@ -120,8 +124,9 @@ public class DayFour {
     }
 
     public class GameBoard {
-        int row;
-        int column;
-        int[][] grid = new int[5][5];
+        int row = 5;
+        int column = 5;
+        int[][] grid = new int[row][column];
+
     }
 }
