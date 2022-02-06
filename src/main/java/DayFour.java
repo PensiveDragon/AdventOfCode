@@ -1,5 +1,3 @@
-import com.sun.xml.internal.ws.api.model.wsdl.WSDLOutput;
-
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -24,13 +22,14 @@ public class DayFour {
         String[] input = readInTextFile();
         ArrayList<String> drawnNumbers = processInputToDrawnNumbers(input);
         int[][][] bingoBoardArray = processInputToBingoBoardArray(input);
-
+        displayAllBingoBoards(bingoBoardArray);
 
 
         //drawnNumbers.forEach(System.out::println);
 
     }
 
+/*
     public static void displaySingleBingoBoard(int[][] input) {
         //System.out.println("Meow");
         for (int column = 0; column < 5; column++) {
@@ -46,6 +45,22 @@ public class DayFour {
             System.out.println(line);
         }
     }
+*/
+    public static void displaySingleBingoLine(int[] input) {
+
+    }
+
+    public static void displaySingleBingoBoard(int[][] input) {
+        System.out.println("Row: " + input.length);
+    }
+
+    public static void displayAllBingoBoards(int[][][] input) {
+
+        for (int boardNo = 0; boardNo < input.length; boardNo++) {
+            System.out.println("Board: " + input.length);
+            displaySingleBingoBoard(input[boardNo]);
+        }
+    }
 
     public static int[][][] processInputToBingoBoardArray(String[] input) {
 
@@ -57,7 +72,7 @@ public class DayFour {
         for (String line : input) {
 
             if (line.length() == 0) {
-                System.out.println("New Board");
+                //System.out.println("New Board");
                 board++;
                 row = 0;
 
@@ -82,8 +97,6 @@ public class DayFour {
                     }
                 }*/
 
-
-                displaySingleBingoBoard(result[board]);
             }
         }
 
