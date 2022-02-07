@@ -47,18 +47,29 @@ public class DayFour {
     }
 */
     public static void displaySingleBingoLine(int[] input) {
-
+        String line = "";
+        for (int num : input) {
+            if (num < 10) {
+                line += " ";
+            }
+            line += num;
+            line += " ";
+        }
+        System.out.println(line);
     }
 
     public static void displaySingleBingoBoard(int[][] input) {
-        System.out.println("Row: " + input.length);
+        for (int rowNo = 0; rowNo < input.length; rowNo++) {
+            //System.out.println("Row: " + rowNo);
+            displaySingleBingoLine(input[rowNo]);
+        }
     }
 
     public static void displayAllBingoBoards(int[][][] input) {
-
         for (int boardNo = 0; boardNo < input.length; boardNo++) {
-            System.out.println("Board: " + input.length);
+            System.out.println("Board " + (boardNo+1));
             displaySingleBingoBoard(input[boardNo]);
+            System.out.println();
         }
     }
 
