@@ -23,7 +23,7 @@ public class DayFour {
         ArrayList<String> drawnNumbers = processInputToDrawnNumbers(input);
         int[][][] bingoBoardArray = processInputToBingoBoardArray(input);
         displayAllBingoBoards(bingoBoardArray);
-
+        cycleThroughDrawnNumbers(drawnNumbers);
 
         //drawnNumbers.forEach(System.out::println);
 
@@ -46,6 +46,12 @@ public class DayFour {
         }
     }
 */
+    public static void cycleThroughDrawnNumbers(ArrayList<String> drawnNumbers) {
+        for (String number : drawnNumbers) {
+            System.out.println(number);
+        }
+    }
+
     public static void displaySingleBingoLine(int[] input) {
         String line = "";
         for (int num : input) {
