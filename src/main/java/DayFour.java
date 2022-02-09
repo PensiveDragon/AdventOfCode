@@ -23,6 +23,8 @@ public class DayFour {
         ArrayList<String> drawnNumbers = processInputToDrawnNumbers(input);
         int[][][] bingoBoardArray = processInputToBingoBoardArray(input);
         displayAllBingoBoards(bingoBoardArray);
+
+        updateNumberOnAllBoards(0, bingoBoardArray);
         cycleThroughDrawnNumbers(drawnNumbers);
 
         //drawnNumbers.forEach(System.out::println);
@@ -46,6 +48,27 @@ public class DayFour {
         }
     }
 */
+    public static int[][][] updateNumberOnAllBoards(int number, int[][][] bingoBoardArray) {
+        int[][][] result = bingoBoardArray;
+
+        System.out.println("Replacing all " + number + " with #");
+
+        for (int[][] board : bingoBoardArray) {
+            for (int[] column : board) {
+                for (int row : column) {
+                    System.out.println(row);
+                    if (row == number) {
+                        System.out.println("moo");
+                        row = -1;
+                        System.out.println(row);
+                    }
+                }
+            }
+        }
+
+        return result;
+    }
+
     public static void cycleThroughDrawnNumbers(ArrayList<String> drawnNumbers) {
         for (String number : drawnNumbers) {
             System.out.println(number);
