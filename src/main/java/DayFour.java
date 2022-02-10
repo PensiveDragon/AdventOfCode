@@ -24,33 +24,17 @@ public class DayFour {
         int[][][] bingoBoardArray = processInputToBingoBoardArray(input);
         displayAllBingoBoards(bingoBoardArray);
 
+        bingoBoardArray = updateNumberOnAllBoards(0, bingoBoardArray);
         updateNumberOnAllBoards(0, bingoBoardArray);
-        cycleThroughDrawnNumbers(drawnNumbers);
+        //cycleThroughDrawnNumbers(drawnNumbers);
 
         //drawnNumbers.forEach(System.out::println);
 
     }
 
-/*
-    public static void displaySingleBingoBoard(int[][] input) {
-        //System.out.println("Meow");
-        for (int column = 0; column < 5; column++) {
-            String line = "";
-            for (int row = 0; row < 5; row++) {
-                //System.out.println(input[column][row]);
-                if (input[column][row] < 10) {
-                    line += " ";
-                }
-                line += input[column][row];
-                line += " ";
-            }
-            System.out.println(line);
-        }
-    }
-*/
     public static int[][][] updateNumberOnAllBoards(int number, int[][][] bingoBoardArray) {
         int[][][] result = bingoBoardArray;
-
+        int matchCounter = 0;
         System.out.println("Replacing all " + number + " with #");
 
         for (int[][] board : bingoBoardArray) {
@@ -58,14 +42,16 @@ public class DayFour {
                 for (int row : column) {
                     System.out.println(row);
                     if (row == number) {
-                        System.out.println("moo");
+                        System.out.println("MATCH");
                         row = -1;
-                        System.out.println(row);
+                        //System.out.println(row);
+                        matchCounter++;
+
                     }
                 }
             }
         }
-
+        System.out.println("Number of matches for number (" + number + ") = " + matchCounter);
         return result;
     }
 
