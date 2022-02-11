@@ -25,7 +25,7 @@ public class DayFour {
         displayAllBingoBoards(bingoBoardArray);
 
         bingoBoardArray = updateNumberOnAllBoards(0, bingoBoardArray);
-        updateNumberOnAllBoards(0, bingoBoardArray);
+        //updateNumberOnAllBoards(0, bingoBoardArray);
         //cycleThroughDrawnNumbers(drawnNumbers);
 
         //drawnNumbers.forEach(System.out::println);
@@ -37,20 +37,21 @@ public class DayFour {
         int matchCounter = 0;
         System.out.println("Replacing all " + number + " with #");
 
-        for (int[][] board : bingoBoardArray) {
-            for (int[] column : board) {
-                for (int row : column) {
-                    System.out.println(row);
-                    if (row == number) {
-                        System.out.println("MATCH");
-                        row = -1;
-                        //System.out.println(row);
+        for (int board = 0; board < 100; board++) {
+            for (int column = 0; column < 5; column++) {
+                for (int row = 0; row < 5; row++) {
+                    System.out.println(result[board][column][row]);
+                    if (result[board][column][row] == number) {
+                        System.out.println("MATCH " + result[board][column][row]);
+                        //row = -1;
+                        result[board][column][row] = -1;
+                        System.out.println(result[board][column][row]);
                         matchCounter++;
-
                     }
                 }
             }
         }
+
         System.out.println("Number of matches for number (" + number + ") = " + matchCounter);
         return result;
     }
