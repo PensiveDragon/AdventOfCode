@@ -32,6 +32,14 @@ public class DayFour {
 
     }
 
+    public static void checkForAnyCompleteBoard(int[][][] bingoBoardArray) {
+
+    }
+
+    public static void checkforCompleteRow() {}
+
+    public static void checkForCompleteColumn() {}
+
     public static int[][][] updateNumberOnAllBoards(int number, int[][][] bingoBoardArray) {
         int[][][] result = bingoBoardArray;
         int matchCounter = 0;
