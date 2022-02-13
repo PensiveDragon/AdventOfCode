@@ -32,13 +32,28 @@ public class DayFour {
 
     }
 
-    public static void checkForAnyCompleteBoard(int[][][] bingoBoardArray) {
-
+    public static boolean checkForCompleteColumn() {
+        return true;
     }
 
-    public static void checkforCompleteRow() {}
+    public static boolean checkforCompleteRow() {
+        return true;
+    }
 
-    public static void checkForCompleteColumn() {}
+    public static void checkForAnyCompleteBoard(int[][][] bingoBoardArray) {
+        // check each board
+        for (int board = 0; board < 100; board++) {
+            // check each row
+            for (int row = 0; row < 5; row++) {
+                checkforCompleteRow();
+            }
+
+            // check each column
+            for (int column = 0; column < 5; column++) {
+                checkForCompleteColumn();
+            }
+        }
+    }
 
     public static int[][][] updateNumberOnAllBoards(int number, int[][][] bingoBoardArray) {
         int[][][] result = bingoBoardArray;
