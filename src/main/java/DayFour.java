@@ -22,11 +22,12 @@ public class DayFour {
         String[] input = readInTextFile();
         ArrayList<String> drawnNumbers = processInputToDrawnNumbers(input);
         int[][][] bingoBoardArray = processInputToBingoBoardArray(input);
-        displayAllBingoBoards(bingoBoardArray);
+        //displayAllBingoBoards(bingoBoardArray);
 
         bingoBoardArray = updateNumberOnAllBoards(0, bingoBoardArray);
         //updateNumberOnAllBoards(0, bingoBoardArray);
         //cycleThroughDrawnNumbers(drawnNumbers);
+        checkForAnyCompleteBoard(bingoBoardArray);
 
         //drawnNumbers.forEach(System.out::println);
 
@@ -36,8 +37,19 @@ public class DayFour {
         return true;
     }
 
-    public static boolean checkforCompleteRow() {
-        return true;
+    public static boolean checkForCompleteRow(int[] bingoBoardArrayRow) {
+        int matchCount = 0;
+        for (int column = 0; column < 5; column++) {
+            System.out.println(bingoBoardArrayRow[column]);
+            if (bingoBoardArrayRow[column] != -1) {
+                matchCount++;
+            }
+            System.out.println("Complete Row!");
+        }
+        if (matchCount == 5) {
+            return true;
+        }
+        return false;
     }
 
     public static void checkForAnyCompleteBoard(int[][][] bingoBoardArray) {
@@ -45,7 +57,7 @@ public class DayFour {
         for (int board = 0; board < 100; board++) {
             // check each row
             for (int row = 0; row < 5; row++) {
-                checkforCompleteRow();
+                checkForCompleteRow(bingoBoardArray[board][row]);
             }
 
             // check each column
