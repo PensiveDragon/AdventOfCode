@@ -33,8 +33,19 @@ public class DayFour {
 
     }
 
-    public static boolean checkForCompleteColumn() {
-        return true;
+    public static boolean checkForCompleteColumn(int[] bingoBoardArrayColumn) {
+        int matchCount = 0;
+        for (int column = 0; column < 5; column++) {
+            System.out.println(bingoBoardArrayColumn[column]);
+            if (bingoBoardArrayColumn[column] != -1) {
+                matchCount++;
+            }
+            System.out.println("Complete Row!");
+        }
+        if (matchCount == 5) {
+            return true;
+        }
+        return false;
     }
 
     public static boolean checkForCompleteRow(int[] bingoBoardArrayRow) {
