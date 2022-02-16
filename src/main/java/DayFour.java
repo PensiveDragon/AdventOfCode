@@ -33,39 +33,43 @@ public class DayFour {
 
     }
 
-    public static boolean checkForCompleteColumn(int[] bingoBoardArrayColumn) {
+    public static boolean checkForCompleteColumn(int[][] bingoBoardArrayColumn, int column) {
+        System.out.println("Check for Complete Column");
         int matchCount = 0;
-        for (int column = 0; column < 5; column++) {
-            System.out.println(bingoBoardArrayColumn[column]);
-            if (bingoBoardArrayColumn[column] != -1) {
+        for (int row = 0; row < 5; row++) {
+            System.out.println(bingoBoardArrayColumn[row][column]);
+            if (bingoBoardArrayColumn[row][column] != -1) {
                 matchCount++;
             }
-            System.out.println("Complete Row!");
-        }
-        if (matchCount == 5) {
-            return true;
+            if (matchCount == 5) {
+                System.out.println("Complete Column!");
+                return true;
+            }
+            matchCount = 0;
         }
         return false;
     }
 
     public static boolean checkForCompleteRow(int[] bingoBoardArrayRow) {
+        System.out.println("Check for Complete Row");
         int matchCount = 0;
         for (int column = 0; column < 5; column++) {
             System.out.println(bingoBoardArrayRow[column]);
             if (bingoBoardArrayRow[column] != -1) {
                 matchCount++;
             }
-            System.out.println("Complete Row!");
-        }
-        if (matchCount == 5) {
-            return true;
+            if (matchCount == 5) {
+                System.out.println("Complete Row!");
+                return true;
+            }
+            matchCount = 0;
         }
         return false;
     }
 
     public static void checkForAnyCompleteBoard(int[][][] bingoBoardArray) {
         // check each board
-        for (int board = 0; board < 100; board++) {
+        for (int board = 0; board < 1; board++) {
             // check each row
             for (int row = 0; row < 5; row++) {
                 checkForCompleteRow(bingoBoardArray[board][row]);
@@ -73,7 +77,7 @@ public class DayFour {
 
             // check each column
             for (int column = 0; column < 5; column++) {
-                checkForCompleteColumn();
+                checkForCompleteColumn(bingoBoardArray[board], column);
             }
         }
     }
@@ -86,12 +90,12 @@ public class DayFour {
         for (int board = 0; board < 100; board++) {
             for (int column = 0; column < 5; column++) {
                 for (int row = 0; row < 5; row++) {
-                    System.out.println(result[board][column][row]);
+                    //System.out.println(result[board][column][row]);
                     if (result[board][column][row] == number) {
-                        System.out.println("MATCH " + result[board][column][row]);
+                        //System.out.println("MATCH " + result[board][column][row]);
                         //row = -1;
                         result[board][column][row] = -1;
-                        System.out.println(result[board][column][row]);
+                        //System.out.println(result[board][column][row]);
                         matchCounter++;
                     }
                 }
