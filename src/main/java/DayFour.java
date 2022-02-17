@@ -22,12 +22,15 @@ public class DayFour {
         String[] input = readInTextFile();
         ArrayList<String> drawnNumbers = processInputToDrawnNumbers(input);
         int[][][] bingoBoardArray = processInputToBingoBoardArray(input);
+
         //displayAllBingoBoards(bingoBoardArray);
 
-        bingoBoardArray = updateNumberOnAllBoards(0, bingoBoardArray);
+        cycleThroughDrawnNumbers(drawnNumbers, bingoBoardArray);
+
+        //bingoBoardArray = updateNumberOnAllBoards(0, bingoBoardArray);
         //updateNumberOnAllBoards(0, bingoBoardArray);
-        //cycleThroughDrawnNumbers(drawnNumbers);
-        checkForAnyCompleteBoard(bingoBoardArray);
+
+        //checkForAnyCompleteBoard(bingoBoardArray);
 
         //drawnNumbers.forEach(System.out::println);
 
@@ -67,19 +70,23 @@ public class DayFour {
         return false;
     }
 
-    public static void checkForAnyCompleteBoard(int[][][] bingoBoardArray) {
+    public static boolean checkForAnyCompleteBoard(int[][][] bingoBoardArray) {
         // check each board
-        for (int board = 0; board < 1; board++) {
+        for (int board = 0; board < 100; board++) {
             // check each row
             for (int row = 0; row < 5; row++) {
-                checkForCompleteRow(bingoBoardArray[board][row]);
+                if (checkForCompleteRow(bingoBoardArray[board][row])) {
+                    return true;
+                }
             }
-
             // check each column
             for (int column = 0; column < 5; column++) {
-                checkForCompleteColumn(bingoBoardArray[board], column);
+                if (checkForCompleteColumn(bingoBoardArray[board], column)) {
+                    return true;
+                }
             }
         }
+        return false;
     }
 
     public static int[][][] updateNumberOnAllBoards(int number, int[][][] bingoBoardArray) {
@@ -106,9 +113,15 @@ public class DayFour {
         return result;
     }
 
-    public static void cycleThroughDrawnNumbers(ArrayList<String> drawnNumbers) {
+    public static void cycleThroughDrawnNumbers(ArrayList<String> drawnNumbers, int[][][] bingoBoardArray) {
         for (String number : drawnNumbers) {
-            System.out.println(number);
+            //System.out.println(number);
+            bingoBoardArray = updateNumberOnAllBoards(Integer.parseInt(number), bingoBoardArray);
+            if (checkForAnyCompleteBoard(bingoBoardArray)) {
+                System.out.println("COMPLETE BOARD FOUND!");
+                break;
+            }
+
         }
     }
 
@@ -211,12 +224,5 @@ public class DayFour {
         }
 
         return null;
-    }
-
-    public class GameBoard {
-        int row = 5;
-        int column = 5;
-        int[][] grid = new int[row][column];
-
     }
 }
