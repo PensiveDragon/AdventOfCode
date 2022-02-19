@@ -34,6 +34,26 @@ public class DayFour {
 
         //drawnNumbers.forEach(System.out::println);
 
+        int[][] testGrid = testGridSetup();
+
+    }
+
+    public static int[][] testGridSetup() {
+        int[][] testGrid = new int[5][5];
+
+        for (int row = 0; row < 5; row++) {
+            for (int column = 0; column < 5; column++) {
+                if (row == 0) {
+                    testGrid[row][column] = -1;
+                } else if (column == 1) {
+                    testGrid[row][column] = -1;
+                } else {
+                    testGrid[row][column] = row * column;
+                }
+            }
+        }
+        System.out.println("Test Grid Setup Complete");
+        return testGrid;
     }
 
     public static boolean checkForCompleteColumn(int[][] bingoBoardArrayColumn, int column) {
