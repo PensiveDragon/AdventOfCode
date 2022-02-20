@@ -19,13 +19,15 @@ public class DayFour {
     public static void main (String args[]) {
         System.out.println("moo");
 
+
+
         String[] input = readInTextFile();
         ArrayList<String> drawnNumbers = processInputToDrawnNumbers(input);
         int[][][] bingoBoardArray = processInputToBingoBoardArray(input);
 
         //displayAllBingoBoards(bingoBoardArray);
 
-        cycleThroughDrawnNumbers(drawnNumbers, bingoBoardArray);
+        //cycleThroughDrawnNumbers(drawnNumbers, bingoBoardArray);
 
         //bingoBoardArray = updateNumberOnAllBoards(0, bingoBoardArray);
         //updateNumberOnAllBoards(0, bingoBoardArray);
@@ -35,6 +37,9 @@ public class DayFour {
         //drawnNumbers.forEach(System.out::println);
 
         int[][] testGrid = testGridSetup();
+        int[][][] testBoard = new int[1][5][5];
+        testBoard[0] = testGrid;
+        checkForAnyCompleteBoard(testBoard);
 
     }
 
@@ -43,12 +48,12 @@ public class DayFour {
 
         for (int row = 0; row < 5; row++) {
             for (int column = 0; column < 5; column++) {
-                if (row == 0) {
+                if (row == 4) {
                     testGrid[row][column] = -1;
                 } else if (column == 1) {
                     testGrid[row][column] = -1;
                 } else {
-                    testGrid[row][column] = row * column;
+                    testGrid[row][column] = row + column;
                 }
             }
         }
@@ -61,14 +66,14 @@ public class DayFour {
         int matchCount = 0;
         for (int row = 0; row < 5; row++) {
             System.out.println(bingoBoardArrayColumn[row][column]);
-            if (bingoBoardArrayColumn[row][column] != -1) {
+            if (bingoBoardArrayColumn[row][column] == -1) {
                 matchCount++;
+                //System.out.println("Match Count: " + matchCount);
             }
             if (matchCount == 5) {
-                System.out.println("Complete Column!");
+                System.out.println("Found Complete Column!");
                 return true;
             }
-            matchCount = 0;
         }
         return false;
     }
@@ -78,21 +83,20 @@ public class DayFour {
         int matchCount = 0;
         for (int column = 0; column < 5; column++) {
             System.out.println(bingoBoardArrayRow[column]);
-            if (bingoBoardArrayRow[column] != -1) {
+            if (bingoBoardArrayRow[column] == -1) {
                 matchCount++;
             }
             if (matchCount == 5) {
-                System.out.println("Complete Row!");
+                System.out.println("Found Complete Row!");
                 return true;
             }
-            matchCount = 0;
         }
         return false;
     }
 
     public static boolean checkForAnyCompleteBoard(int[][][] bingoBoardArray) {
         // check each board
-        for (int board = 0; board < 100; board++) {
+        for (int board = 0; board < bingoBoardArray.length; board++) {
             // check each row
             for (int row = 0; row < 5; row++) {
                 if (checkForCompleteRow(bingoBoardArray[board][row])) {
