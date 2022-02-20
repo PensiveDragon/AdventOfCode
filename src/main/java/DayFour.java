@@ -16,6 +16,8 @@ public class DayFour {
     // - Check whether any board has won yet
     // On win, sum all unmarked numbers on winning board, multiply by last number drawn.
 
+    static int board;
+
     public static void main (String args[]) {
         System.out.println("moo");
 
@@ -27,20 +29,21 @@ public class DayFour {
 
         //displayAllBingoBoards(bingoBoardArray);
 
-        //cycleThroughDrawnNumbers(drawnNumbers, bingoBoardArray);
+        cycleThroughDrawnNumbers(drawnNumbers, bingoBoardArray);
 
         //bingoBoardArray = updateNumberOnAllBoards(0, bingoBoardArray);
         //updateNumberOnAllBoards(0, bingoBoardArray);
 
-        //checkForAnyCompleteBoard(bingoBoardArray);
+        checkForAnyCompleteBoard(bingoBoardArray);
 
         //drawnNumbers.forEach(System.out::println);
 
+        /*
         int[][] testGrid = testGridSetup();
         int[][][] testBoard = new int[1][5][5];
         testBoard[0] = testGrid;
         checkForAnyCompleteBoard(testBoard);
-
+        */
     }
 
     public static int[][] testGridSetup() {
@@ -96,7 +99,7 @@ public class DayFour {
 
     public static boolean checkForAnyCompleteBoard(int[][][] bingoBoardArray) {
         // check each board
-        for (int board = 0; board < bingoBoardArray.length; board++) {
+        for (board = 0; board < bingoBoardArray.length; board++) {
             // check each row
             for (int row = 0; row < 5; row++) {
                 if (checkForCompleteRow(bingoBoardArray[board][row])) {
@@ -142,7 +145,7 @@ public class DayFour {
             //System.out.println(number);
             bingoBoardArray = updateNumberOnAllBoards(Integer.parseInt(number), bingoBoardArray);
             if (checkForAnyCompleteBoard(bingoBoardArray)) {
-                System.out.println("COMPLETE BOARD FOUND!");
+                System.out.println("COMPLETE BOARD FOUND! - Number " + board);
                 break;
             }
 
