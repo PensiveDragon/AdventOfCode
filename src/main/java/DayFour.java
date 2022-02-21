@@ -34,7 +34,7 @@ public class DayFour {
         //bingoBoardArray = updateNumberOnAllBoards(0, bingoBoardArray);
         //updateNumberOnAllBoards(0, bingoBoardArray);
 
-        checkForAnyCompleteBoard(bingoBoardArray);
+        //checkForAnyCompleteBoard(bingoBoardArray);
 
         //drawnNumbers.forEach(System.out::println);
 
@@ -103,12 +103,14 @@ public class DayFour {
             // check each row
             for (int row = 0; row < 5; row++) {
                 if (checkForCompleteRow(bingoBoardArray[board][row])) {
+                    System.out.println("Found Complete Board");
                     return true;
                 }
             }
             // check each column
             for (int column = 0; column < 5; column++) {
                 if (checkForCompleteColumn(bingoBoardArray[board], column)) {
+                    System.out.println("Found Complete Board");
                     return true;
                 }
             }
@@ -145,7 +147,8 @@ public class DayFour {
             //System.out.println(number);
             bingoBoardArray = updateNumberOnAllBoards(Integer.parseInt(number), bingoBoardArray);
             if (checkForAnyCompleteBoard(bingoBoardArray)) {
-                System.out.println("COMPLETE BOARD FOUND! - Number " + board);
+                System.out.println("COMPLETE BOARD FOUND! - Board No. " + board + " Last Drawn Number: " + number);
+                displaySingleBingoBoard(bingoBoardArray[board]);
                 break;
             }
 
