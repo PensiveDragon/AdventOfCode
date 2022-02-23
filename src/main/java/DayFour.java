@@ -46,6 +46,20 @@ public class DayFour {
         */
     }
 
+    public static void solvePuzzle(int[][] winningBingoBoard, int lastNumberDrawn) {
+        int sum = 0;
+        for (int row = 0; row < 5; row++) {
+            for (int column = 0; column < 5; column++) {
+                if (winningBingoBoard[row][column] != -1) {
+                    sum += winningBingoBoard[row][column];
+                    System.out.println("Winning board sum... " + sum);
+                }
+            }
+        }
+
+        System.out.println("Winning board sum * last number drawn = " + (sum*lastNumberDrawn));
+    }
+
     public static int[][] testGridSetup() {
         int[][] testGrid = new int[5][5];
 
@@ -149,6 +163,7 @@ public class DayFour {
             if (checkForAnyCompleteBoard(bingoBoardArray)) {
                 System.out.println("COMPLETE BOARD FOUND! - Board No. " + board + " Last Drawn Number: " + number);
                 displaySingleBingoBoard(bingoBoardArray[board]);
+                solvePuzzle(bingoBoardArray[board], Integer.parseInt(number));
                 break;
             }
 
