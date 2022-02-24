@@ -16,6 +16,8 @@ public class DayFour {
     // - Check whether any board has won yet
     // On win, sum all unmarked numbers on winning board, multiply by last number drawn.
 
+    // Check if this was the last board solved
+
     static int board;
 
     public static void main (String args[]) {
@@ -44,6 +46,10 @@ public class DayFour {
         testBoard[0] = testGrid;
         checkForAnyCompleteBoard(testBoard);
         */
+    }
+
+    public static void checkForUnsolvedBoards (int[][][] bingoBoardArray) {
+
     }
 
     public static void solvePuzzle(int[][] winningBingoBoard, int lastNumberDrawn) {
@@ -166,7 +172,17 @@ public class DayFour {
                 solvePuzzle(bingoBoardArray[board], Integer.parseInt(number));
                 break;
             }
+        }
+    }
 
+    public static void cycleThroughDrawnNumbersPartTwo(ArrayList<String> drawnNumbers, int[][][] bingoBoardArray) {
+        for (String number : drawnNumbers) {
+            //System.out.println(number);
+            bingoBoardArray = updateNumberOnAllBoards(Integer.parseInt(number), bingoBoardArray);
+            if (checkForAnyCompleteBoard(bingoBoardArray)) {
+                System.out.println("COMPLETE BOARD FOUND! - Board No. " + board + " Last Drawn Number: " + number);
+
+            }
         }
     }
 
