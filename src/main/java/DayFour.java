@@ -3,6 +3,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 
 public class DayFour {
@@ -19,6 +20,8 @@ public class DayFour {
     // Check if this was the last board solved
 
     static int board;
+    static HashSet<Integer> solvedSet = new HashSet<>();
+    static HashSet<Integer> bingoSet = new HashSet<>();
 
     public static void main (String args[]) {
         System.out.println("moo");
@@ -31,7 +34,8 @@ public class DayFour {
 
         //displayAllBingoBoards(bingoBoardArray);
 
-        cycleThroughDrawnNumbers(drawnNumbers, bingoBoardArray);
+        //cycleThroughDrawnNumbers(drawnNumbers, bingoBoardArray);
+        cycleThroughDrawnNumbersPartTwo(drawnNumbers, bingoBoardArray);
 
         //bingoBoardArray = updateNumberOnAllBoards(0, bingoBoardArray);
         //updateNumberOnAllBoards(0, bingoBoardArray);
@@ -49,7 +53,16 @@ public class DayFour {
     }
 
     public static void checkForUnsolvedBoards (int[][][] bingoBoardArray) {
+        System.out.println("Number of boards completed: " + solvedSet.size());
+        System.out.println("Number of bingoNumbers drawn: " + bingoSet.size());
+    }
 
+    public static void addBoardNumberToSolvedList (int boardNumber) {
+        solvedSet.add(boardNumber);
+        System.out.println("Solved set size is: " + solvedSet.size());
+        if (solvedSet.size() == 100) {
+            System.out.println("Final board number is: " + boardNumber);
+        }
     }
 
     public static void solvePuzzle(int[][] winningBingoBoard, int lastNumberDrawn) {
@@ -177,11 +190,14 @@ public class DayFour {
 
     public static void cycleThroughDrawnNumbersPartTwo(ArrayList<String> drawnNumbers, int[][][] bingoBoardArray) {
         for (String number : drawnNumbers) {
+            bingoSet.add(Integer.valueOf(number));
             //System.out.println(number);
             bingoBoardArray = updateNumberOnAllBoards(Integer.parseInt(number), bingoBoardArray);
             if (checkForAnyCompleteBoard(bingoBoardArray)) {
                 System.out.println("COMPLETE BOARD FOUND! - Board No. " + board + " Last Drawn Number: " + number);
-
+                addBoardNumberToSolvedList(board);
+                checkForUnsolvedBoards(bingoBoardArray);
+                displayAllBingoBoards(bingoBoardArray);
             }
         }
     }
