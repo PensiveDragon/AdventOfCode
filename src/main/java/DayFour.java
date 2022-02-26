@@ -15,6 +15,8 @@ public class DayFour {
     // Cycle through drawn numbers. For each number:
     // - Check through each board, marking the found number in each (updating the found number in each to a *)?
     // - Check whether any board has won yet
+    // - (2) Add board to won board list
+    // - (2) Change board no's to -2.
     // On win, sum all unmarked numbers on winning board, multiply by last number drawn.
 
     // Check if this was the last board solved
@@ -59,9 +61,9 @@ public class DayFour {
 
     public static void addBoardNumberToSolvedList (int boardNumber) {
         solvedSet.add(boardNumber);
-        System.out.println("Solved set size is: " + solvedSet.size());
+        System.out.println("Adding Board No " + boardNumber + " to Solved List. Solved set size is: " + solvedSet.size());
         if (solvedSet.size() == 100) {
-            System.out.println("Final board number is: " + boardNumber);
+            //System.out.println("Final board number is: " + boardNumber);
         }
     }
 
@@ -132,29 +134,35 @@ public class DayFour {
 
     public static boolean checkForAnyCompleteBoard(int[][][] bingoBoardArray) {
         // check each board
+        boolean result = false;
         for (board = 0; board < bingoBoardArray.length; board++) {
+            System.out.println("Checking board " + board);
+            if (solvedSet.contains(board)) {
+                System.out.println("Board " + board + " is already solved.");
+                break;
+            }
             // check each row
             for (int row = 0; row < 5; row++) {
                 if (checkForCompleteRow(bingoBoardArray[board][row])) {
                     System.out.println("Found Complete Board");
-                    return true;
+                    result = true;
                 }
             }
             // check each column
             for (int column = 0; column < 5; column++) {
                 if (checkForCompleteColumn(bingoBoardArray[board], column)) {
                     System.out.println("Found Complete Board");
-                    return true;
+                    result = true;
                 }
             }
         }
-        return false;
+        return result;
     }
 
     public static int[][][] updateNumberOnAllBoards(int number, int[][][] bingoBoardArray) {
         int[][][] result = bingoBoardArray;
         int matchCounter = 0;
-        System.out.println("Replacing all " + number + " with #");
+        System.out.println("Replacing all " + number + " with -1");
 
         for (int board = 0; board < 100; board++) {
             for (int column = 0; column < 5; column++) {
@@ -195,9 +203,9 @@ public class DayFour {
             bingoBoardArray = updateNumberOnAllBoards(Integer.parseInt(number), bingoBoardArray);
             if (checkForAnyCompleteBoard(bingoBoardArray)) {
                 System.out.println("COMPLETE BOARD FOUND! - Board No. " + board + " Last Drawn Number: " + number);
-                addBoardNumberToSolvedList(board);
-                checkForUnsolvedBoards(bingoBoardArray);
-                displayAllBingoBoards(bingoBoardArray);
+                //addBoardNumberToSolvedList(board);
+                //checkForUnsolvedBoards(bingoBoardArray);
+                //displayAllBingoBoards(bingoBoardArray);
             }
         }
     }
