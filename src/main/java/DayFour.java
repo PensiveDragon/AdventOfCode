@@ -52,6 +52,8 @@ public class DayFour {
         testBoard[0] = testGrid;
         checkForAnyCompleteBoard(testBoard);
         */
+
+        System.out.println(solvedSet);
     }
 
     public static int[][] amendCompletedBoard (int[][] completedBoard) {
