@@ -39,6 +39,7 @@ public class DayFour {
         //cycleThroughDrawnNumbers(drawnNumbers, bingoBoardArray);
         cycleThroughDrawnNumbersPartTwo(drawnNumbers, bingoBoardArray);
 
+
         //bingoBoardArray = updateNumberOnAllBoards(0, bingoBoardArray);
         //updateNumberOnAllBoards(0, bingoBoardArray);
 
@@ -56,7 +57,9 @@ public class DayFour {
         System.out.println(solvedSet);
     }
 
+
     public static int[][] amendCompletedBoard (int[][] completedBoard) {
+        System.out.println("Board " + (board + 1) + " is completed, amending numbers.");
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 5; j++) {
                 completedBoard[i][j] = -2;
@@ -82,7 +85,7 @@ public class DayFour {
         int sum = 0;
         for (int row = 0; row < 5; row++) {
             for (int column = 0; column < 5; column++) {
-                if (winningBingoBoard[row][column] != -1) {
+                if (winningBingoBoard[row][column] > -1) {
                     sum += winningBingoBoard[row][column];
                     System.out.println("Winning board sum... " + sum);
                 }
@@ -111,7 +114,7 @@ public class DayFour {
     }
 
     public static boolean checkForCompleteColumn(int[][] bingoBoardArrayColumn, int column) {
-        System.out.println("Check for Complete Column");
+        //System.out.println("Check for Complete Column");
         int matchCount = 0;
         for (int row = 0; row < 5; row++) {
             //System.out.println(bingoBoardArrayColumn[row][column]);
@@ -128,7 +131,7 @@ public class DayFour {
     }
 
     public static boolean checkForCompleteRow(int[] bingoBoardArrayRow) {
-        System.out.println("Check for Complete Row");
+        //System.out.println("Check for Complete Row");
         int matchCount = 0;
         for (int column = 0; column < 5; column++) {
             //System.out.println(bingoBoardArrayRow[column]);
@@ -143,31 +146,43 @@ public class DayFour {
         return false;
     }
 
-    public static boolean checkForAnyCompleteBoard(int[][][] bingoBoardArray) {
+    public static boolean checkForAnyCompleteBoard(int[][][] bingoBoardArray, int number) {
         // check each board
         boolean result = false;
         for (board = 0; board < bingoBoardArray.length; board++) {
+            /*
             if (bingoBoardArray[board][0][0] == -2) {
-                break;
+                continue;
+            }*/
+            if (solvedSet.contains(board)) {
+                continue;
             }
-            System.out.println("Checking board " + board);
+            //System.out.println("Checking board " + board);
             // check each row
             for (int row = 0; row < 5; row++) {
                 if (checkForCompleteRow(bingoBoardArray[board][row])) {
-                    System.out.println("Found Complete Board");
+                    System.out.println("Found Complete Board - " + board);
+                    addBoardNumberToSolvedList(board);
+
+                    solvePuzzle(bingoBoardArray[board], number);
+
+                    //bingoBoardArray[board] = amendCompletedBoard(bingoBoardArray[board]);
+                    System.out.println("COMPLETE BOARD FOUND! - Board No. " + board + " Last Drawn Number: " + number);
                     result = true;
                 }
             }
             // check each column
             for (int column = 0; column < 5; column++) {
                 if (checkForCompleteColumn(bingoBoardArray[board], column)) {
-                    System.out.println("Found Complete Board");
+                    System.out.println("Found Complete Board - " + board);
+                    addBoardNumberToSolvedList(board);
+
+                    solvePuzzle(bingoBoardArray[board], number);
+
+                    //bingoBoardArray[board] = amendCompletedBoard(bingoBoardArray[board]);
+                    System.out.println("COMPLETE BOARD FOUND! - Board No. " + board + " Last Drawn Number: " + number);
                     result = true;
                 }
-            }
-            if (result) {
-                System.out.println("Board " + (board + 1) + " is completed, amending numbers.");
-                bingoBoardArray[board] = amendCompletedBoard(bingoBoardArray[board]);
             }
         }
         return result;
@@ -201,7 +216,7 @@ public class DayFour {
         for (String number : drawnNumbers) {
             //System.out.println(number);
             bingoBoardArray = updateNumberOnAllBoards(Integer.parseInt(number), bingoBoardArray);
-            if (checkForAnyCompleteBoard(bingoBoardArray)) {
+            if (checkForAnyCompleteBoard(bingoBoardArray, Integer.parseInt(number))) {
                 System.out.println("COMPLETE BOARD FOUND! - Board No. " + board + " Last Drawn Number: " + number);
                 displaySingleBingoBoard(bingoBoardArray[board]);
                 solvePuzzle(bingoBoardArray[board], Integer.parseInt(number));
@@ -212,13 +227,22 @@ public class DayFour {
 
     public static void cycleThroughDrawnNumbersPartTwo(ArrayList<String> drawnNumbers, int[][][] bingoBoardArray) {
         for (String number : drawnNumbers) {
+
+            System.out.println("Drawn Number: " + number);
+            if (solvedSet.size() == 99) {
+                //stop the presses
+                System.out.println("This is the final board!");
+                System.out.println("Number of finished boards: " + solvedSet.size());
+            }
+
+            if (solvedSet.size() == 100)
+
             bingoSet.add(Integer.valueOf(number));
             //System.out.println(number);
             bingoBoardArray = updateNumberOnAllBoards(Integer.parseInt(number), bingoBoardArray);
-            if (checkForAnyCompleteBoard(bingoBoardArray)) {
-                System.out.println("COMPLETE BOARD FOUND! - Board No. " + board + " Last Drawn Number: " + number);
-                addBoardNumberToSolvedList(board);
-                //checkForUnsolvedBoards(bingoBoardArray);
+            if (checkForAnyCompleteBoard(bingoBoardArray, Integer.parseInt(number))) {
+
+                checkForUnsolvedBoards(bingoBoardArray);
                 displayAllBingoBoards(bingoBoardArray);
             }
         }
