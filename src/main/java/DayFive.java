@@ -9,6 +9,8 @@ public class DayFive {
 
     public static void main(String[] args) {
         System.out.println("Moo");
+
+        System.out.println("Boop");
     }
 
 }
