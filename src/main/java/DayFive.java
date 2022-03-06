@@ -1,3 +1,8 @@
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.List;
+
 public class DayFive {
 
     // Parse List input
@@ -12,8 +17,28 @@ public class DayFive {
 
         System.out.println("Boop");
 
+        String testInputPath = "src/main/resources/day5_test_input.txt";
+        parseInput(testInputPath);
         int[][] field = generateField(10);
         displayField(field);
+    }
+
+    public static String[] parseInput (String path) {
+
+        String[] allInput;
+
+        try {
+            List<String> allLines = Files.readAllLines(Paths.get(path));
+            allInput = allLines.toArray(new String[0]);
+            System.out.println(allInput.length);
+
+            return allInput;
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return null;
     }
 
     public static void displayField (int[][] field) {
