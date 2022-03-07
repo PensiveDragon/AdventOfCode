@@ -14,13 +14,29 @@ public class DayFive {
 
     public static void main(String[] args) {
         System.out.println("Moo");
-
         System.out.println("Boop");
 
         String testInputPath = "src/main/resources/day5_test_input.txt";
-        parseInput(testInputPath);
-        int[][] field = generateField(10);
+        String[] input = parseInput(testInputPath);
+
+        int[][] field = generateField(findBoardSize(input));
         displayField(field);
+    }
+
+    public static int findBoardSize (String[] input) {
+        int result = 0;
+        for (String line : input) {
+            System.out.println(line);
+            line = line.replace(" -> ", ",");
+            System.out.println(line);
+            String[] stringNums = line.split(",");
+            for (String stringNum : stringNums) {
+                if (result < Integer.parseInt(stringNum)) {
+                    result = Integer.parseInt(stringNum);
+                }
+            }
+        }
+        return result + 1;
     }
 
     public static String[] parseInput (String path) {
