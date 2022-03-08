@@ -22,12 +22,11 @@ public class DayFive {
         String testInputPath = "src/main/resources/day5_test_input.txt";
         ArrayList<Coordinates> input = parseInput(testInputPath);
 
-        //int[][] field = generateField(findBoardSize(input));
-        int[][] field = generateField(findBoardSize2(input));
+        int[][] field = generateField(findBoardSize(input));
         displayField(field);
     }
 
-    public static int findBoardSize2 (ArrayList<Coordinates> input) {
+    public static int findBoardSize (ArrayList<Coordinates> input) {
         int result = 0;
 
         for (int i = 0; i < input.size(); i++) {
@@ -49,22 +48,6 @@ public class DayFive {
                 .map()
         */
         return result+1;
-    }
-
-    public static int findBoardSize (String[] input) {
-        int result = 0;
-        for (String line : input) {
-            System.out.println(line);
-            line = line.replace(" -> ", ",");
-            System.out.println(line);
-            String[] stringNums = line.split(",");
-            for (String stringNum : stringNums) {
-                if (result < Integer.parseInt(stringNum)) {
-                    result = Integer.parseInt(stringNum);
-                }
-            }
-        }
-        return result + 1;
     }
 
     public static ArrayList<Coordinates> parseInput (String path) {
@@ -100,7 +83,9 @@ public class DayFive {
     public static void displayField (int[][] field) {
         for (int[] line : field) {
             for (int cell : line) {
-                System.out.print(cell + " , ");
+
+                System.out.print(String.format("%4d", cell));
+
             }
             System.out.println("");
         }
