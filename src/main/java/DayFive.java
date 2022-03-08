@@ -1,12 +1,15 @@
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class DayFive {
 
     // Parse List input
-    // Create X,X size Grid
     // For each line of input
     // -> Use coords to update grid with lines
     // -> Each line adds 1 to the coords listed
@@ -17,10 +20,10 @@ public class DayFive {
         System.out.println("Boop");
 
         String testInputPath = "src/main/resources/day5_test_input.txt";
-        String[] input = parseInput(testInputPath);
+        ArrayList<Coordinates> input = parseInput(testInputPath);
 
-        int[][] field = generateField(findBoardSize(input));
-        displayField(field);
+        //int[][] field = generateField(findBoardSize(input));
+        //displayField(field);
     }
 
     public static int findBoardSize (String[] input) {
@@ -39,16 +42,28 @@ public class DayFive {
         return result + 1;
     }
 
-    public static String[] parseInput (String path) {
+    public static ArrayList<Coordinates> parseInput (String path) {
 
-        String[] allInput;
+        ArrayList<Coordinates> result = new ArrayList<>();
 
         try {
             List<String> allLines = Files.readAllLines(Paths.get(path));
-            allInput = allLines.toArray(new String[0]);
-            System.out.println(allInput.length);
 
-            return allInput;
+            for (int i = 0; i < allLines.size(); i++) {
+
+                Pattern regex = Pattern.compile("^([0-9]+),([0-9]+) -> ([0-9]+),([0-9]+)$");
+                Matcher matcher = regex.matcher(allLines.get(i));
+
+                if (matcher.find()) {
+                    System.out.println(matcher.group(0));
+                    result.add(new Coordinates(Integer.parseInt(matcher.group(1)), Integer.parseInt(matcher.group(2)), Integer.parseInt(matcher.group(3)), Integer.parseInt(matcher.group(4))));
+                    System.out.println("New Coords: " + result.get(i).startX + "," + result.get(i).startY + " | " + result.get(i).endX + "," + result.get(i).endY);
+                } else {
+                    System.out.println(allLines.get(i) + " Mwa-mwaa");
+                }
+            }
+
+            return result;
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -70,5 +85,19 @@ public class DayFive {
         int[][] field = new int[size][size];
 
         return field;
+    }
+}
+
+class Coordinates {
+    int startX = 0;
+    int startY = 0;
+    int endX = 0;
+    int endY = 0;
+
+    public Coordinates(int startX, int startY, int endX, int endY) {
+        this.startX = startX;
+        this.startY = startY;
+        this.endX = endX;
+        this.endY = endY;
     }
 }
