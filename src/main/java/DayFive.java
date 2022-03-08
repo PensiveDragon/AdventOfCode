@@ -23,7 +23,32 @@ public class DayFive {
         ArrayList<Coordinates> input = parseInput(testInputPath);
 
         //int[][] field = generateField(findBoardSize(input));
-        //displayField(field);
+        int[][] field = generateField(findBoardSize2(input));
+        displayField(field);
+    }
+
+    public static int findBoardSize2 (ArrayList<Coordinates> input) {
+        int result = 0;
+
+        for (int i = 0; i < input.size(); i++) {
+            if (input.get(i).startX > result) {
+                result = input.get(i).startX;
+            }
+            if (input.get(i).startY > result) {
+                result = input.get(i).startY;
+            }
+            if (input.get(i).endX > result) {
+                result = input.get(i).endX;
+            }
+            if (input.get(i).endY > result) {
+                result = input.get(i).endY;
+            }
+        }
+        /*
+        input.stream()
+                .map()
+        */
+        return result+1;
     }
 
     public static int findBoardSize (String[] input) {
