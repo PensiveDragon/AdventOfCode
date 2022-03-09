@@ -22,8 +22,22 @@ public class DayFive {
         String testInputPath = "src/main/resources/day5_test_input.txt";
         ArrayList<Coordinates> input = parseInput(testInputPath);
 
-        int[][] field = generateField(findBoardSize(input));
+        int[][] field = updateFieldFromCoordinates(input);
         displayField(field);
+    }
+
+    public static int[][] updateFieldFromCoordinates (ArrayList<Coordinates> coordinatesArrayList) {
+        int[][] field = generateField(findBoardSize(coordinatesArrayList));
+
+        for (Coordinates coordinates : coordinatesArrayList) {
+            coordinates.markOnField(field);
+        }
+        //coordinatesArrayList.get(0).markOnField(field);
+
+        // pick coordinateObject
+        // -> coordinateObject.markOnField(field)
+
+        return field;
     }
 
     public static int findBoardSize (ArrayList<Coordinates> input) {
@@ -109,5 +123,43 @@ class Coordinates {
         this.startY = startY;
         this.endX = endX;
         this.endY = endY;
+    }
+
+    public boolean isDiagonal () {
+        if (isVertical() | isHorizontal()) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    private boolean isHorizontal() {
+        return startY == endY;
+    }
+
+    private boolean isVertical() {
+        return startX == endX;
+    }
+
+    public void markOnField (int[][] field) {
+        if (isDiagonal()) {
+            System.out.println("Is diagonal - ignoring");
+        } else if (isHorizontal()) {
+            int minX = Math.min(startX, endX);
+            int maxX = Math.max(startX, endX);
+            for (int x = minX; x <= maxX; x++) {
+                field[startY][x]++;
+            }
+
+        } else if (isVertical()){
+            int minY = Math.min(startY, endY);
+            int maxY = Math.max(startY, endY);
+            for (int y = minY; y <= maxY; y++) {
+                field[y][startX]++;
+            }
+
+        } else {
+            throw new AssertionError("Should never get here!");
+        }
     }
 }
