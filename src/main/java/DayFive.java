@@ -20,10 +20,24 @@ public class DayFive {
         System.out.println("Boop");
 
         String testInputPath = "src/main/resources/day5_test_input.txt";
-        ArrayList<Coordinates> input = parseInput(testInputPath);
+        String inputPath = "src/main/resources/day5_input.txt";
+        ArrayList<Coordinates> input = parseInput(inputPath);
 
         int[][] field = updateFieldFromCoordinates(input);
         displayField(field);
+        countNumberOfOverlapsInField(field);
+    }
+
+    public static void countNumberOfOverlapsInField (int[][] field) {
+        int overlapCount = 0;
+        for (int row = 0; row < field[0].length; row++) {
+            for (int col = 0; col < field.length; col ++) {
+                if (field[row][col] > 1) {
+                    overlapCount++;
+                }
+            }
+        }
+        System.out.println("The number of overlaps is: " + overlapCount);
     }
 
     public static int[][] updateFieldFromCoordinates (ArrayList<Coordinates> coordinatesArrayList) {
@@ -32,11 +46,6 @@ public class DayFive {
         for (Coordinates coordinates : coordinatesArrayList) {
             coordinates.markOnField(field);
         }
-        //coordinatesArrayList.get(0).markOnField(field);
-
-        // pick coordinateObject
-        // -> coordinateObject.markOnField(field)
-
         return field;
     }
 
