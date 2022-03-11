@@ -21,7 +21,7 @@ public class DayFive {
 
         String testInputPath = "src/main/resources/day5_test_input.txt";
         String inputPath = "src/main/resources/day5_input.txt";
-        ArrayList<Coordinates> input = parseInput(inputPath);
+        ArrayList<Coordinates> input = parseInput(testInputPath);
 
         int[][] field = updateFieldFromCoordinates(input);
         displayField(field);
@@ -152,7 +152,22 @@ class Coordinates {
 
     public void markOnField (int[][] field) {
         if (isDiagonal()) {
-            System.out.println("Is diagonal - ignoring");
+            //System.out.println("Is diagonal - ignoring");
+            int horizontalDirection = endX - startX;
+            int verticalDirection = endY - startY;
+            String diagDesc = "";
+            if (horizontalDirection > 0) {
+                diagDesc += "Right / ";
+            } else {
+                diagDesc += "Left / ";
+            }
+            if (verticalDirection > 0) {
+                diagDesc += "Down";
+            } else {
+                diagDesc += "Up";
+            }
+            System.out.println(diagDesc + " (" + horizontalDirection + " | " + verticalDirection + ")");
+
         } else if (isHorizontal()) {
             int minX = Math.min(startX, endX);
             int maxX = Math.max(startX, endX);
