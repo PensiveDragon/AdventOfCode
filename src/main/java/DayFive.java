@@ -153,6 +153,17 @@ class Coordinates {
     public void markOnField (int[][] field) {
         if (isDiagonal()) {
             //System.out.println("Is diagonal - ignoring");
+            int minX = Math.min(startX, endX);
+            int maxX = Math.max(startX, endX);
+            boolean upDiagonal = true;
+            if (startY < endY) {
+                upDiagonal = false;
+            }
+            for (int x = minX; x <= maxX; x++) {
+                field[startY][x]++;
+            }
+
+            /*
             int horizontalDirection = endX - startX;
             int verticalDirection = endY - startY;
             String diagDesc = "";
@@ -167,21 +178,22 @@ class Coordinates {
                 diagDesc += "Up";
             }
             System.out.println(diagDesc + " (" + horizontalDirection + " | " + verticalDirection + ")");
+            */
 
-        } else if (isHorizontal()) {
+        } else if (isHorizontal()) {/*
             int minX = Math.min(startX, endX);
             int maxX = Math.max(startX, endX);
             for (int x = minX; x <= maxX; x++) {
                 field[startY][x]++;
             }
-
-        } else if (isVertical()){
+*/
+        } else if (isVertical()){/*
             int minY = Math.min(startY, endY);
             int maxY = Math.max(startY, endY);
             for (int y = minY; y <= maxY; y++) {
                 field[y][startX]++;
             }
-
+*/
         } else {
             throw new AssertionError("Should never get here!");
         }
