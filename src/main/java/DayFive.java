@@ -153,6 +153,7 @@ class Coordinates {
     public void markOnField (int[][] field) {
         if (isDiagonal()) {
             //System.out.println("Is diagonal - ignoring");
+            /*
             int minX = Math.min(startX, endX);
             int maxX = Math.max(startX, endX);
             boolean upDiagonal = true;
@@ -162,10 +163,11 @@ class Coordinates {
             for (int x = minX; x <= maxX; x++) {
                 field[startY][x]++;
             }
+            */
 
-            /*
             int horizontalDirection = endX - startX;
             int verticalDirection = endY - startY;
+            System.out.println();
             String diagDesc = "";
             if (horizontalDirection > 0) {
                 diagDesc += "Right / ";
@@ -178,7 +180,7 @@ class Coordinates {
                 diagDesc += "Up";
             }
             System.out.println(diagDesc + " (" + horizontalDirection + " | " + verticalDirection + ")");
-            */
+
 
         } else if (isHorizontal()) {/*
             int minX = Math.min(startX, endX);
