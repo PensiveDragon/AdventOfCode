@@ -165,6 +165,15 @@ class Coordinates {
             }
             */
 
+            // Assumption is that the diagonals travel down and right, include flags to determine if either are flipped
+
+            int minX = Math.min(startX, endX);
+            int maxX = Math.max(startX, endX);
+
+            for (int x = minX; x <= maxX; x++) {
+                field[startY++][x]++;
+            }
+
             int horizontalDirection = endX - startX;
             int verticalDirection = endY - startY;
             System.out.println();
