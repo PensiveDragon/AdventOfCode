@@ -21,7 +21,7 @@ public class DayFive {
 
         String testInputPath = "src/main/resources/day5_test_input.txt";
         String inputPath = "src/main/resources/day5_input.txt";
-        ArrayList<Coordinates> input = parseInput(testInputPath);
+        ArrayList<Coordinates> input = parseInput(inputPath);
 
         int[][] field = updateFieldFromCoordinates(input);
         displayField(field);
@@ -172,13 +172,13 @@ class Coordinates {
 
             for (int steps = minX; steps <= maxX; steps++) {
 
-                field[startX][startY]++;
-                if (startX < endX) {
+                field[startY][startX]++;
+                if (startX <= endX) {
                     startX++;
                 } else {
                     startX--;
                 }
-                if (startY < endY) {
+                if (startY <= endY) {
                     startY++;
                 } else {
                     startY--;
