@@ -25,16 +25,18 @@ public class DaySix {
     }
 
     public static ArrayList<lanternFishSchool> setUpEvolutionTracker() {
-        ArrayList<lanternFishSchool> evolutionTracker = new ArrayList<lanternFishSchool>(8);
+        ArrayList<lanternFishSchool> evolutionTracker = new ArrayList<lanternFishSchool>();
         evolutionTracker.add(new lanternFishSchool("zero", 0));
-        evolutionTracker.add(new lanternFishSchool("one", 1));
-        evolutionTracker.add(new lanternFishSchool("two", 2));
-        evolutionTracker.add(new lanternFishSchool("three", 3));
-        evolutionTracker.add(new lanternFishSchool("four", 4));
-        evolutionTracker.add(new lanternFishSchool("five", 5));
-        evolutionTracker.add(new lanternFishSchool("six", 6));
-        evolutionTracker.add(new lanternFishSchool("seven", 7));
-        evolutionTracker.add(new lanternFishSchool("eight", 8));
+        evolutionTracker.add(new lanternFishSchool("one", 0));
+        evolutionTracker.add(new lanternFishSchool("two", 0));
+        evolutionTracker.add(new lanternFishSchool("three", 0));
+        evolutionTracker.add(new lanternFishSchool("four", 0));
+        evolutionTracker.add(new lanternFishSchool("five", 0));
+        evolutionTracker.add(new lanternFishSchool("six", 0));
+        evolutionTracker.add(new lanternFishSchool("seven", 0));
+        evolutionTracker.add(new lanternFishSchool("eight", 0));
+
+        //System.out.println(evolutionTracker.get(8).bracket_name);
 
         return evolutionTracker;
     }
@@ -42,18 +44,29 @@ public class DaySix {
     public static ArrayList<lanternFishSchool> parseInput(String inputLocation) {
         ArrayList<lanternFishSchool> lanternFishSchools = setUpEvolutionTracker();
 
-        ArrayList<String> drawnNumbersList = new ArrayList<>();
+        ArrayList<String> nearbyFishAssessment = new ArrayList<>();
 
         try {
             List<String> input = Files.readAllLines(Paths.get(inputLocation));
 
             for (int i = 0; i < input.size(); i++) {
-                drawnNumbersList = new ArrayList<>(Arrays.asList(input.get(i).split(",")));
+                nearbyFishAssessment = new ArrayList<>(Arrays.asList(input.get(i).split(",")));
             }
 
-            for (String num : drawnNumbersList) {
-                System.out.println(num);
+            //System.out.println(lanternFishSchools.get(1).bracket_name + " | " + lanternFishSchools.get(1).bracket_population);
 
+            for (String num : nearbyFishAssessment) {
+                System.out.println(num);
+                switch (num) {
+                    case "0":
+                        lanternFishSchools.get(0).bracket_population++;
+                        System.out.println(lanternFishSchools.get(0).bracket_name + " | " + lanternFishSchools.get(0).bracket_population);
+                        break;
+                    case "1":
+                        lanternFishSchools.get(1).bracket_population++;
+                        System.out.println(lanternFishSchools.get(1).bracket_name + " | " + lanternFishSchools.get(1).bracket_population);
+                        break;
+                }
             }
 
 
@@ -61,7 +74,7 @@ public class DaySix {
             e.printStackTrace();
         }
 
-        return evolutionTracker;
+        return lanternFishSchools;
     }
 
     public static ArrayList<Coordinates> parseInput2(String path) {
