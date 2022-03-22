@@ -21,20 +21,28 @@ public class DaySix {
 
         String inputString = "src/main/resources/day6_input.txt";
 
-        parseInput(inputString);
+        ArrayList<lanternFishSchool> lanternFishSchools = parseInput(inputString);
+        displayAllBracketCounts(lanternFishSchools);
+    }
+
+    public static void displayAllBracketCounts (ArrayList<lanternFishSchool> lanternFishSchools) {
+        System.out.println("Lantern Fish Schools Summary:");
+        for (int i = 0; i < lanternFishSchools.size(); i++) {
+            System.out.println(lanternFishSchools.get(i).bracket_name + " | " + lanternFishSchools.get(i).bracket_population);
+        }
     }
 
     public static ArrayList<lanternFishSchool> setUpEvolutionTracker() {
-        ArrayList<lanternFishSchool> evolutionTracker = new ArrayList<lanternFishSchool>();
-        evolutionTracker.add(new lanternFishSchool("zero", 0));
-        evolutionTracker.add(new lanternFishSchool("one", 0));
-        evolutionTracker.add(new lanternFishSchool("two", 0));
-        evolutionTracker.add(new lanternFishSchool("three", 0));
-        evolutionTracker.add(new lanternFishSchool("four", 0));
-        evolutionTracker.add(new lanternFishSchool("five", 0));
-        evolutionTracker.add(new lanternFishSchool("six", 0));
-        evolutionTracker.add(new lanternFishSchool("seven", 0));
-        evolutionTracker.add(new lanternFishSchool("eight", 0));
+        ArrayList<lanternFishSchool> evolutionTracker = new ArrayList<lanternFishSchool>(8);
+        evolutionTracker.add(new lanternFishSchool("0", 0));
+        evolutionTracker.add(new lanternFishSchool("1", 0));
+        evolutionTracker.add(new lanternFishSchool("2", 0));
+        evolutionTracker.add(new lanternFishSchool("3", 0));
+        evolutionTracker.add(new lanternFishSchool("4", 0));
+        evolutionTracker.add(new lanternFishSchool("5", 0));
+        evolutionTracker.add(new lanternFishSchool("6", 0));
+        evolutionTracker.add(new lanternFishSchool("7", 0));
+        evolutionTracker.add(new lanternFishSchool("8", 0));
 
         //System.out.println(evolutionTracker.get(8).bracket_name);
 
@@ -56,31 +64,31 @@ public class DaySix {
             //System.out.println(lanternFishSchools.get(1).bracket_name + " | " + lanternFishSchools.get(1).bracket_population);
 
             for (String num : nearbyFishAssessment) {
-                System.out.println(num);
+                //System.out.println(num);
                 switch (num) {
                     case "0":
                         lanternFishSchools.get(0).bracket_population++;
-                        System.out.println(lanternFishSchools.get(0).bracket_name + " | " + lanternFishSchools.get(0).bracket_population);
+                        //System.out.println(lanternFishSchools.get(0).bracket_name + " | " + lanternFishSchools.get(0).bracket_population);
                         break;
                     case "1":
                         lanternFishSchools.get(1).bracket_population++;
-                        System.out.println(lanternFishSchools.get(1).bracket_name + " | " + lanternFishSchools.get(1).bracket_population);
+                        //System.out.println(lanternFishSchools.get(1).bracket_name + " | " + lanternFishSchools.get(1).bracket_population);
                         break;
                     case "2":
                         lanternFishSchools.get(2).bracket_population++;
-                        System.out.println(lanternFishSchools.get(2).bracket_name + " | " + lanternFishSchools.get(2).bracket_population);
+                        //System.out.println(lanternFishSchools.get(2).bracket_name + " | " + lanternFishSchools.get(2).bracket_population);
                         break;
                     case "3":
                         lanternFishSchools.get(3).bracket_population++;
-                        System.out.println(lanternFishSchools.get(3).bracket_name + " | " + lanternFishSchools.get(3).bracket_population);
+                        //System.out.println(lanternFishSchools.get(3).bracket_name + " | " + lanternFishSchools.get(3).bracket_population);
                         break;
                     case "4":
                         lanternFishSchools.get(4).bracket_population++;
-                        System.out.println(lanternFishSchools.get(4).bracket_name + " | " + lanternFishSchools.get(4).bracket_population);
+                        //System.out.println(lanternFishSchools.get(4).bracket_name + " | " + lanternFishSchools.get(4).bracket_population);
                         break;
                     case "5":
                         lanternFishSchools.get(5).bracket_population++;
-                        System.out.println(lanternFishSchools.get(5).bracket_name + " | " + lanternFishSchools.get(5).bracket_population);
+                        //System.out.println(lanternFishSchools.get(5).bracket_name + " | " + lanternFishSchools.get(5).bracket_population);
                         break;
 
                 }
