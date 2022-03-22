@@ -66,6 +66,23 @@ public class DaySix {
                         lanternFishSchools.get(1).bracket_population++;
                         System.out.println(lanternFishSchools.get(1).bracket_name + " | " + lanternFishSchools.get(1).bracket_population);
                         break;
+                    case "2":
+                        lanternFishSchools.get(2).bracket_population++;
+                        System.out.println(lanternFishSchools.get(2).bracket_name + " | " + lanternFishSchools.get(2).bracket_population);
+                        break;
+                    case "3":
+                        lanternFishSchools.get(3).bracket_population++;
+                        System.out.println(lanternFishSchools.get(3).bracket_name + " | " + lanternFishSchools.get(3).bracket_population);
+                        break;
+                    case "4":
+                        lanternFishSchools.get(4).bracket_population++;
+                        System.out.println(lanternFishSchools.get(4).bracket_name + " | " + lanternFishSchools.get(4).bracket_population);
+                        break;
+                    case "5":
+                        lanternFishSchools.get(5).bracket_population++;
+                        System.out.println(lanternFishSchools.get(5).bracket_name + " | " + lanternFishSchools.get(5).bracket_population);
+                        break;
+
                 }
             }
 
