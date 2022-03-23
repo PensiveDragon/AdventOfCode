@@ -23,6 +23,23 @@ public class DaySix {
 
         ArrayList<lanternFishSchool> lanternFishSchools = parseInput(inputString);
         displayAllBracketCounts(lanternFishSchools);
+
+        iterateTimeOneDay(lanternFishSchools);
+    }
+
+    public static ArrayList<lanternFishSchool> iterateTimeOneDay (ArrayList<lanternFishSchool> lanternFishSchools) {
+
+        int school0value = lanternFishSchools.get(0).bracket_population;
+
+        for (int schoolNum = 0; schoolNum < 7; schoolNum++) {
+            lanternFishSchools.get(schoolNum).bracket_population = lanternFishSchools.get(schoolNum+1).bracket_population;
+        }
+
+        // calculateSchool0Effects
+
+        displayAllBracketCounts(lanternFishSchools);
+
+        return lanternFishSchools;
     }
 
     public static void displayAllBracketCounts (ArrayList<lanternFishSchool> lanternFishSchools) {
@@ -30,6 +47,7 @@ public class DaySix {
         for (int i = 0; i < lanternFishSchools.size(); i++) {
             System.out.println(lanternFishSchools.get(i).bracket_name + " | " + lanternFishSchools.get(i).bracket_population);
         }
+        System.out.println();
     }
 
     public static ArrayList<lanternFishSchool> setUpEvolutionTracker() {
