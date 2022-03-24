@@ -16,6 +16,9 @@ public class DaySix {
     // > Method iterating fish down ranks of values
     // > Fish at value 0 reset to 6 and create new fish at 8
 
+    static int currentDay = 0;
+
+
     public static void main(String args[]) {
         System.out.println("Moo");
 
@@ -24,10 +27,21 @@ public class DaySix {
         ArrayList<lanternFishSchool> lanternFishSchools = parseInput(inputString);
         displayAllBracketCounts(lanternFishSchools);
 
-        iterateTimeOneDay(lanternFishSchools);
+
+        lanternFishSchools = iterateTimeOneDay(lanternFishSchools);
+    }
+
+    public static ArrayList<lanternFishSchool> calculateSchool0Effects (int school0value, ArrayList<lanternFishSchool> lanternFishSchools) {
+
+        lanternFishSchools.get(6).bracket_population += school0value;
+        lanternFishSchools.get(8).bracket_population += school0value;
+
+        return lanternFishSchools;
     }
 
     public static ArrayList<lanternFishSchool> iterateTimeOneDay (ArrayList<lanternFishSchool> lanternFishSchools) {
+
+        currentDay++;
 
         int school0value = lanternFishSchools.get(0).bracket_population;
 
@@ -35,7 +49,7 @@ public class DaySix {
             lanternFishSchools.get(schoolNum).bracket_population = lanternFishSchools.get(schoolNum+1).bracket_population;
         }
 
-        // calculateSchool0Effects
+        lanternFishSchools = calculateSchool0Effects(school0value, lanternFishSchools);
 
         displayAllBracketCounts(lanternFishSchools);
 
@@ -43,7 +57,7 @@ public class DaySix {
     }
 
     public static void displayAllBracketCounts (ArrayList<lanternFishSchool> lanternFishSchools) {
-        System.out.println("Lantern Fish Schools Summary:");
+        System.out.println("Lantern Fish Schools Summary for round [" + currentDay + "]:");
         for (int i = 0; i < lanternFishSchools.size(); i++) {
             System.out.println(lanternFishSchools.get(i).bracket_name + " | " + lanternFishSchools.get(i).bracket_population);
         }
