@@ -17,18 +17,31 @@ public class DaySix {
     // > Fish at value 0 reset to 6 and create new fish at 8
 
     static int currentDay = 0;
-
+    static int numberOfDays = 18;
 
     public static void main(String args[]) {
         System.out.println("Moo");
 
-        String inputString = "src/main/resources/day6_input.txt";
+        String inputString = "src/main/resources/day6_test_input.txt";
 
         ArrayList<lanternFishSchool> lanternFishSchools = parseInput(inputString);
         displayAllBracketCounts(lanternFishSchools);
 
+        for (int i = 0; i < numberOfDays; i++) {
+            lanternFishSchools = iterateTimeOneDay(lanternFishSchools);
+        }
 
-        lanternFishSchools = iterateTimeOneDay(lanternFishSchools);
+        sumAllFish(lanternFishSchools);
+    }
+
+    public static void sumAllFish (ArrayList<lanternFishSchool> lanternFishSchools) {
+        int totalFishCount = 0;
+
+        for (int num = 0; num < lanternFishSchools.size(); num++) {
+            totalFishCount += lanternFishSchools.get(num).bracket_population;
+        }
+
+        System.out.println("Total fish count = " + totalFishCount);
     }
 
     public static ArrayList<lanternFishSchool> calculateSchool0Effects (int school0value, ArrayList<lanternFishSchool> lanternFishSchools) {
@@ -45,9 +58,11 @@ public class DaySix {
 
         int school0value = lanternFishSchools.get(0).bracket_population;
 
-        for (int schoolNum = 0; schoolNum < 7; schoolNum++) {
+        for (int schoolNum = 0; schoolNum < 8; schoolNum++) {
+            //System.out.println("Bracket " + schoolNum + "(" + lanternFishSchools.get(schoolNum).bracket_population + ") inherits value from Bracket " + (schoolNum+1) + "(" + lanternFishSchools.get(schoolNum+1).bracket_population + ")");
             lanternFishSchools.get(schoolNum).bracket_population = lanternFishSchools.get(schoolNum+1).bracket_population;
         }
+        lanternFishSchools.get(8).bracket_population = 0;
 
         lanternFishSchools = calculateSchool0Effects(school0value, lanternFishSchools);
 
