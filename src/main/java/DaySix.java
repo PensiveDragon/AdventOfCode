@@ -18,7 +18,7 @@ public class DaySix {
     // Change counting numerics to bigger types to accommodate higher values.
 
     static int currentDay = 0;
-    static int numberOfDays = 80;
+    static int numberOfDays = 256;
 
     public static void main(String args[]) {
         System.out.println("Moo");
@@ -36,7 +36,7 @@ public class DaySix {
     }
 
     public static void sumAllFish (ArrayList<lanternFishSchool> lanternFishSchools) {
-        int totalFishCount = 0;
+        long totalFishCount = 0;
 
         for (int num = 0; num < lanternFishSchools.size(); num++) {
             totalFishCount += lanternFishSchools.get(num).bracket_population;
@@ -45,7 +45,7 @@ public class DaySix {
         System.out.println("Total fish count = " + totalFishCount);
     }
 
-    public static ArrayList<lanternFishSchool> calculateSchool0Effects (int school0value, ArrayList<lanternFishSchool> lanternFishSchools) {
+    public static ArrayList<lanternFishSchool> calculateSchool0Effects (long school0value, ArrayList<lanternFishSchool> lanternFishSchools) {
 
         lanternFishSchools.get(6).bracket_population += school0value;
         lanternFishSchools.get(8).bracket_population += school0value;
@@ -57,7 +57,7 @@ public class DaySix {
 
         currentDay++;
 
-        int school0value = lanternFishSchools.get(0).bracket_population;
+        long school0value = lanternFishSchools.get(0).bracket_population;
 
         for (int schoolNum = 0; schoolNum < 8; schoolNum++) {
             //System.out.println("Bracket " + schoolNum + "(" + lanternFishSchools.get(schoolNum).bracket_population + ") inherits value from Bracket " + (schoolNum+1) + "(" + lanternFishSchools.get(schoolNum+1).bracket_population + ")");
@@ -183,9 +183,9 @@ public class DaySix {
 
 class lanternFishSchool {
     String bracket_name = "";
-    int bracket_population = 0;
+    long bracket_population = 0;
 
-    public lanternFishSchool(String bracket_name, int bracket_population) {
+    public lanternFishSchool(String bracket_name, long bracket_population) {
         this.bracket_name = bracket_name;
         this.bracket_population = bracket_population;
     }
