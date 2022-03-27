@@ -23,7 +23,7 @@ public class DaySix {
     public static void main(String args[]) {
         System.out.println("Moo");
 
-        String inputString = "src/main/resources/day6_test_input.txt";
+        String inputString = "src/main/resources/day6_input.txt";
 
         ArrayList<lanternFishSchool> lanternFishSchools = parseInput(inputString);
         displayAllBracketCounts(lanternFishSchools);
