@@ -16,7 +16,15 @@ public class DayEight {
 
     public static void main (String args[]) {
         System.out.println("Moo");
-        parseInput(testInputPath);
+        ArrayList<String> input = parseInput(testInputPath);
+        iterateList(input);
+    }
+
+    public static void iterateList (ArrayList<String> inputArrayList) {
+        for (String line : inputArrayList) {
+            System.out.println(line);
+
+        }
     }
 
     public static ArrayList<String> parseInput (String path) {
