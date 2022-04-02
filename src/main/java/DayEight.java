@@ -2,6 +2,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -18,6 +19,14 @@ public class DayEight {
         System.out.println("Moo");
         ArrayList<String> input = parseInput(testInputPath);
         iterateList(input);
+    }
+
+    public static ArrayList<String> parseLineNumbers (String line) {
+        ArrayList<String> split = new ArrayList<>(Arrays.asList(line.split("|")));
+
+        ArrayList<String> parsedNumbersList = new ArrayList<>(Arrays.asList(split.get(0).split(" ")));
+
+        return parsedNumbersList;
     }
 
     public static void iterateList (ArrayList<String> inputArrayList) {
