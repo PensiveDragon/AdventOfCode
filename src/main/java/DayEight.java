@@ -22,8 +22,7 @@ public class DayEight {
     }
 
     public static ArrayList<String> parseLineNumbers (String line) {
-        ArrayList<String> split = new ArrayList<>(Arrays.asList(line.split("|")));
-
+        ArrayList<String> split = new ArrayList<>(Arrays.asList(line.split("\\|")));
         ArrayList<String> parsedNumbersList = new ArrayList<>(Arrays.asList(split.get(0).split(" ")));
 
         return parsedNumbersList;
@@ -32,7 +31,8 @@ public class DayEight {
     public static void iterateList (ArrayList<String> inputArrayList) {
         for (String line : inputArrayList) {
             System.out.println(line);
-
+            ArrayList<String> lineNumbers = parseLineNumbers(line);
+            System.out.println(lineNumbers);
         }
     }
 
