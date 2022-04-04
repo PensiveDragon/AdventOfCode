@@ -21,6 +21,13 @@ public class DayEight {
         iterateList(input);
     }
 
+    public static ArrayList<String> parseLineOutputValues (String line) {
+        ArrayList<String> split = new ArrayList<>(Arrays.asList(line.split("\\|")));
+        ArrayList<String> parsedNumbersList = new ArrayList<>(Arrays.asList(split.get(1).trim().split(" ")));
+
+        return parsedNumbersList;
+    }
+
     public static ArrayList<String> parseLineNumbers (String line) {
         ArrayList<String> split = new ArrayList<>(Arrays.asList(line.split("\\|")));
         ArrayList<String> parsedNumbersList = new ArrayList<>(Arrays.asList(split.get(0).split(" ")));
@@ -33,6 +40,9 @@ public class DayEight {
             System.out.println(line);
             ArrayList<String> lineNumbers = parseLineNumbers(line);
             System.out.println(lineNumbers);
+            ArrayList<String> lineOutput = parseLineOutputValues(line);
+            System.out.println(lineOutput);
+
         }
     }
 
