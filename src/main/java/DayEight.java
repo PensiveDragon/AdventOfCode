@@ -19,6 +19,15 @@ public class DayEight {
         System.out.println("Moo");
         ArrayList<String> input = parseInput(testInputPath);
         iterateList(input);
+
+    }
+
+    public static void countUniqueValues (ArrayList<String> lineOutput) {
+        for (String string : lineOutput) {
+            if (string.length() == 2) {
+                System.out.println("This is a 1!");
+            }
+        }
     }
 
     public static ArrayList<String> parseLineOutputValues (String line) {
@@ -38,10 +47,14 @@ public class DayEight {
     public static void iterateList (ArrayList<String> inputArrayList) {
         for (String line : inputArrayList) {
             System.out.println(line);
+
             ArrayList<String> lineNumbers = parseLineNumbers(line);
             System.out.println(lineNumbers);
+
             ArrayList<String> lineOutput = parseLineOutputValues(line);
             System.out.println(lineOutput);
+
+            countUniqueValues(lineOutput);
 
         }
     }
