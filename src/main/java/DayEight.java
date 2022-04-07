@@ -24,8 +24,14 @@ public class DayEight {
 
     }
 
-    public static void countUniqueValues (ArrayList<String> lineOutput) {
+    public static void mapNumbers (ArrayList<String> line) {
+        // work out what elements appear in each number uniquely
+        // if in 3 letters, but not in 2 letters = top cell
+        //
 
+    }
+
+    public static void countUniqueValues (ArrayList<String> lineOutput) {
 
         for (String string : lineOutput) {
             if (string.length() == 2) {
