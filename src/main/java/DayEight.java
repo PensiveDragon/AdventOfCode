@@ -26,8 +26,13 @@ public class DayEight {
 
     public static void mapNumbers (ArrayList<String> line) {
         // work out what elements appear in each number uniquely
-        // if in 3 letters, but not in 2 letters = top cell
-        //
+        // if in 3 segment number , but not in 2 segment number = top cell
+        // cell number that only appears 6 times = top left
+        // cell number that only appears 8 times & has a value from 1 = top right
+        // cell number that only appears 8 times & does not have a value from 7 = middle
+        // cell number that only appears 4 times = bottom left
+        // cell number that only appears 9 times = bottom right
+        // cell number that only appears 7 times = bottom
 
     }
 
