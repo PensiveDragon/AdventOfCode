@@ -34,6 +34,20 @@ public class DayEight {
         // cell number that only appears 9 times = bottom right
         // cell number that only appears 7 times = bottom
 
+        System.out.println("Decyphering line: " + line);
+
+        for (String word : line) {
+            if (word.length() == 2) {
+                System.out.println("We have found the number 1");
+            } else if (word.length() == 4) {
+                System.out.println("We have found the number 4");
+            } else if (word.length() == 3) {
+                System.out.println("We have found the number 7");
+            } else if (word.length() == 7) {
+                System.out.println("We have found the number 8");
+            }
+        }
+
     }
 
     public static void countUniqueValues (ArrayList<String> lineOutput) {
@@ -77,13 +91,13 @@ public class DayEight {
             System.out.println(line);
 
             ArrayList<String> lineNumbers = parseLineNumbers(line);
-            System.out.println(lineNumbers);
+            //System.out.println(lineNumbers);
 
             ArrayList<String> lineOutput = parseLineOutputValues(line);
-            System.out.println(lineOutput);
+            //System.out.println(lineOutput);
 
-            countUniqueValues(lineOutput);
-
+            //countUniqueValues(lineOutput);
+            mapNumbers(lineNumbers);
         }
     }
 
