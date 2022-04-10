@@ -37,6 +37,15 @@ public class DayEight {
         System.out.println("Decyphering line: " + line);
 
         for (String word : line) {
+            for (int position = 0; position < word.length(); position++) {
+                char letter = word.charAt(position);
+                System.out.println(letter);
+
+
+            }
+        }
+
+        for (String word : line) {
             if (word.length() == 2) {
                 System.out.println("We have found the number 1");
             } else if (word.length() == 4) {
