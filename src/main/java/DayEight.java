@@ -3,6 +3,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -24,6 +25,10 @@ public class DayEight {
 
     }
 
+    public static void addToList (char letter) {
+
+    }
+
     public static void mapNumbers (ArrayList<String> line) {
         // work out what elements appear in each number uniquely
         // if in 3 segment number , but not in 2 segment number = top cell
@@ -36,13 +41,20 @@ public class DayEight {
 
         System.out.println("Decyphering line: " + line);
 
+
+
         for (String word : line) {
+
+            LettersList lettersList = new LettersList();
+
             for (int position = 0; position < word.length(); position++) {
                 char letter = word.charAt(position);
                 System.out.println(letter);
-
+                lettersList.addLetter(letter);
 
             }
+
+
         }
 
         for (String word : line) {
@@ -128,5 +140,24 @@ public class DayEight {
         }
 
         return null;
+    }
+}
+
+class LettersList {
+    HashMap<Character, Integer> charList = new HashMap<>();
+/*
+    public lettersList(HashMap<Character, Integer> charList) {
+        this.charList = charList;
+    }
+*/
+    public void addLetter (Character letter) {
+        if (charList.get(letter) == null) {
+            charList.put(letter, 0);
+        } else if (charList.get(letter) != null) {
+            charList.put(letter, charList.get(letter) + 1);
+        } else {
+            System.out.println("Error: shouldn't have got here!");
+        }
+
     }
 }
