@@ -34,10 +34,10 @@ public class DayEight {
         // if in 3 segment number , but not in 2 segment number = top cell
         // cell number that only appears 6 times = top left
         // cell number that only appears 8 times & has a value from 1 = top right
-        // cell number that only appears 8 times & does not have a value from 7 = middle
+        // cell number that only appears 7 times & has a value from 4 = middle
         // cell number that only appears 4 times = bottom left
         // cell number that only appears 9 times = bottom right
-        // cell number that only appears 7 times = bottom
+        // cell number that only appears 7 times & does not have a value from 4 = bottom
 
         System.out.println("Decyphering line: " + line);
 
@@ -45,17 +45,16 @@ public class DayEight {
 
         for (String word : line) {
 
-
             for (int position = 0; position < word.length(); position++) {
                 char letter = word.charAt(position);
                 System.out.println(letter);
                 lettersList.addLetter(letter);
                 //System.out.println(lettersList);
             }
-
-            lettersList.showList();
         }
 
+        lettersList.showList();
+/*
         for (String word : line) {
             if (word.length() == 2) {
                 System.out.println("We have found the number 1");
@@ -67,6 +66,8 @@ public class DayEight {
                 System.out.println("We have found the number 8");
             }
         }
+
+ */
     }
 
     public static void countUniqueValues(ArrayList<String> lineOutput) {
@@ -151,7 +152,7 @@ class LettersList {
     */
     public void addLetter(Character letter) {
         if (charList.get(letter) == null) {
-            charList.put(letter, 0);
+            charList.put(letter, 1);
         } else if (charList.get(letter) != null) {
             charList.put(letter, charList.get(letter) + 1);
         } else {
@@ -161,8 +162,9 @@ class LettersList {
     }
 
     public void showList() {
-        for (int val = 0; val < charList.size(); val++) {
-            System.out.println("Letter x appears y times");
+
+        for (char key : charList.keySet()) {
+            System.out.println("Letter " + key + " appears " + charList.get(key) + " times.");
         }
     }
 }
