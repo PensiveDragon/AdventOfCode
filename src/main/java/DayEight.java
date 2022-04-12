@@ -18,18 +18,18 @@ public class DayEight {
 
     static int numberOfUniqueValues = 0;
 
-    public static void main (String args[]) {
+    public static void main(String args[]) {
         System.out.println("Moo");
         ArrayList<String> input = parseInput(testInputPath);
         iterateList(input);
 
     }
 
-    public static void addToList (char letter) {
+    public static void addToList(char letter) {
 
     }
 
-    public static void mapNumbers (ArrayList<String> line) {
+    public static void mapNumbers(ArrayList<String> line) {
         // work out what elements appear in each number uniquely
         // if in 3 segment number , but not in 2 segment number = top cell
         // cell number that only appears 6 times = top left
@@ -41,20 +41,19 @@ public class DayEight {
 
         System.out.println("Decyphering line: " + line);
 
-
+        LettersList lettersList = new LettersList();
 
         for (String word : line) {
 
-            LettersList lettersList = new LettersList();
 
             for (int position = 0; position < word.length(); position++) {
                 char letter = word.charAt(position);
                 System.out.println(letter);
                 lettersList.addLetter(letter);
-
+                //System.out.println(lettersList);
             }
 
-
+            lettersList.showList();
         }
 
         for (String word : line) {
@@ -68,10 +67,9 @@ public class DayEight {
                 System.out.println("We have found the number 8");
             }
         }
-
     }
 
-    public static void countUniqueValues (ArrayList<String> lineOutput) {
+    public static void countUniqueValues(ArrayList<String> lineOutput) {
 
         for (String string : lineOutput) {
             if (string.length() == 2) {
@@ -93,21 +91,21 @@ public class DayEight {
         System.out.println("There are this many unique value numbers: " + numberOfUniqueValues);
     }
 
-    public static ArrayList<String> parseLineOutputValues (String line) {
+    public static ArrayList<String> parseLineOutputValues(String line) {
         ArrayList<String> split = new ArrayList<>(Arrays.asList(line.split("\\|")));
         ArrayList<String> parsedNumbersList = new ArrayList<>(Arrays.asList(split.get(1).trim().split(" ")));
 
         return parsedNumbersList;
     }
 
-    public static ArrayList<String> parseLineNumbers (String line) {
+    public static ArrayList<String> parseLineNumbers(String line) {
         ArrayList<String> split = new ArrayList<>(Arrays.asList(line.split("\\|")));
         ArrayList<String> parsedNumbersList = new ArrayList<>(Arrays.asList(split.get(0).split(" ")));
 
         return parsedNumbersList;
     }
 
-    public static void iterateList (ArrayList<String> inputArrayList) {
+    public static void iterateList(ArrayList<String> inputArrayList) {
         for (String line : inputArrayList) {
             System.out.println(line);
 
@@ -122,7 +120,7 @@ public class DayEight {
         }
     }
 
-    public static ArrayList<String> parseInput (String path) {
+    public static ArrayList<String> parseInput(String path) {
 
         ArrayList<String> allInput = new ArrayList<>();
 
@@ -145,12 +143,13 @@ public class DayEight {
 
 class LettersList {
     HashMap<Character, Integer> charList = new HashMap<>();
-/*
-    public lettersList(HashMap<Character, Integer> charList) {
-        this.charList = charList;
-    }
-*/
-    public void addLetter (Character letter) {
+
+    /*
+        public lettersList(HashMap<Character, Integer> charList) {
+            this.charList = charList;
+        }
+    */
+    public void addLetter(Character letter) {
         if (charList.get(letter) == null) {
             charList.put(letter, 0);
         } else if (charList.get(letter) != null) {
@@ -160,4 +159,11 @@ class LettersList {
         }
 
     }
+
+    public void showList() {
+        for (int val = 0; val < charList.size(); val++) {
+            System.out.println("Letter x appears y times");
+        }
+    }
 }
+
