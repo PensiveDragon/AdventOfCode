@@ -54,6 +54,7 @@ public class DayEight {
         }
 
         lettersList.showList();
+        lettersList.identifySegments();
 /*
         for (String word : line) {
             if (word.length() == 2) {
@@ -161,10 +162,43 @@ class LettersList {
 
     }
 
+    public void identifySegments() {
+
+        for (char key : charList.keySet()) {
+            switch (charList.get(key)) {
+                case 4:
+                    System.out.println("Segment " + key + " is Lower Left");
+                    break;
+
+                case 6:
+                    System.out.println("Segment " + key + " is Upper Left");
+                    break;
+
+                case 7:
+                    // if contains letters for no.1 = upper right, otherwise upper mid
+                    break;
+
+                case 8:
+                    // if contains letters for no.0 = lower mid, otherwise mid
+                    break;
+
+                case 9:
+                    System.out.println("Segment " + key + " is Lower Right");
+                    break;
+
+                default:
+                    System.out.println("Something went wrong.");
+                    break;
+            }
+            //System.out.println("Segment " + key + " appears " + charList.get(key) + " times.");
+        }
+
+    }
+
     public void showList() {
 
         for (char key : charList.keySet()) {
-            System.out.println("Letter " + key + " appears " + charList.get(key) + " times.");
+            System.out.println("Segment " + key + " appears " + charList.get(key) + " times.");
         }
     }
 }
