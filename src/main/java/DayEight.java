@@ -54,7 +54,7 @@ public class DayEight {
         }
 
         lettersList.showList();
-        lettersList.identifySegments();
+        lettersList.identifySegments(line);
 /*
         for (String word : line) {
             if (word.length() == 2) {
@@ -162,7 +162,7 @@ class LettersList {
 
     }
 
-    public void identifySegments() {
+    public void identifySegments(ArrayList<String> line) {
 
         for (char key : charList.keySet()) {
             switch (charList.get(key)) {
@@ -175,11 +175,19 @@ class LettersList {
                     break;
 
                 case 7:
-                    // if contains letters for no.1 = upper right, otherwise upper mid
+                    // if contains letters for no.4 = mid, otherwise lower mid
+                    System.out.println("Which 7 is it?");
+
+                    System.out.println(line);
+                    System.out.println(line.get());
+
+
+                    //if (line.get())
                     break;
 
                 case 8:
-                    // if contains letters for no.0 = lower mid, otherwise mid
+                    // if contains letters for no.1 = upper right, otherwise upper mid
+
                     break;
 
                 case 9:
