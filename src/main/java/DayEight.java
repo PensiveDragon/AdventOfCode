@@ -185,6 +185,7 @@ class LettersList {
                                 System.out.println(key);
                                 if (numCell.charAt(i) == key) {
                                     System.out.println("Segment " + key + " is Middle");
+
                                 } else {
                                     System.out.println("Segment " + key + " is Lower Middle");
                                 }
@@ -199,7 +200,22 @@ class LettersList {
 
                 case 8:
                     // if contains letters for no.1 = upper right, otherwise upper mid
+                    System.out.println("Which 8 is it?");
 
+                    System.out.println(line);
+                    for (String numCell : line) {
+                        if (numCell.length() == 2) {
+                            for (int i = 0; i < numCell.length(); i++) {
+                                System.out.println(numCell.charAt(i));
+                                System.out.println(key);
+                                if (numCell.charAt(i) == key) {
+                                    System.out.println("Segment " + key + " is Upper Right");
+                                } else {
+                                    System.out.println("Segment " + key + " is Upper Middle");
+                                }
+                            }
+                        }
+                    }
                     break;
 
                 case 9:
