@@ -178,12 +178,12 @@ class LettersList {
                     System.out.println("Which 7 is it?");
 
                     System.out.println(line);
-                    for (String numCell : line) {
-                        if (numCell.length() == 4) {
-                            for (int i = 0; i < numCell.length(); i++) {
+                    for (String numCell : line) { //for each segment description in the line
+                        if (numCell.length() == 4) { //if it is the 4 length one
+                            for (int i = 0; i < numCell.length(); i++) { //check if any of the letters within match...
                                 System.out.println(numCell.charAt(i));
                                 System.out.println(key);
-                                if (numCell.charAt(i) == key) {
+                                if (numCell.charAt(i) == key) { //... match the letters that make up
                                     System.out.println("Segment " + key + " is Middle");
 
                                 } else {
