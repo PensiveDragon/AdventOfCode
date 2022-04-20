@@ -47,13 +47,13 @@ public class DayEight {
 
             for (int position = 0; position < word.length(); position++) {
                 char letter = word.charAt(position);
-                System.out.println(letter);
+                //System.out.println(letter);
                 lettersList.addLetter(letter);
                 //System.out.println(lettersList);
             }
         }
 
-        lettersList.showList();
+        //lettersList.showList();
         lettersList.identifySegments(line);
 /*
         for (String word : line) {
@@ -185,6 +185,7 @@ class LettersList {
                                 System.out.println(key);
                                 if (numCell.charAt(i) == key) { //... match the letters that make up
                                     System.out.println("Segment " + key + " is Middle");
+                                    break;
 
                                 } else {
                                     System.out.println("Segment " + key + " is Lower Middle");
