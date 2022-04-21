@@ -181,8 +181,8 @@ class LettersList {
                     for (String numCell : line) { //for each segment description in the line
                         if (numCell.length() == 4) { //if it is the 4 length one
                             for (int i = 0; i < numCell.length(); i++) { //check if any of the letters within match...
-                                System.out.println(numCell.charAt(i));
-                                System.out.println(key);
+                                System.out.println("Checking character: " + numCell.charAt(i));
+                                System.out.println("Against Key: " + key);
                                 if (numCell.charAt(i) == key) { //... match the letters that make up
                                     System.out.println("Segment " + key + " is Middle");
                                     break;
