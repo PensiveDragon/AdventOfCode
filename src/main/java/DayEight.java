@@ -164,6 +164,7 @@ class LettersList {
     public void identifySegments(ArrayList<String> line) {
 
         boolean found;
+        System.out.println("Identifying Segments in line: " + line);
 
         for (char key : charList.keySet()) {
             switch (charList.get(key)) {
@@ -177,14 +178,14 @@ class LettersList {
 
                 case 7:
                     // if contains letters for no.4 = mid, otherwise lower mid
-                    System.out.println("Which 7 is it?");
+                    //System.out.println("Which 7 is it?");
                     found = false;
-                    System.out.println(line);
+                    //System.out.println(line);
                     for (String numCell : line) { //for each segment description in the line
                         if (numCell.length() == 4) { //if it is the 4 length one
                             for (int i = 0; i < numCell.length(); i++) { //check if any of the letters within match...
-                                System.out.println("Checks char: " + numCell.charAt(i));
-                                System.out.println("Against Key: " + key);
+                                //System.out.println("Checks char: " + numCell.charAt(i));
+                                //System.out.println("Against Key: " + key);
                                 if (numCell.charAt(i) == key) { //... match the letters that make up
                                     System.out.println("Segment " + key + " is Middle");
                                     found = true;
@@ -200,14 +201,14 @@ class LettersList {
 
                 case 8:
                     // if contains letters for no.1 = upper right, otherwise upper mid
-                    System.out.println("Which 8 is it?");
+                    //System.out.println("Which 8 is it?");
                     found = false;
-                    System.out.println(line);
+                    //System.out.println(line);
                     for (String numCell : line) {
                         if (numCell.length() == 2) {
                             for (int i = 0; i < numCell.length(); i++) {
-                                System.out.println("Checks char: " + numCell.charAt(i));
-                                System.out.println("Against Key: " + key);
+                                //System.out.println("Checks char: " + numCell.charAt(i));
+                                //System.out.println("Against Key: " + key);
                                 if (numCell.charAt(i) == key) {
                                     System.out.println("Segment " + key + " is Upper Right");
                                     found = true;
