@@ -233,6 +233,8 @@ class LettersList {
             //System.out.println("Segment " + key + " appears " + charList.get(key) + " times.");
         }
 
+        System.out.println("Section identified!");
+
     }
 
     public void showList() {
