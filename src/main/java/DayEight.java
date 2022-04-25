@@ -161,7 +161,9 @@ class LettersList {
         }
     }
 
-    public void identifySegments(ArrayList<String> line) {
+    public String[] identifySegments(ArrayList<String> line) {
+
+        String[] result = new String[7];
 
         boolean found;
         System.out.println("Identifying Segments in line: " + line);
@@ -235,6 +237,7 @@ class LettersList {
 
         System.out.println("Section identified!");
 
+        return result;
     }
 
     public void showList() {
