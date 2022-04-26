@@ -1,10 +1,7 @@
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -161,9 +158,9 @@ class LettersList {
         }
     }
 
-    public String[] identifySegments(ArrayList<String> line) {
+    public HashMap<Character, Integer> identifySegments(ArrayList<String> line) {
 
-        String[] result = new String[7];
+        HashMap<Character, Integer> segmentsOrderResult = new HashMap<>();
 
         boolean found;
         System.out.println("Identifying Segments in line: " + line);
@@ -237,7 +234,7 @@ class LettersList {
 
         System.out.println("Section identified!");
 
-        return result;
+        return segmentsOrderResult;
     }
 
     public void showList() {
