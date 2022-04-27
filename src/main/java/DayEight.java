@@ -158,9 +158,9 @@ class LettersList {
         }
     }
 
-    public HashMap<Character, Integer> identifySegments(ArrayList<String> line) {
+    public HashMap<String, Character> identifySegments(ArrayList<String> line) {
 
-        HashMap<Character, Integer> segmentsOrderResult = new HashMap<>();
+        HashMap<String, Character> segmentsOrderResult = new HashMap<>(7);
 
         boolean found;
         System.out.println("Identifying Segments in line: " + line);
@@ -169,10 +169,12 @@ class LettersList {
             switch (charList.get(key)) {
                 case 4:
                     System.out.println("Segment " + key + " is Lower Left");
+                    segmentsOrderResult.put("Lower Left", key);
                     break;
 
                 case 6:
                     System.out.println("Segment " + key + " is Upper Left");
+                    segmentsOrderResult.put("Upper Left", key);
                     break;
 
                 case 7:
