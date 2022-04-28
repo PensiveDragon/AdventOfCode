@@ -189,6 +189,7 @@ class LettersList {
                                 //System.out.println("Against Key: " + key);
                                 if (numCell.charAt(i) == key) { //... match the letters that make up
                                     System.out.println("Segment " + key + " is Middle");
+                                    segmentsOrderResult.put("Middle", key);
                                     found = true;
                                     break;
                                 }
@@ -197,6 +198,7 @@ class LettersList {
                     }
                     if (!found) {
                         System.out.println("Segment " + key + " is Lower Middle");
+                        segmentsOrderResult.put("Lower Middle", key);
                     }
                     break;
 
@@ -212,6 +214,7 @@ class LettersList {
                                 //System.out.println("Against Key: " + key);
                                 if (numCell.charAt(i) == key) {
                                     System.out.println("Segment " + key + " is Upper Right");
+                                    segmentsOrderResult.put("Upper Right", key);
                                     found = true;
                                     break;
                                 }
@@ -220,11 +223,13 @@ class LettersList {
                     }
                     if (!found) {
                         System.out.println("Segment " + key + " is Upper Middle");
+                        segmentsOrderResult.put("Upper Middle", key);
                     }
                     break;
 
                 case 9:
                     System.out.println("Segment " + key + " is Lower Right");
+                    segmentsOrderResult.put("Lower Right", key);
                     break;
 
                 default:
