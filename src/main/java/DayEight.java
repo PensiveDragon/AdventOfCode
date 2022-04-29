@@ -26,7 +26,7 @@ public class DayEight {
 
     }
 
-    public static void mapNumbers(ArrayList<String> line) {
+    public static HashMap<String, Character> mapNumbers(ArrayList<String> line) {
         // work out what elements appear in each number uniquely
         // if in 3 segment number , but not in 2 segment number = top cell
         // cell number that only appears 6 times = top left
@@ -51,7 +51,7 @@ public class DayEight {
         }
 
         //lettersList.showList();
-        lettersList.identifySegments(line);
+        return lettersList.identifySegments(line);
 /*
         for (String word : line) {
             if (word.length() == 2) {
@@ -115,7 +115,8 @@ public class DayEight {
             //System.out.println(lineOutput);
 
             //countUniqueValues(lineOutput);
-            mapNumbers(lineNumbers);
+            HashMap<String, Character> characterHashMap = mapNumbers(lineNumbers);
+            System.out.println(characterHashMap);
         }
     }
 
