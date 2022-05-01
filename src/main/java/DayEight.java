@@ -22,14 +22,22 @@ public class DayEight {
 
     }
 
-    public static HashMap<Integer, String> mapSegmentsToNumbers(HashMap<String, Character>) {
+    public static HashMap<Integer, String> mapSegmentsToNumbers(HashMap<String, Character> segmentsMap, ArrayList<String> line) {
+
+        System.out.println("Segments Map reads: " + segmentsMap + ". Line is: " + line);
+
+        //for each Code in line:
+        // - count length, identify all the easy numbers
+        // - for ambiguous ones, check for identifying segments
+        // - assign number Codes to numberMap
+        // return numberMap
 
 
 
         return null;
     }
 
-    public static HashMap<String, Character> mapNumbers(ArrayList<String> line) {
+    public static HashMap<Integer, String> mapNumbers(ArrayList<String> line) {
         // work out what elements appear in each number uniquely
         // if in 3 segment number , but not in 2 segment number = top cell
         // cell number that only appears 6 times = top left
@@ -54,7 +62,7 @@ public class DayEight {
         }
 
         //lettersList.showList();
-        return lettersList.identifySegments(line);
+        return mapSegmentsToNumbers(lettersList.identifySegments(line), line);
 /*
         for (String word : line) {
             if (word.length() == 2) {
@@ -118,7 +126,7 @@ public class DayEight {
             //System.out.println(lineOutput);
 
             //countUniqueValues(lineOutput);
-            HashMap<String, Character> characterHashMap = mapNumbers(lineNumbers);
+            HashMap<Integer, String> characterHashMap = mapNumbers(lineNumbers);
             System.out.println(characterHashMap);
         }
     }
