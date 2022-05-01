@@ -22,8 +22,11 @@ public class DayEight {
 
     }
 
-    public static void addToList(char letter) {
+    public static HashMap<Integer, String> mapSegmentsToNumbers(HashMap<String, Character>) {
 
+
+
+        return null;
     }
 
     public static HashMap<String, Character> mapNumbers(ArrayList<String> line) {
