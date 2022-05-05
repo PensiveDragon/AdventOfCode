@@ -24,7 +24,9 @@ public class DayEight {
 
     public static HashMap<Integer, String> mapSegmentsToNumbers(HashMap<String, Character> segmentsMap, ArrayList<String> line) {
 
-        System.out.println("Segments Map reads: " + segmentsMap + ". Line is: " + line);
+        System.out.println("Segments Map reads: " + segmentsMap + ". Line is: " + line + " Length: " + line.size());
+
+        HashMap<Integer, String> results = new HashMap<>();
 
         //for each Code in line:
         // - count length, identify all the easy numbers
@@ -36,36 +38,49 @@ public class DayEight {
             switch (code.length()) {
                 case 2:
                     System.out.println("Segments " + code + " = number 1");
+                    results.put(1, code);
                     break;
                 case 3:
                     System.out.println("Segments " + code + " = number 7");
+                    results.put(7, code);
                     break;
                 case 4:
                     System.out.println("Segments " + code + " = number 4");
+                    results.put(4, code);
                     break;
                 case 5:
                     if (code.contains(Character.toString(segmentsMap.get("Lower Left")))) {
                         System.out.println("Segments " + code + " = number 2");
+                        results.put(2, code);
                     } else if (code.contains(Character.toString(segmentsMap.get("Upper Left")))) {
                         System.out.println("Segments " + code + " = number 5");
+                        results.put(5, code);
                     } else {
                         System.out.println("Segments " + code + " = number 3");
+                        results.put(3, code);
                     }
                     break;
                 case 6:
-                    if (code.contains(Character.toString(segmentsMap.get("Lower Left")))) {
+                    if (!code.contains(Character.toString(segmentsMap.get("Middle")))) {
+                        System.out.println("Segments " + code + " = number 0");
+                        results.put(0, code);
+                        break;
+                    } else if (code.contains(Character.toString(segmentsMap.get("Lower Left")))) {
                         System.out.println("Segments " + code + " = number 6");
+                        results.put(6, code);
                     } else {
                         System.out.println("Segments " + code + " = number 9");
+                        results.put(9, code);
                     }
                     break;
                 case 7:
                     System.out.println("Segments " + code + " = number 8");
+                    results.put(8, code);
                     break;
             }
         }
 
-        return null;
+        return results;
     }
 
     public static HashMap<Integer, String> mapNumbers(ArrayList<String> line) {
