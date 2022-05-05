@@ -44,13 +44,20 @@ public class DayEight {
                     System.out.println("Segments " + code + " = number 4");
                     break;
                 case 5:
-                    System.out.println("Segments " + code + " = number 2");
-                    System.out.println("Segments " + code + " = number 3");
-                    System.out.println("Segments " + code + " = number 5");
+                    if (code.contains(Character.toString(segmentsMap.get("Lower Left")))) {
+                        System.out.println("Segments " + code + " = number 2");
+                    } else if (code.contains(Character.toString(segmentsMap.get("Upper Left")))) {
+                        System.out.println("Segments " + code + " = number 5");
+                    } else {
+                        System.out.println("Segments " + code + " = number 3");
+                    }
                     break;
                 case 6:
-                    System.out.println("Segments " + code + " = number 6");
-                    System.out.println("Segments " + code + " = number 9");
+                    if (code.contains(Character.toString(segmentsMap.get("Lower Left")))) {
+                        System.out.println("Segments " + code + " = number 6");
+                    } else {
+                        System.out.println("Segments " + code + " = number 9");
+                    }
                     break;
                 case 7:
                     System.out.println("Segments " + code + " = number 8");
