@@ -22,11 +22,22 @@ public class DayEight {
 
     }
 
-    public static int translateNumberDisplay(HashMap<Integer, String> translationMap) {
+    public static String translateNumberDisplay(HashMap<Integer, String> translationMap, ArrayList<String> numbersString) {
 
+        String result = "";
 
+        for (String codelet : numbersString) {
+            System.out.println(codelet);
+            for (int i = 0; i < translationMap.size(); i++) {
+                System.out.println("i = " + i + " codelet = " + codelet + " translation: " + translationMap.get(i));
+                if (codelet.equals(translationMap.get(i))) {
+                    System.out.println(i);
+                    result += i;
+                }
+            }
+        }
 
-        return 0;
+        return result;
     }
 
     public static HashMap<Integer, String> mapSegmentsToNumbers(HashMap<String, Character> segmentsMap, ArrayList<String> line) {
@@ -181,7 +192,7 @@ public class DayEight {
             //countUniqueValues(lineOutput);
             HashMap<Integer, String> characterHashMap = mapNumbers(lineNumbers);
             System.out.println(characterHashMap);
-            System.out.println("Number Display: " + translateNumberDisplay(characterHashMap));
+            System.out.println("Number Display: " + translateNumberDisplay(characterHashMap, lineOutput));
         }
     }
 
