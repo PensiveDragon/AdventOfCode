@@ -20,6 +20,13 @@ public class DayEight {
         ArrayList<String> input = parseInput(testInputPath);
         iterateList(input);
 
+
+    }
+
+    public static String alphabetiseString (String inputString) {
+        char charArray[] = inputString.toCharArray();
+        Arrays.sort(charArray);
+        return new String(charArray);
     }
 
     public static String translateNumberDisplay(HashMap<Integer, String> translationMap, ArrayList<String> numbersString) {
