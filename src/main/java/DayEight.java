@@ -19,7 +19,7 @@ public class DayEight {
 
     public static void main(String args[]) {
         System.out.println("Moo");
-        ArrayList<String> input = parseInput(testInputPath);
+        ArrayList<String> input = parseInput(inputPath);
         iterateList(input);
         System.out.println(runningTotal);
 
