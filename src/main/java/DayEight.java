@@ -15,11 +15,13 @@ public class DayEight {
 
     static int numberOfUniqueValues = 0;
 
+    static int runningTotal = 0;
+
     public static void main(String args[]) {
         System.out.println("Moo");
         ArrayList<String> input = parseInput(testInputPath);
         iterateList(input);
-
+        System.out.println(runningTotal);
 
     }
 
@@ -34,11 +36,12 @@ public class DayEight {
         String result = "";
 
         for (String codelet : numbersString) {
-            System.out.println(codelet);
+            codelet = alphabetiseString(codelet);
+            //System.out.println(codelet);
             for (int i = 0; i < translationMap.size(); i++) {
-                System.out.println("i = " + i + " codelet = " + codelet + " translation: " + translationMap.get(i));
-                if (codelet.equals(translationMap.get(i))) {
-                    System.out.println(i);
+                //System.out.println("i = " + i + " codelet = " + codelet + " translation: " + translationMap.get(i));
+                if (codelet.equals(alphabetiseString(translationMap.get(i)))) {
+                    //System.out.println(i);
                     result += i;
                 }
             }
@@ -199,7 +202,9 @@ public class DayEight {
             //countUniqueValues(lineOutput);
             HashMap<Integer, String> characterHashMap = mapNumbers(lineNumbers);
             System.out.println(characterHashMap);
-            System.out.println("Number Display: " + translateNumberDisplay(characterHashMap, lineOutput));
+            int currentTotal = Integer.parseInt(translateNumberDisplay(characterHashMap, lineOutput));
+            System.out.println("Number Display: " + currentTotal);
+            runningTotal += currentTotal;
         }
     }
 
