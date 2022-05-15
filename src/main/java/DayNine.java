@@ -12,7 +12,10 @@ public class DayNine {
     public static void main(String args[]) {
         System.out.println("Moo");
 
-        parseInput(testInputPath);
+        ArrayList<String> input = parseInput(testInputPath);
+
+        CaveMap caveMap = new CaveMap(input);
+
     }
 
     public static ArrayList<String> parseInput(String path) {
@@ -38,6 +41,14 @@ public class DayNine {
     }
 }
 
-class caveMap {
+class CaveMap {
 
+    String[][] caveMap;
+
+    public CaveMap(ArrayList<String> input) {
+        int x = input.size();
+        int y = input.get(0).length();
+        caveMap = new String[x][y];
+
+    }
 }
