@@ -15,7 +15,7 @@ public class DayNine {
         ArrayList<String> input = parseInput(testInputPath);
 
         CaveMap caveMap = new CaveMap(input);
-        caveMap.printMap();
+        caveMap.printMap(caveMap.caveMap[0][0]);
 
     }
 
@@ -45,19 +45,26 @@ public class DayNine {
 class CaveMap {
 
     String[][] caveMap;
+    //int num = 1;
 
     public CaveMap(ArrayList<String> input) {
         int x = input.size();
         int y = input.get(0).length();
         caveMap = new String[x][y];
 
+
     }
 
     public void printMap() {
+
+        System.out.println(caveMap[0][0]);
+        /*
         for (String[] row : caveMap) {
             for (String cell : row) {
                 System.out.println(cell);
+                System.out.println();
+                //System.out.println(num);
             }
-        }
+        }*/
     }
 }
