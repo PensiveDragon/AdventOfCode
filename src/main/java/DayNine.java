@@ -15,7 +15,7 @@ public class DayNine {
         ArrayList<String> input = parseInput(testInputPath);
 
         CaveMap caveMap = new CaveMap(input);
-        caveMap.printMap(caveMap.caveMap[0][0]);
+        caveMap.printMap();
 
     }
 
@@ -52,19 +52,34 @@ class CaveMap {
         int y = input.get(0).length();
         caveMap = new String[x][y];
 
-
+        for (int row = 0; row < y; row++) {
+            for (int col = 0; col < x; col++) {
+                caveMap[col][row] = "0";
+            }
+        }
     }
 
     public void printMap() {
 
-        System.out.println(caveMap[0][0]);
-        /*
+        System.out.println(caveMap);
+
         for (String[] row : caveMap) {
             for (String cell : row) {
                 System.out.println(cell);
-                System.out.println();
                 //System.out.println(num);
+                System.out.print(String.format("%4d", cell));
             }
-        }*/
+        }
+    }
+
+    public static void displayField (int[][] field) {
+        for (int[] line : field) {
+            for (int cell : line) {
+
+                System.out.print(String.format("%4d", cell));
+
+            }
+            System.out.println("");
+        }
     }
 }
