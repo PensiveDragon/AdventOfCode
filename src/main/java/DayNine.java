@@ -14,12 +14,29 @@ public class DayNine {
 
         ArrayList<String> input = parseInput(testInputPath);
 
-
+        mapCave(input);
 
 
         //CaveMap caveMap = new CaveMap(input);
         //caveMap.printMap();
 
+    }
+
+    public static ArrayList<CaveTile> mapCave(ArrayList<String> input) {
+
+        //System.out.println(input.get(0).charAt(1));
+
+        ArrayList<CaveTile> caveMap = new ArrayList<>();
+
+        for (int row = 0; row < input.size(); row++) {
+            for (int col = 0; col < input.get(0).length(); col++) {
+                //System.out.println(input.get(row).charAt(col));
+                caveMap.add(new CaveTile(row, col, input.get(row).charAt(col), 0));
+                System.out.println(caveMap.get(0).height);
+            }
+        }
+
+        return caveMap;
     }
 
     public static ArrayList<String> parseInput(String path) {
@@ -46,10 +63,18 @@ public class DayNine {
 }
 
 class CaveTile {
+
     int row_coord;
     int col_coord;
     int height;
     int smoke_level;
+
+    public CaveTile(int row_coord, int col_coord, int height, int smoke_level) {
+        this.row_coord = row_coord;
+        this.col_coord = col_coord;
+        this.height = height;
+        this.smoke_level = smoke_level;
+    }
 }
 
 class CaveMap {
