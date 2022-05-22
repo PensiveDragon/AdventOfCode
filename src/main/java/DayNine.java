@@ -28,11 +28,13 @@ public class DayNine {
 
         ArrayList<CaveTile> caveMap = new ArrayList<>();
 
+        int index = 0;
         for (int row = 0; row < input.size(); row++) {
             for (int col = 0; col < input.get(0).length(); col++) {
-                //System.out.println(input.get(row).charAt(col));
+                System.out.println(input.get(row).charAt(col));
                 caveMap.add(new CaveTile(row, col, input.get(row).charAt(col), 0));
-                System.out.println(caveMap.get(0).height);
+                System.out.println(caveMap.get(index).height);
+                index++;
             }
         }
 
