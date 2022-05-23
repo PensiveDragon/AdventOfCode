@@ -31,9 +31,9 @@ public class DayNine {
         int index = 0;
         for (int row = 0; row < input.size(); row++) {
             for (int col = 0; col < input.get(0).length(); col++) {
-                System.out.println(input.get(row).charAt(col));
-                caveMap.add(new CaveTile(row, col, input.get(row).charAt(col), 0));
-                System.out.println(caveMap.get(index).height);
+                //System.out.println(input.get(row).charAt(col));
+                caveMap.add(new CaveTile(row, col, Integer.parseInt(String.valueOf(input.get(row).charAt(col))), 0));
+                //System.out.println(caveMap.get(index).height);
                 index++;
             }
         }
