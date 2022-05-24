@@ -77,6 +77,28 @@ class CaveTile {
         this.height = height;
         this.smoke_level = smoke_level;
     }
+
+    public boolean checkIfLowest(int max_row, int max_col) {
+        boolean isLowest = false;
+
+        if (row_coord >= 0) {
+
+        }
+
+        if (row_coord <= max_row) {
+
+        }
+
+        if (col_coord >= 0) {
+
+        }
+
+        if (col_coord <= max_col) {
+
+        }
+
+        return isLowest;
+    }
 }
 
 class CaveMap {
