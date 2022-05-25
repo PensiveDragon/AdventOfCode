@@ -14,11 +14,8 @@ public class DayNine {
 
         ArrayList<String> input = parseInput(testInputPath);
 
-        mapCave(input);
+        ArrayList<CaveTile> caveMap = mapCave(input);
 
-
-        //CaveMap caveMap = new CaveMap(input);
-        //caveMap.printMap();
 
     }
 
@@ -82,19 +79,19 @@ class CaveTile {
         boolean isLowest = false;
 
         if (row_coord >= 0) {
-
+            // subtract max row from index and check height
         }
 
         if (row_coord <= max_row) {
-
+            // add max row to index and check height
         }
 
         if (col_coord >= 0) {
-
+            // subtract 1 from index and check height
         }
 
         if (col_coord <= max_col) {
-
+            // add 1 to index and check height
         }
 
         return isLowest;
