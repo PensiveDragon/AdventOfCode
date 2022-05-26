@@ -17,9 +17,14 @@ public class DayNine {
         ArrayList<CaveTile> caveMap = mapCave(input);
 
 
+
+
+
     }
 
     public static ArrayList<CaveTile> mapCave(ArrayList<String> input) {
+
+        System.out.println("Mapping Cave...");
 
         //System.out.println(input.get(0).charAt(1));
 
