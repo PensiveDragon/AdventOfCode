@@ -16,13 +16,17 @@ public class DayNine {
 
         ArrayList<CaveTile> caveMap = mapCave(input);
 
-
+        findLowestPoints(caveMap);
 
 
 
     }
 
-    public static ArrayList<CaveTile> mapCave(ArrayList<String> input) {
+    public static void findLowestPointsFromArrayList(ArrayList<CaveTile> caveMap) {
+
+    }
+
+    public static ArrayList<CaveTile> mapCave(ArrayList<String> input) { //Takes raw file input and outputs
 
         System.out.println("Mapping Cave...");
 
