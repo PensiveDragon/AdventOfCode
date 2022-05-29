@@ -16,7 +16,7 @@ public class DayNine {
 
         ArrayList<CaveTile> caveMap = mapCave(input);
 
-        findLowestPoints(caveMap);
+        findLowestPointsFromArrayList(caveMap);
 
 
 
