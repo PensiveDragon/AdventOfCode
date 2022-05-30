@@ -23,7 +23,10 @@ public class DayNine {
     }
 
     public static void findLowestPointsFromArrayList(ArrayList<CaveTile> caveMap) {
-
+        // check through each item
+        // > each item runs its checkIfLowest method
+        // > if lowest, add coords to list
+        // return list
     }
 
     public static ArrayList<CaveTile> mapCave(ArrayList<String> input) { //Takes raw file input and outputs
