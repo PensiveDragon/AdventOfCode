@@ -22,11 +22,23 @@ public class DayNine {
 
     }
 
-    public static void findLowestPointsFromArrayList(ArrayList<CaveTile> caveMap) {
+    public static ArrayList<Integer> findLowestPointsFromArrayList(ArrayList<CaveTile> caveMap) {
         // check through each item
         // > each item runs its checkIfLowest method
         // > if lowest, add coords to list
         // return list
+
+        int max_row = 0;
+        int max_col = 0;
+        ArrayList<Integer> low_point_indexes = new ArrayList<>();
+
+        for (int index = 0; index < caveMap.size(); index++) {
+            if (caveMap.get(index).checkIfLowest(max_row, max_col)) {
+                //add index to list
+                low_point_indexes.add(index);
+            };
+        }
+        return low_point_indexes;
     }
 
     public static ArrayList<CaveTile> mapCave(ArrayList<String> input) { //Takes raw file input and outputs
