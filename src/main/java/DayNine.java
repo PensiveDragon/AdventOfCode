@@ -16,7 +16,7 @@ public class DayNine {
 
         ArrayList<CaveTile> caveMap = mapCave(input);
 
-        findLowestPointsFromArrayList(caveMap);
+        ArrayList<Integer> lowestPoints = findLowestPointsFromArrayList(caveMap);
 
 
 
@@ -28,8 +28,8 @@ public class DayNine {
         // > if lowest, add coords to list
         // return list
 
-        int max_row = 0;
-        int max_col = 0;
+        int max_row = caveMap.size();
+        int max_col = caveMap.get(0).toString().length();
         ArrayList<Integer> low_point_indexes = new ArrayList<>();
 
         for (int index = 0; index < caveMap.size(); index++) {
