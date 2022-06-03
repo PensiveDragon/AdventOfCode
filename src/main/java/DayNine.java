@@ -16,24 +16,34 @@ public class DayNine {
 
         ArrayList<CaveTile> caveMap = mapCave(input);
 
-        ArrayList<Integer> lowestPoints = findLowestPointsFromArrayList(caveMap);
+        ArrayList<Integer> lowestPoints = findLowestPointsFromArrayList(caveMap, input);
 
-
+        System.out.println(lowestPoints);
 
     }
 
-    public static ArrayList<Integer> findLowestPointsFromArrayList(ArrayList<CaveTile> caveMap) {
+    public static ArrayList<Integer> findLowestPointsFromArrayList(ArrayList<CaveTile> caveMap, ArrayList<String> input) {
         // check through each item
         // > each item runs its checkIfLowest method
         // > if lowest, add coords to list
         // return list
-
+/*
         int max_row = caveMap.size();
         int max_col = caveMap.get(0).toString().length();
+
+ */
+
+        int max_row = input.size();
+        System.out.println("max_row: " + input.size());
+
+        int max_col = input.get(0).toString().length();
+        System.out.println("max_col: " + input.get(0).toString().length());
+
+
         ArrayList<Integer> low_point_indexes = new ArrayList<>();
 
         for (int index = 0; index < caveMap.size(); index++) {
-            if (caveMap.get(index).checkIfLowest(max_row, max_col, index)) {
+            if (checkIfLowest(caveMap, max_row, max_col, index)) {
                 //add index to list
                 low_point_indexes.add(index);
             };
@@ -42,27 +52,40 @@ public class DayNine {
     }
 
     public static boolean checkIfLowest(ArrayList<CaveTile> caveMap, int max_row, int max_col, int index) {
-        boolean isLowest = false;
+        boolean isLowest = true;
         int currentHeight = caveMap.get(index).getHeight();
+        System.out.println("index: " + index + ", max_row: " + max_row + ", max_col: " + max_col);
 
         if (index % max_col > 0) {
             // check current square against left square
-            if (caveMap.get(index).getHeight() < caveMap.get(index-1).getHeight()) {
-                // if current square is < return true
-                isLowest = true;
+            if (caveMap.get(index).getHeight() > caveMap.get(index-1).getHeight()) {
+                // if current square is > return false
+                isLowest = false;
             }
         }
 
-        if (row_coord <= max_row) {
-            // add max row to index and check height
+        if (index - max_col >= 0) {
+            // check current square against above square
+            if (caveMap.get(index).getHeight() > caveMap.get(index - max_col).getHeight()) {
+                // if current square is > return false
+                isLowest = false;
+            }
         }
 
-        if (col_coord >= 0) {
-            // subtract 1 from index and check height
+        if (index % max_col < max_col - 1) {
+            // check current square against right square
+            if (caveMap.get(index).getHeight() > caveMap.get(index+1).getHeight()) {
+                // if current square is > return false
+                isLowest = false;
+            }
         }
 
-        if (col_coord <= max_col) {
-            // add 1 to index and check height
+        if (index <= max_col * (max_row-1) - 1) {
+            // check current square against right square
+            if (caveMap.get(index).getHeight() > caveMap.get(index + max_col).getHeight()) {
+                // if current square is > return false
+                isLowest = false;
+            }
         }
 
         return isLowest;
