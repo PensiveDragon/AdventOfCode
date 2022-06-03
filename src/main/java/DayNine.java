@@ -33,12 +33,39 @@ public class DayNine {
         ArrayList<Integer> low_point_indexes = new ArrayList<>();
 
         for (int index = 0; index < caveMap.size(); index++) {
-            if (caveMap.get(index).checkIfLowest(max_row, max_col)) {
+            if (caveMap.get(index).checkIfLowest(max_row, max_col, index)) {
                 //add index to list
                 low_point_indexes.add(index);
             };
         }
         return low_point_indexes;
+    }
+
+    public static boolean checkIfLowest(ArrayList<CaveTile> caveMap, int max_row, int max_col, int index) {
+        boolean isLowest = false;
+        int currentHeight = caveMap.get(index).getHeight();
+
+        if (index % max_col > 0) {
+            // check current square against left square
+            if (caveMap.get(index).getHeight() < caveMap.get(index-1).getHeight()) {
+                // if current square is < return true
+                isLowest = true;
+            }
+        }
+
+        if (row_coord <= max_row) {
+            // add max row to index and check height
+        }
+
+        if (col_coord >= 0) {
+            // subtract 1 from index and check height
+        }
+
+        if (col_coord <= max_col) {
+            // add 1 to index and check height
+        }
+
+        return isLowest;
     }
 
     public static ArrayList<CaveTile> mapCave(ArrayList<String> input) { //Takes raw file input and outputs
@@ -99,26 +126,36 @@ class CaveTile {
         this.smoke_level = smoke_level;
     }
 
-    public boolean checkIfLowest(int max_row, int max_col) {
-        boolean isLowest = false;
+    public int getRow_coord() {
+        return row_coord;
+    }
 
-        if (row_coord >= 0) {
-            // subtract max row from index and check height
-        }
+    public void setRow_coord(int row_coord) {
+        this.row_coord = row_coord;
+    }
 
-        if (row_coord <= max_row) {
-            // add max row to index and check height
-        }
+    public int getCol_coord() {
+        return col_coord;
+    }
 
-        if (col_coord >= 0) {
-            // subtract 1 from index and check height
-        }
+    public void setCol_coord(int col_coord) {
+        this.col_coord = col_coord;
+    }
 
-        if (col_coord <= max_col) {
-            // add 1 to index and check height
-        }
+    public int getHeight() {
+        return height;
+    }
 
-        return isLowest;
+    public void setHeight(int height) {
+        this.height = height;
+    }
+
+    public int getSmoke_level() {
+        return smoke_level;
+    }
+
+    public void setSmoke_level(int smoke_level) {
+        this.smoke_level = smoke_level;
     }
 }
 
