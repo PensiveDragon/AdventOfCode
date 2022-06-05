@@ -20,6 +20,19 @@ public class DayNine {
 
         System.out.println(lowestPoints);
 
+        System.out.println(convertLowestPointsToTotalRiskLevel(lowestPoints));
+
+    }
+
+    public static int convertLowestPointsToTotalRiskLevel (ArrayList<Integer> lowestPoints) {
+
+        int riskLevel = 0;
+
+        for (int lowestPoint : lowestPoints) {
+
+        }
+
+        return riskLevel;
     }
 
     public static ArrayList<Integer> findLowestPointsFromArrayList(ArrayList<CaveTile> caveMap, ArrayList<String> input) {
