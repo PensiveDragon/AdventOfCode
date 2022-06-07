@@ -12,7 +12,7 @@ public class DayNine {
     public static void main(String args[]) {
         System.out.println("Moo");
 
-        ArrayList<String> input = parseInput(testInputPath);
+        ArrayList<String> input = parseInput(inputPath);
 
         ArrayList<CaveTile> caveMap = mapCave(input);
 
@@ -20,7 +20,7 @@ public class DayNine {
 
         System.out.println(lowestPoints);
 
-        System.out.println(convertLowestPointsToTotalRiskLevel(lowestPoints, caveMap));
+        System.out.println("Total risk level is: " + convertLowestPointsToTotalRiskLevel(lowestPoints, caveMap));
 
     }
 
@@ -29,7 +29,8 @@ public class DayNine {
         int riskLevel = 0;
 
         for (int lowestPoint : lowestPoints) {
-            riskLevel+= caveMap.get(lowestPoint).getHeight()+1;
+            System.out.println("Risk Level: " + (caveMap.get(lowestPoint).getHeight()+1));
+            riskLevel+= (caveMap.get(lowestPoint).getHeight()+1);
         }
 
         return riskLevel;
@@ -67,7 +68,7 @@ public class DayNine {
     public static boolean checkIfLowest(ArrayList<CaveTile> caveMap, int max_row, int max_col, int index) {
         boolean isLowest = true;
         int currentHeight = caveMap.get(index).getHeight();
-        System.out.println("index: " + index + ", max_row: " + max_row + ", max_col: " + max_col);
+        //System.out.println("index: " + index + ", max_row: " + max_row + ", max_col: " + max_col);
 
         if (index % max_col > 0) {
             // check current square against left square
