@@ -27,9 +27,10 @@ public class DayNine {
     public static int convertLowestPointsToTotalRiskLevel (ArrayList<Integer> lowestPoints, ArrayList<CaveTile> caveMap) {
 
         int riskLevel = 0;
+        int index = 0;
 
         for (int lowestPoint : lowestPoints) {
-            System.out.println("Risk Level: " + (caveMap.get(lowestPoint).getHeight()+1));
+            System.out.println("Index: " + index++ + " Risk Level: " + (caveMap.get(lowestPoint).getHeight()+1));
             riskLevel+= (caveMap.get(lowestPoint).getHeight()+1);
         }
 
@@ -72,7 +73,7 @@ public class DayNine {
 
         if (index % max_col > 0) {
             // check current square against left square
-            if (caveMap.get(index).getHeight() > caveMap.get(index-1).getHeight()) {
+            if (caveMap.get(index).getHeight() >= caveMap.get(index-1).getHeight()) {
                 // if current square is > return false
                 isLowest = false;
             }
@@ -80,7 +81,7 @@ public class DayNine {
 
         if (index - max_col >= 0) {
             // check current square against above square
-            if (caveMap.get(index).getHeight() > caveMap.get(index - max_col).getHeight()) {
+            if (caveMap.get(index).getHeight() >= caveMap.get(index - max_col).getHeight()) {
                 // if current square is > return false
                 isLowest = false;
             }
@@ -88,7 +89,7 @@ public class DayNine {
 
         if (index % max_col < max_col - 1) {
             // check current square against right square
-            if (caveMap.get(index).getHeight() > caveMap.get(index+1).getHeight()) {
+            if (caveMap.get(index).getHeight() >= caveMap.get(index+1).getHeight()) {
                 // if current square is > return false
                 isLowest = false;
             }
@@ -96,7 +97,7 @@ public class DayNine {
 
         if (index <= max_col * (max_row-1) - 1) {
             // check current square against right square
-            if (caveMap.get(index).getHeight() > caveMap.get(index + max_col).getHeight()) {
+            if (caveMap.get(index).getHeight() >= caveMap.get(index + max_col).getHeight()) {
                 // if current square is > return false
                 isLowest = false;
             }
