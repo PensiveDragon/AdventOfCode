@@ -9,6 +9,11 @@ public class DayNine {
     static String testInputPath = "src/main/resources/day9_test_input.txt";
     static String inputPath = "src/main/resources/day9_input.txt";
 
+    // Part 2
+    // Find the 3 largest basins
+    // A basin is any orthogonal collection of numbers that are <9
+
+
     public static void main(String args[]) {
         System.out.println("Moo");
 
