@@ -12,7 +12,8 @@ public class DayNine {
     // Part 2
     // Find the 3 largest basins
     // A basin is any orthogonal collection of numbers that are <9
-
+    // Iterate Board
+    // - On finding a number <9 check above
 
     public static void main(String args[]) {
         System.out.println("Moo");
