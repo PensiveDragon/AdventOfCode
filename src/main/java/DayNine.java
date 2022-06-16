@@ -124,7 +124,7 @@ public class DayNine {
         for (int row = 0; row < input.size(); row++) {
             for (int col = 0; col < input.get(0).length(); col++) {
                 //System.out.println(input.get(row).charAt(col));
-                caveMap.add(new CaveTile(row, col, Integer.parseInt(String.valueOf(input.get(row).charAt(col))), 0));
+                caveMap.add(new CaveTile(row, col, Integer.parseInt(String.valueOf(input.get(row).charAt(col)))));
                 //System.out.println(caveMap.get(index).height);
                 index++;
             }
@@ -161,13 +161,12 @@ class CaveTile {
     int row_coord;
     int col_coord;
     int height;
-    int smoke_level;
+    boolean scanned = false;
 
-    public CaveTile(int row_coord, int col_coord, int height, int smoke_level) {
+    public CaveTile(int row_coord, int col_coord, int height) {
         this.row_coord = row_coord;
         this.col_coord = col_coord;
         this.height = height;
-        this.smoke_level = smoke_level;
     }
 
     public int getRow_coord() {
@@ -194,13 +193,9 @@ class CaveTile {
         this.height = height;
     }
 
-    public int getSmoke_level() {
-        return smoke_level;
-    }
+    public boolean isScanned() { return scanned; }
 
-    public void setSmoke_level(int smoke_level) {
-        this.smoke_level = smoke_level;
-    }
+    public void setScanned(boolean scanned) { this.scanned = scanned; }
 }
 
 class CaveMap {
