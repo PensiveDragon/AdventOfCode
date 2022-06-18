@@ -31,11 +31,26 @@ public class DayNine {
 
     }
 
+    public static boolean isThisUnmapped (CaveTile caveTile) {
+        if (!caveTile.mapped) {
+            return true;
+        }
+        return false;
+    }
+
     public static boolean isThisInABasin (CaveTile caveTile) {
         if (caveTile.getHeight() < 9) {
             return true;
         }
         return false;
+    }
+
+    public static void iterateThroughCaveMap (ArrayList<CaveTile> caveMap) {
+        for (CaveTile tile : caveMap) {
+            if (isThisInABasin(tile) & isThisUnmapped(tile)) {
+                mapBasin(caveMap);
+            }
+        }
     }
 
     public static int convertLowestPointsToTotalRiskLevel (ArrayList<Integer> lowestPoints, ArrayList<CaveTile> caveMap) {
@@ -169,7 +184,7 @@ class CaveTile {
     int row_coord;
     int col_coord;
     int height;
-    boolean scanned = false;
+    boolean mapped = false;
 
     public CaveTile(int row_coord, int col_coord, int height) {
         this.row_coord = row_coord;
@@ -201,9 +216,9 @@ class CaveTile {
         this.height = height;
     }
 
-    public boolean isScanned() { return scanned; }
+    public boolean isMapped() { return mapped; }
 
-    public void setScanned(boolean scanned) { this.scanned = scanned; }
+    public void setMapped(boolean mapped) { this.mapped = mapped; }
 }
 
 class CaveMap {
