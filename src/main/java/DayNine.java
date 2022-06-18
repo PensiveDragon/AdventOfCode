@@ -14,6 +14,7 @@ public class DayNine {
     // A basin is any orthogonal collection of numbers that are <9
     // Iterate Board
     // - On finding a number <9 check above
+    // ->
 
     public static void main(String args[]) {
         System.out.println("Moo");
@@ -22,12 +23,19 @@ public class DayNine {
 
         ArrayList<CaveTile> caveMap = mapCave(input);
 
-        ArrayList<Integer> lowestPoints = findLowestPointsFromArrayList(caveMap, input);
+        //ArrayList<Integer> lowestPoints = findLowestPointsFromArrayList(caveMap, input);
 
-        System.out.println(lowestPoints);
+        //System.out.println(lowestPoints);
 
-        System.out.println("Total risk level is: " + convertLowestPointsToTotalRiskLevel(lowestPoints, caveMap));
+        //System.out.println("Total risk level is: " + convertLowestPointsToTotalRiskLevel(lowestPoints, caveMap));
 
+    }
+
+    public static boolean isThisInABasin (CaveTile caveTile) {
+        if (caveTile.getHeight() < 9) {
+            return true;
+        }
+        return false;
     }
 
     public static int convertLowestPointsToTotalRiskLevel (ArrayList<Integer> lowestPoints, ArrayList<CaveTile> caveMap) {
