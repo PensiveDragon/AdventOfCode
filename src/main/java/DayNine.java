@@ -31,6 +31,19 @@ public class DayNine {
 
     }
 
+    public static void mapBasin (ArrayList<CaveTile> caveMap, CaveTile tile) {
+        //recursive method to scan area.
+        //set isThisUnmapped = false
+        //check north
+        // - if less than 9 and unmapped, redo method
+        //check east
+        // - if less than 9 and unmapped, redo method
+        //check south
+        // - if less than 9 and unmapped, redo method
+        //check west
+        // - if less than 9 and unmapped, redo method
+    }
+
     public static boolean isThisUnmapped (CaveTile caveTile) {
         if (!caveTile.mapped) {
             return true;
@@ -48,7 +61,7 @@ public class DayNine {
     public static void iterateThroughCaveMap (ArrayList<CaveTile> caveMap) {
         for (CaveTile tile : caveMap) {
             if (isThisInABasin(tile) & isThisUnmapped(tile)) {
-                mapBasin(caveMap);
+                mapBasin(caveMap, tile);
             }
         }
     }
