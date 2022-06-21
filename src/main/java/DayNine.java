@@ -31,10 +31,19 @@ public class DayNine {
 
     }
 
-    public static void mapBasin (ArrayList<CaveTile> caveMap, CaveTile tile) {
-        //recursive method to scan area.
-        //set isThisUnmapped = false
-        //check north
+    public static int checkNorth(ArrayList<CaveTile> caveMap, int index) {
+        int northIndex = -1;
+
+        if (caveMap.get(index).row_coord > 0) {
+            northIndex = index;
+        }
+
+        return northIndex;
+    }
+
+    public static void mapBasin (ArrayList<CaveTile> caveMap, int index) { //recursive method to scan area.
+        caveMap.get(index).setMapped(true); //set mapped = true
+        checkNorth(caveMap, index); //check north
         // - if less than 9 and unmapped, redo method
         //check east
         // - if less than 9 and unmapped, redo method
@@ -59,10 +68,12 @@ public class DayNine {
     }
 
     public static void iterateThroughCaveMap (ArrayList<CaveTile> caveMap) {
+        int index = 0;
         for (CaveTile tile : caveMap) {
             if (isThisInABasin(tile) & isThisUnmapped(tile)) {
-                mapBasin(caveMap, tile);
+                mapBasin(caveMap, index);
             }
+            index++;
         }
     }
 
