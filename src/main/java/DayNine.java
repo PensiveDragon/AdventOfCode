@@ -41,6 +41,16 @@ public class DayNine {
         return northIndex;
     }
 
+    public static int checkEast(ArrayList<CaveTile> caveMap, int index) {
+        int eastIndex = -1;
+
+        if (caveMap.get(index).row_coord > 0) {
+            eastIndex = index;
+        }
+
+        return eastIndex;
+    }
+
     public static int checkSouth(ArrayList<CaveTile> caveMap, int index) {
         int southIndex = -1;
 
@@ -55,7 +65,7 @@ public class DayNine {
         caveMap.get(index).setMapped(true); //set mapped = true
         checkNorth(caveMap, index); //check north
         // - if less than 9 and unmapped, redo method
-        //check east
+        checkEast(caveMap, index); //check east
         // - if less than 9 and unmapped, redo method
         checkSouth(caveMap, index); //check south
         // - if less than 9 and unmapped, redo method
