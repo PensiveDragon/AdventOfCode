@@ -61,6 +61,16 @@ public class DayNine {
         return southIndex;
     }
 
+    public static int checkWest(ArrayList<CaveTile> caveMap, int index) {
+        int westIndex = -1;
+
+        if (caveMap.get(index).row_coord > 0) {
+            westIndex = index;
+        }
+
+        return westIndex;
+    }
+
     public static void mapBasin (ArrayList<CaveTile> caveMap, int index) { //recursive method to scan area.
         caveMap.get(index).setMapped(true); //set mapped = true
         checkNorth(caveMap, index); //check north
@@ -69,7 +79,7 @@ public class DayNine {
         // - if less than 9 and unmapped, redo method
         checkSouth(caveMap, index); //check south
         // - if less than 9 and unmapped, redo method
-        //check west
+        checkWest(caveMap, index); //check west
         // - if less than 9 and unmapped, redo method
     }
 
