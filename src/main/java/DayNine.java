@@ -31,6 +31,17 @@ public class DayNine {
 
     }
 
+    public static int findColumnCount(ArrayList<CaveTile> caveMap) {
+
+        int result = 0;
+
+        for (int i = 0; i < caveMap.size(); i++) {
+            caveMap.get(i)
+        }
+
+        return result;
+    }
+
     public static int checkNorth(ArrayList<CaveTile> caveMap, int index) {
         int northIndex = -1;
 
