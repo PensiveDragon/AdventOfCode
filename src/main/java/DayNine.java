@@ -33,6 +33,24 @@ public class DayNine {
 
     }
 
+    public static int findRowCount(ArrayList<CaveTile> caveMap) {
+
+        int result = -1;
+
+        for (int i = 0; i < caveMap.size(); i++) {
+            if (i > 0) {
+                if (caveMap.get(i).getRow_coord() > caveMap.get(i+1).getRow_coord()) {
+                    result = caveMap.get(i).getRow_coord() + 1;
+
+                    System.out.println("Row count = " + result);
+
+                    return result;
+                }
+            }
+        }
+        return result;
+    }
+
     public static int findColumnCount(ArrayList<CaveTile> caveMap) {
 
         int result = -1;
