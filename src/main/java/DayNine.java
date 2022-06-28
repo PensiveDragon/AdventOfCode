@@ -29,17 +29,19 @@ public class DayNine {
 
         //System.out.println("Total risk level is: " + convertLowestPointsToTotalRiskLevel(lowestPoints, caveMap));
 
-        findColumnCount(caveMap);
+        //findColumnCount(caveMap);
+        findRowCount(caveMap);
 
     }
 
     public static int findRowCount(ArrayList<CaveTile> caveMap) {
 
         int result = -1;
-
+        int columnCount = findColumnCount(caveMap);
+/*
         for (int i = 0; i < caveMap.size(); i++) {
-            if (i > 0) {
-                if (caveMap.get(i).getRow_coord() > caveMap.get(i+1).getRow_coord()) {
+            if (i > columnCount) {
+                if (caveMap.get(i).getRow_coord() > caveMap.get(i+columnCount).getRow_coord()) {
                     result = caveMap.get(i).getRow_coord() + 1;
 
                     System.out.println("Row count = " + result);
@@ -47,7 +49,9 @@ public class DayNine {
                     return result;
                 }
             }
-        }
+        }*/
+        result = caveMap.size() / columnCount;
+
         return result;
     }
 
