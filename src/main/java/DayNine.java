@@ -64,7 +64,7 @@ public class DayNine {
     public static int checkNorth(ArrayList<CaveTile> caveMap, int index) {
         int northIndex = -1;
 
-        if (caveMap.get(index).row_coord > 0) {
+        if ((caveMap.get(index).row_coord - findRowCount(caveMap)) > 0) {
             northIndex = index;
         }
 
