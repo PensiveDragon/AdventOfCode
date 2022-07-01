@@ -61,7 +61,7 @@ public class DayNine {
         return result;
     }
 
-    public static int checkNorth(ArrayList<CaveTile> caveMap, int index) {
+    public static int checkNorthIsInBounds(ArrayList<CaveTile> caveMap, int index) {
         int northIndex = -1;
 
         if ((caveMap.get(index).row_coord - findRowCount(caveMap)) > 0) {
@@ -71,30 +71,30 @@ public class DayNine {
         return northIndex;
     }
 
-    public static int checkEast(ArrayList<CaveTile> caveMap, int index) {
+    public static int checkEastIsInBounds(ArrayList<CaveTile> caveMap, int index) {
         int eastIndex = -1;
 
-        if (caveMap.get(index).row_coord > 0) {
+        if (((caveMap.get(index).row_coord + 1) % findColumnCount(caveMap)) != 0) {
             eastIndex = index;
         }
 
         return eastIndex;
     }
 
-    public static int checkSouth(ArrayList<CaveTile> caveMap, int index) {
+    public static int checkSouthIsInBounds(ArrayList<CaveTile> caveMap, int index) {
         int southIndex = -1;
 
-        if (caveMap.get(index).row_coord > 0) {
+        if ((caveMap.get(index).row_coord + findRowCount(caveMap)) < caveMap.size()) {
             southIndex = index;
         }
 
         return southIndex;
     }
 
-    public static int checkWest(ArrayList<CaveTile> caveMap, int index) {
+    public static int checkWestIsInBounds(ArrayList<CaveTile> caveMap, int index) {
         int westIndex = -1;
 
-        if (caveMap.get(index).row_coord > 0) {
+        if ((caveMap.get(index).row_coord) % findColumnCount(caveMap) != 0) {
             westIndex = index;
         }
 
@@ -103,13 +103,15 @@ public class DayNine {
 
     public static void mapBasin (ArrayList<CaveTile> caveMap, int index) { //recursive method to scan area.
         caveMap.get(index).setMapped(true); //set mapped = true
-        checkNorth(caveMap, index); //check north
+        if (checkNorthIsInBounds(caveMap, index) > -1) { //check north
+            // - if less than 9 and unmapped, redo method
+        }
+
+        checkEastIsInBounds(caveMap, index); //check east
         // - if less than 9 and unmapped, redo method
-        checkEast(caveMap, index); //check east
+        checkSouthIsInBounds(caveMap, index); //check south
         // - if less than 9 and unmapped, redo method
-        checkSouth(caveMap, index); //check south
-        // - if less than 9 and unmapped, redo method
-        checkWest(caveMap, index); //check west
+        checkWestIsInBounds(caveMap, index); //check west
         // - if less than 9 and unmapped, redo method
     }
 
