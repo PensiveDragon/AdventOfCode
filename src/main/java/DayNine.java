@@ -107,11 +107,17 @@ public class DayNine {
             // - if less than 9 and unmapped, redo method
         }
 
-        checkEastIsInBounds(caveMap, index); //check east
+        if (checkEastIsInBounds(caveMap, index) > -1) {
+
+        } //check east
         // - if less than 9 and unmapped, redo method
-        checkSouthIsInBounds(caveMap, index); //check south
+        if (checkSouthIsInBounds(caveMap, index) > -1) {
+
+        } //check south
         // - if less than 9 and unmapped, redo method
-        checkWestIsInBounds(caveMap, index); //check west
+        if (checkWestIsInBounds(caveMap, index) > -1) {
+
+        } //check west
         // - if less than 9 and unmapped, redo method
     }
 
