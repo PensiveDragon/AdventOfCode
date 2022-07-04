@@ -19,7 +19,7 @@ public class DayNine {
     public static void main(String args[]) {
         System.out.println("Moo");
 
-        ArrayList<String> input = parseInput(inputPath);
+        ArrayList<String> input = parseInput(testInputPath);
 
         ArrayList<CaveTile> caveMap = mapCave(input);
 
@@ -31,6 +31,7 @@ public class DayNine {
 
         //findColumnCount(caveMap);
         findRowCount(caveMap);
+        iterateThroughCaveMap(caveMap);
 
     }
 
@@ -105,18 +106,19 @@ public class DayNine {
         caveMap.get(index).setMapped(true); //set mapped = true
         if (checkNorthIsInBounds(caveMap, index) > -1) { //check north
             // - if less than 9 and unmapped, redo method
+            mapBasin(caveMap, index);
         }
 
         if (checkEastIsInBounds(caveMap, index) > -1) {
-
+            mapBasin(caveMap, index);
         } //check east
         // - if less than 9 and unmapped, redo method
         if (checkSouthIsInBounds(caveMap, index) > -1) {
-
+            mapBasin(caveMap, index);
         } //check south
         // - if less than 9 and unmapped, redo method
         if (checkWestIsInBounds(caveMap, index) > -1) {
-
+            mapBasin(caveMap, index);
         } //check west
         // - if less than 9 and unmapped, redo method
     }
