@@ -2,7 +2,9 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class DayNine {
 
@@ -30,7 +32,7 @@ public class DayNine {
         //System.out.println("Total risk level is: " + convertLowestPointsToTotalRiskLevel(lowestPoints, caveMap));
 
         //findColumnCount(caveMap);
-        findRowCount(caveMap);
+        //findRowCount(caveMap);
         iterateThroughCaveMap(caveMap);
 
     }
@@ -39,7 +41,7 @@ public class DayNine {
 
         int columnCount = findColumnCount(caveMap);
         int result = caveMap.size() / columnCount;
-        System.out.println("Row count = " + result);
+        //System.out.println("Row count = " + result);
 
         return result;
     }
@@ -50,10 +52,10 @@ public class DayNine {
 
         for (int i = 0; i < caveMap.size(); i++) {
             if (i > 0) {
-                if (caveMap.get(i).getCol_coord() > caveMap.get(i+1).getCol_coord()) {
-                    result = caveMap.get(i).getCol_coord() + 1;
+                if (caveMap.get(i).getX() > caveMap.get(i+1).getX()) {
+                    result = caveMap.get(i).getX() + 1;
 
-                    System.out.println("Column count = " + result);
+                    //System.out.println("Column count = " + result);
 
                     return result;
                 }
@@ -65,8 +67,8 @@ public class DayNine {
     public static int checkNorthIsInBounds(ArrayList<CaveTile> caveMap, int index) {
         int northIndex = -1;
 
-        if ((caveMap.get(index).row_coord - findRowCount(caveMap)) > 0) {
-            northIndex = index;
+        if ((caveMap.get(index).y - findColumnCount(caveMap)) > 0) {
+            northIndex = index - findColumnCount(caveMap);
         }
 
         return northIndex;
@@ -75,8 +77,8 @@ public class DayNine {
     public static int checkEastIsInBounds(ArrayList<CaveTile> caveMap, int index) {
         int eastIndex = -1;
 
-        if (((caveMap.get(index).row_coord + 1) % findColumnCount(caveMap)) != 0) {
-            eastIndex = index;
+        if (((caveMap.get(index).x + 1) < findColumnCount(caveMap))) {
+            eastIndex = index + 1;
         }
 
         return eastIndex;
@@ -85,8 +87,8 @@ public class DayNine {
     public static int checkSouthIsInBounds(ArrayList<CaveTile> caveMap, int index) {
         int southIndex = -1;
 
-        if ((caveMap.get(index).row_coord + findRowCount(caveMap)) < caveMap.size()) {
-            southIndex = index;
+        if (index + findColumnCount(caveMap) < caveMap.size()) {
+            southIndex = index + findColumnCount(caveMap);
         }
 
         return southIndex;
@@ -95,32 +97,31 @@ public class DayNine {
     public static int checkWestIsInBounds(ArrayList<CaveTile> caveMap, int index) {
         int westIndex = -1;
 
-        if ((caveMap.get(index).row_coord) % findColumnCount(caveMap) != 0) {
-            westIndex = index;
+        if ((caveMap.get(index).y) % findColumnCount(caveMap) != 0) {
+            westIndex = index - 1;
         }
 
         return westIndex;
     }
 
-    public static void mapBasin (ArrayList<CaveTile> caveMap, int index) { //recursive method to scan area.
-        caveMap.get(index).setMapped(true); //set mapped = true
-        if (checkNorthIsInBounds(caveMap, index) > -1) { //check north
-            // - if less than 9 and unmapped, redo method
-            mapBasin(caveMap, index);
+    public static Set<Integer> mapBasin (ArrayList<CaveTile> caveMap, int index, Set<Integer> indexesInBasin) { //recursive method to scan area.
+
+        //is current tile valid (ie. <9, unscanned, inbounds)
+
+        if (index != -1 && !caveMap.get(index).isMapped() && caveMap.get(index).getHeight() < 9) { //reasons for this to execute.
+
+            caveMap.get(index).setMapped(true); //set mapped = true
+
+            indexesInBasin.add(index);
+
+            mapBasin(caveMap, checkNorthIsInBounds(caveMap, index), indexesInBasin);
+            mapBasin(caveMap, checkEastIsInBounds(caveMap, index), indexesInBasin);
+            mapBasin(caveMap, checkSouthIsInBounds(caveMap, index), indexesInBasin);
+            mapBasin(caveMap, checkWestIsInBounds(caveMap, index), indexesInBasin);
+            //System.out.println("Stuff happened.");
         }
 
-        if (checkEastIsInBounds(caveMap, index) > -1) {
-            mapBasin(caveMap, index);
-        } //check east
-        // - if less than 9 and unmapped, redo method
-        if (checkSouthIsInBounds(caveMap, index) > -1) {
-            mapBasin(caveMap, index);
-        } //check south
-        // - if less than 9 and unmapped, redo method
-        if (checkWestIsInBounds(caveMap, index) > -1) {
-            mapBasin(caveMap, index);
-        } //check west
-        // - if less than 9 and unmapped, redo method
+        return indexesInBasin;
     }
 
     public static boolean isThisUnmapped (CaveTile caveTile) {
@@ -138,10 +139,14 @@ public class DayNine {
     }
 
     public static void iterateThroughCaveMap (ArrayList<CaveTile> caveMap) {
+
         int index = 0;
+        System.out.println("");
         for (CaveTile tile : caveMap) {
             if (isThisInABasin(tile) & isThisUnmapped(tile)) {
-                mapBasin(caveMap, index);
+                Set<Integer> indexesInBasin = new HashSet<>();
+                Set<Integer> tilesInBasin = mapBasin(caveMap, index, indexesInBasin);
+                System.out.println("Tiles in Basin: " + tilesInBasin.size());
             }
             index++;
         }
@@ -275,31 +280,31 @@ public class DayNine {
 
 class CaveTile {
 
-    int row_coord;
-    int col_coord;
+    int y;
+    int x;
     int height;
     boolean mapped = false;
 
-    public CaveTile(int row_coord, int col_coord, int height) {
-        this.row_coord = row_coord;
-        this.col_coord = col_coord;
+    public CaveTile(int y, int x, int height) {
+        this.y = y;
+        this.x = x;
         this.height = height;
     }
 
-    public int getRow_coord() {
-        return row_coord;
+    public int getY() {
+        return y;
     }
 
-    public void setRow_coord(int row_coord) {
-        this.row_coord = row_coord;
+    public void setY(int y) {
+        this.y = y;
     }
 
-    public int getCol_coord() {
-        return col_coord;
+    public int getX() {
+        return x;
     }
 
-    public void setCol_coord(int col_coord) {
-        this.col_coord = col_coord;
+    public void setX(int x) {
+        this.x = x;
     }
 
     public int getHeight() {
