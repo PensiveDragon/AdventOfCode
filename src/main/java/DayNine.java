@@ -110,6 +110,8 @@ public class DayNine {
 
         if (index != -1 && !caveMap.get(index).isMapped() && caveMap.get(index).getHeight() < 9) { //reasons for this to execute.
 
+            System.out.println("Investigating tile index " + index + " (no. " + caveMap.get(index).getHeight() + ")");
+
             caveMap.get(index).setMapped(true); //set mapped = true
 
             indexesInBasin.add(index);
