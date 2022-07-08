@@ -77,7 +77,7 @@ public class DayNine {
     public static int checkEastIsInBounds(ArrayList<CaveTile> caveMap, int index) {
         int eastIndex = -1;
 
-        if (((caveMap.get(index).x + 1) < findColumnCount(caveMap))) {
+        if (((caveMap.get(index).getX() + 1) < findColumnCount(caveMap))) {
             eastIndex = index + 1;
         }
 
@@ -97,7 +97,7 @@ public class DayNine {
     public static int checkWestIsInBounds(ArrayList<CaveTile> caveMap, int index) {
         int westIndex = -1;
 
-        if ((caveMap.get(index).y) % findColumnCount(caveMap) != 0) {
+        if ((caveMap.get(index).getX()) % findColumnCount(caveMap) != 0) {
             westIndex = index - 1;
         }
 
