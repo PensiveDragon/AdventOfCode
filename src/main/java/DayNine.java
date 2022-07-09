@@ -1,10 +1,7 @@
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class DayNine {
 
@@ -142,6 +139,8 @@ public class DayNine {
 
     public static void iterateThroughCaveMap (ArrayList<CaveTile> caveMap) {
 
+        int[] top3basins = new int[3];
+
         int index = 0;
         System.out.println("");
         for (CaveTile tile : caveMap) {
@@ -149,9 +148,21 @@ public class DayNine {
                 Set<Integer> indexesInBasin = new HashSet<>();
                 Set<Integer> tilesInBasin = mapBasin(caveMap, index, indexesInBasin);
                 System.out.println("Tiles in Basin: " + tilesInBasin.size());
+                if (tilesInBasin.size() > top3basins[0]) {
+                    top3basins[2] = top3basins[1];
+                    top3basins[1] = top3basins[0];
+                    top3basins[0] = tilesInBasin.size();
+                } else if (tilesInBasin.size() > top3basins[1]) {
+                    top3basins[2] = top3basins[1];
+                    top3basins[1] = tilesInBasin.size();
+                } else if (tilesInBasin.size() > top3basins[2]) {
+                    top3basins[2] = tilesInBasin.size();
+                }
             }
             index++;
         }
+
+        System.out.println(Arrays.toString(top3basins));
     }
 
     public static int convertLowestPointsToTotalRiskLevel (ArrayList<Integer> lowestPoints, ArrayList<CaveTile> caveMap) {
