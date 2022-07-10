@@ -163,6 +163,7 @@ public class DayNine {
         }
 
         System.out.println(Arrays.toString(top3basins));
+        System.out.println("Top 3 Basin size multiple: " + top3basins[0]*top3basins[1]*top3basins[2]);
     }
 
     public static int convertLowestPointsToTotalRiskLevel (ArrayList<Integer> lowestPoints, ArrayList<CaveTile> caveMap) {
