@@ -31,7 +31,28 @@ public class DayNine {
         //findColumnCount(caveMap);
         //findRowCount(caveMap);
         iterateThroughCaveMap(caveMap);
+        countNumberOfBasinTiles(input);
+    }
 
+    public static void countNumberOfBasinTiles(ArrayList<String> input) {
+        int basinTileCount = 0;
+        int basinEdgeCount = 0;
+
+        for (int row = 0; row < input.size(); row++) {
+            for (int col = 0; col < input.get(0).length(); col++) {
+                if (Integer.parseInt(String.valueOf(input.get(row).charAt(col))) < 9) {
+                    basinTileCount++;
+                }
+                else if (Integer.parseInt(String.valueOf(input.get(row).charAt(col))) == 9) {
+                    basinEdgeCount++;
+                } else {
+                    System.out.println("Not expected to reach here, investigate further." + (Integer.parseInt(String.valueOf(input.get(row).charAt(col)))));
+                }
+            }
+        }
+
+        System.out.println("Basin Tiles = " + basinTileCount);
+        System.out.println("Edge Tiles = " + basinEdgeCount);
     }
 
     public static int findRowCount(ArrayList<CaveTile> caveMap) {
@@ -140,6 +161,7 @@ public class DayNine {
     public static void iterateThroughCaveMap (ArrayList<CaveTile> caveMap) {
 
         int[] top3basins = new int[3];
+        TreeSet<Integer> allBasinSizes = new TreeSet<>();
 
         int index = 0;
         System.out.println("");
@@ -148,6 +170,7 @@ public class DayNine {
                 Set<Integer> indexesInBasin = new HashSet<>();
                 Set<Integer> tilesInBasin = mapBasin(caveMap, index, indexesInBasin);
                 System.out.println("Tiles in Basin: " + tilesInBasin.size());
+                allBasinSizes.add(tilesInBasin.size());
                 if (tilesInBasin.size() > top3basins[0]) {
                     top3basins[2] = top3basins[1];
                     top3basins[1] = top3basins[0];
@@ -164,6 +187,9 @@ public class DayNine {
 
         System.out.println(Arrays.toString(top3basins));
         System.out.println("Top 3 Basin size multiple: " + top3basins[0]*top3basins[1]*top3basins[2]);
+        for (Integer num : allBasinSizes) {
+            //System.out.println(num);
+        }
     }
 
     public static int convertLowestPointsToTotalRiskLevel (ArrayList<Integer> lowestPoints, ArrayList<CaveTile> caveMap) {
