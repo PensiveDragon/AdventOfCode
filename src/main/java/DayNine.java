@@ -18,7 +18,7 @@ public class DayNine {
     public static void main(String args[]) {
         System.out.println("Moo");
 
-        ArrayList<String> input = parseInput(testInputPath);
+        ArrayList<String> input = parseInput(inputPath);
 
         ArrayList<CaveTile> caveMap = mapCave(input);
 
@@ -187,9 +187,12 @@ public class DayNine {
 
         System.out.println(Arrays.toString(top3basins));
         System.out.println("Top 3 Basin size multiple: " + top3basins[0]*top3basins[1]*top3basins[2]);
+        int allBasinSizesSummed = 0;
         for (Integer num : allBasinSizes) {
             //System.out.println(num);
+            allBasinSizesSummed += num;
         }
+        System.out.println("All Basin Sizes Summed = " + allBasinSizesSummed);
     }
 
     public static int convertLowestPointsToTotalRiskLevel (ArrayList<Integer> lowestPoints, ArrayList<CaveTile> caveMap) {
