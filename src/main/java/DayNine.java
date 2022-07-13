@@ -162,6 +162,7 @@ public class DayNine {
 
         int[] top3basins = new int[3];
         TreeSet<Integer> allBasinSizes = new TreeSet<>();
+        int allBasinSizesSummed = 0;
 
         int index = 0;
         System.out.println("");
@@ -171,6 +172,7 @@ public class DayNine {
                 Set<Integer> tilesInBasin = mapBasin(caveMap, index, indexesInBasin);
                 System.out.println("Tiles in Basin: " + tilesInBasin.size());
                 allBasinSizes.add(tilesInBasin.size());
+                allBasinSizesSummed += tilesInBasin.size();
                 if (tilesInBasin.size() > top3basins[0]) {
                     top3basins[2] = top3basins[1];
                     top3basins[1] = top3basins[0];
@@ -187,11 +189,7 @@ public class DayNine {
 
         System.out.println(Arrays.toString(top3basins));
         System.out.println("Top 3 Basin size multiple: " + top3basins[0]*top3basins[1]*top3basins[2]);
-        int allBasinSizesSummed = 0;
-        for (Integer num : allBasinSizes) {
-            //System.out.println(num);
-            allBasinSizesSummed += num;
-        }
+
         System.out.println("All Basin Sizes Summed = " + allBasinSizesSummed);
     }
 
