@@ -126,6 +126,8 @@ public class DayNine {
 
         //is current tile valid (ie. <9, unscanned, inbounds)
 
+        //** look in mapBasin for trying to debug system
+
         if (index != -1 && !caveMap.get(index).isMapped() && caveMap.get(index).getHeight() < 9) { //reasons for this to execute.
 
             System.out.println("Investigating tile index " + index + " (no. " + caveMap.get(index).getHeight() + ")");
@@ -161,7 +163,7 @@ public class DayNine {
     public static void iterateThroughCaveMap (ArrayList<CaveTile> caveMap) {
 
         int[] top3basins = new int[3];
-        TreeSet<Integer> allBasinSizes = new TreeSet<>();
+        //TreeSet<Integer> allBasinSizes = new TreeSet<>();
         int allBasinSizesSummed = 0;
 
         int index = 0;
@@ -171,7 +173,7 @@ public class DayNine {
                 Set<Integer> indexesInBasin = new HashSet<>();
                 Set<Integer> tilesInBasin = mapBasin(caveMap, index, indexesInBasin);
                 System.out.println("Tiles in Basin: " + tilesInBasin.size());
-                allBasinSizes.add(tilesInBasin.size());
+                //allBasinSizes.add(tilesInBasin.size());
                 allBasinSizesSummed += tilesInBasin.size();
                 if (tilesInBasin.size() > top3basins[0]) {
                     top3basins[2] = top3basins[1];
