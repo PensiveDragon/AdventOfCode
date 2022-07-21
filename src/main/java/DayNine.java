@@ -140,7 +140,7 @@ public class DayNine {
             mapBasin(caveMap, checkEastIsInBounds(caveMap, index), indexesInBasin);
             mapBasin(caveMap, checkSouthIsInBounds(caveMap, index), indexesInBasin);
             mapBasin(caveMap, checkWestIsInBounds(caveMap, index), indexesInBasin);
-            //System.out.println("Stuff happened.");
+            System.out.println("Stuff happened at index " + index);
         }
 
         return indexesInBasin;
