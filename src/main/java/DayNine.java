@@ -7,6 +7,7 @@ public class DayNine {
 
     static String testInputPath = "src/main/resources/day9_test_input.txt";
     static String inputPath = "src/main/resources/day9_input.txt";
+    static int setMappedCounter = 0;
 
     // Part 2
     // Find the 3 largest basins
@@ -21,6 +22,8 @@ public class DayNine {
         ArrayList<String> input = parseInput(inputPath);
 
         ArrayList<CaveTile> caveMap = mapCave(input);
+
+
 
         //ArrayList<Integer> lowestPoints = findLowestPointsFromArrayList(caveMap, input);
 
@@ -133,6 +136,7 @@ public class DayNine {
             System.out.println("Investigating tile index " + index + " (no. " + caveMap.get(index).getHeight() + ")");
 
             caveMap.get(index).setMapped(true); //set mapped = true
+            setMappedCounter++;
 
             indexesInBasin.add(index);
 
@@ -140,9 +144,10 @@ public class DayNine {
             mapBasin(caveMap, checkEastIsInBounds(caveMap, index), indexesInBasin);
             mapBasin(caveMap, checkSouthIsInBounds(caveMap, index), indexesInBasin);
             mapBasin(caveMap, checkWestIsInBounds(caveMap, index), indexesInBasin);
-            System.out.println("Stuff happened at index " + index);
+            //System.out.println("Stuff happened at index " + index);
         }
 
+        System.out.println("Set Mapped Counter = " + setMappedCounter);
         return indexesInBasin;
     }
 
