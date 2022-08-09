@@ -23,7 +23,8 @@ public class DayNine {
 
         ArrayList<CaveTile> caveMap = mapCave(input);
 
-
+        System.out.println("W:" + input.size());
+        System.out.println("L:" +  input.get(0).length());
 
         //ArrayList<Integer> lowestPoints = findLowestPointsFromArrayList(caveMap, input);
 
@@ -88,7 +89,7 @@ public class DayNine {
     public static int checkNorthIsInBounds(ArrayList<CaveTile> caveMap, int index) {
         int northIndex = -1;
 
-        if ((caveMap.get(index).y - findColumnCount(caveMap)) > 0) {
+        if (caveMap.get(index).y > 0) {
             northIndex = index - findColumnCount(caveMap);
         }
 
@@ -140,6 +141,10 @@ public class DayNine {
 
             indexesInBasin.add(index);
 
+            if (index == 4985)
+            {
+                System.out.println("wwwwwaaaaaaaaaaaaa");
+            }
             mapBasin(caveMap, checkNorthIsInBounds(caveMap, index), indexesInBasin);
             mapBasin(caveMap, checkEastIsInBounds(caveMap, index), indexesInBasin);
             mapBasin(caveMap, checkSouthIsInBounds(caveMap, index), indexesInBasin);
@@ -147,7 +152,7 @@ public class DayNine {
             //System.out.println("Stuff happened at index " + index);
         }
 
-        System.out.println("Set Mapped Counter = " + setMappedCounter);
+        //System.out.println("Set Mapped Counter = " + setMappedCounter);
         return indexesInBasin;
     }
 
@@ -177,6 +182,18 @@ public class DayNine {
             if (isThisInABasin(tile) & isThisUnmapped(tile)) {
                 Set<Integer> indexesInBasin = new HashSet<>();
                 Set<Integer> tilesInBasin = mapBasin(caveMap, index, indexesInBasin);
+
+                if (tilesInBasin.size() == 104) {
+                    Set<Integer> temp = new TreeSet<Integer>();
+                    temp.addAll(tilesInBasin);
+                    System.out.println("MOOO MOOOO MOOO MOOOO MOOOOO ALARM COW");
+                    System.out.println(tilesInBasin);
+                    System.out.println(temp);
+                    break;
+                }
+
+
+
                 System.out.println("Tiles in Basin: " + tilesInBasin.size());
                 //allBasinSizes.add(tilesInBasin.size());
                 allBasinSizesSummed += tilesInBasin.size();
